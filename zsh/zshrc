@@ -88,16 +88,15 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+
 # Complete known hosts
-local _ssh_hosts _etc_hosts _hosts
+local _ssh_hosts
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
-[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 _hosts=(
     "$_ssh_hosts[@]"
-    "$_etc_hosts[@]"
 )
+zstyle ':completion:*:(ping|ssh|scp|sftp):*' hosts $_hosts
 
-zstyle ':completion:*:(ssh|scp|sftp):*' hosts $_hosts
 
 # Show red dots while completing
 expand-or-complete-with-dots() {
@@ -231,7 +230,7 @@ alias drop_caches='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 
 alias jsonfmt='python -mjson.tool'
 
-alias sshc='ssh -o StrictHostKeychecking=no'
+alias sshc='ssh -o "StrictHostKeychecking no" -o "UserKnownHostsFile /dev/null"'
 # ###########################################################################
 #
 
