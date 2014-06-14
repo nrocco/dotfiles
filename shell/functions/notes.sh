@@ -27,7 +27,7 @@ buildfile() {
 n() {
     # If no note was given, list the notes.
     if [ -z "$1" ]; then
-        lt "$NOTEDIR"
+        ls -lrt "$NOTEDIR"
     # If a note was given, open it.
     else
         $EDITOR $(buildfile "$NOTEDIR"/"$1")
@@ -38,15 +38,15 @@ n() {
 # Find a note by title.
 nf() {
     if [ -z "$1" ]; then
-        lt "$NOTEDIR"
+        ls -lrt "$NOTEDIR"
     else
-        lt "$NOTEDIR" | grep -i $1
+        ls -lrt "$NOTEDIR" | grep -i $1
     fi
 }
 
 
 # Search within notes.
-ns() { cd $NOTEDIR; grep -rin $1; cd "$OLDPWD"; }
+ns() { cd $NOTEDIR; grep -rin $1 .; cd "$OLDPWD"; }
 
 
 # Set autocompletion for notes.
