@@ -1,0 +1,55 @@
+#!/bin/bash
+
+options=""
+repositories=()
+
+current_dir=$(pwd)
+action=$1
+
+shift
+
+# Parse all arguments from the command line, splitting
+# them in repositories and options for git
+for opt in "$@"
+do
+    if [ -d "$opt" ]
+    then
+        repositories+=("$opt")
+    else
+        options="$options $opt"
+    fi
+done
+
+
+# If the action is status, use porcelain by default
+if [[ "status" == "$action" ]]
+then
+    options="$options --porcelain"
+fi
+
+
+# If no repositories are found, do nothing
+if [ ${#repositories[@]} -eq 0 ]
+then
+    echo 'No repositories found.'
+    exit 1
+fi
+
+
+# For every repository execute the git command
+for repo in "${repositories[@]}"
+do
+    if [ ! -d "$repo/.git" ]
+    then
+        echo "[ERROR] $repo is not a git repository. Skipping." 1>&2
+        continue
+    fi
+
+    cd $repo
+
+    echo -e "==> Working on \033[0;32m$repo$(tput sgr0)"
+    git --no-pager $action $options
+    echo
+
+    cd $current_dir
+done

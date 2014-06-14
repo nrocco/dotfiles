@@ -1,0 +1,28 @@
+[user]
+    name = Nico Di Rocco
+    email = dirocco.nico@gmail.com
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+[blame]
+    # Do not show the time of commit in svn blame, only the date.
+    date = short
+[merge]
+    tool = vimdiff
+[alias]
+    current = log -1 --stat HEAD
+    everything = "! f() { git fetch --all --prune && git fetch --tags --prune; }; f"
+    recent = log --pretty=format:'%h %Cgreen[%ci]%Creset %s %Cgreen[%an]%Creset' --graph --all
+    st = status
+    unstage = reset HEAD --
+    prepush = log --name-status --branches --not --remotes
+    slist = stash list
+    lg = log --graph --pretty=format:'%C(yellow)%h %C(black)%ci%C(reset) %s %C(black)by %an%C(reset)% C(green)%d%C(reset)' --date-order --color --all
+    last = "!git --no-pager log --oneline HEAD~1..HEAD"
+[push]
+    default = simple

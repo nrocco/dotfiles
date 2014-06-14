@@ -1,0 +1,243 @@
+# Set some options
+setopt EXTENDED_GLOB
+setopt NOMATCH
+setopt NOTIFY
+setopt COMPLETE_ALIASES
+setopt PROMPT_SUBST
+setopt NO_CASE_GLOB
+setopt NO_AUTO_CD
+setopt NO_BEEP
+setopt NO_MENU_COMPLETE
+
+
+#
+# ###########################################################################
+# Load the following zsh modules
+autoload -U colors && colors
+
+PROMPT='%(?..%{$fg[red]%}|%?|)%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[yellow]%}%~%{$reset_color%}${vcs_info_msg_0_} %(!.#.%%) '
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+# Use `tput smkx; cat; tput rmkx` to get proper key codes
+bindkey -e
+bindkey "\e\e[D"    backward-word
+bindkey "\e\e[C"    forward-word
+bindkey "\e[H"      beginning-of-line
+bindkey "\e[F"      end-of-line
+bindkey "\e[A"      history-search-backward
+bindkey "\e[B"      history-search-forward
+bindkey "\e[3~"     delete-char
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+# Disable lookup of command after making a typo
+unset command_not_found_handle
+
+# Set preferred default editor
+export EDITOR=vim
+
+# Set preferred default pager
+export PAGER=less
+
+# Set default options for the less pager
+export LESS="--RAW-CONTROL-CHARS --LONG-PROMPT --quiet"
+
+# Set default options for grep
+export GREP_OPTIONS='--color=auto'
+
+# Set pythonrc file path
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+
+export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+autoload -U compinit && compinit -C
+autoload -U bashcompinit && bashcompinit
+
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+
+zstyle ':completion:*'              menu select
+
+## case-insensitive (all),partial-word and then substring completion
+zstyle ':completion:*'              matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion::complete:*'    use-cache on
+zstyle ':completion::complete:*'    cache-path .zcache
+zstyle ':completion:*:cd:*'         ignore-parents parent pwd
+
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:(rm|kill|diff):*' ignore-line yes
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+# Nice menu when doing kill
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Complete known hosts
+local _ssh_hosts _etc_hosts _hosts
+[ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
+[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
+_hosts=(
+    "$_ssh_hosts[@]"
+    "$_etc_hosts[@]"
+)
+
+zstyle ':completion:*:(ssh|scp|sftp):*' hosts $_hosts
+
+# Show red dots while completing
+expand-or-complete-with-dots() {
+    echo -n "\e[31m...\e[0m"
+    zle expand-or-complete
+    zle redisplay
+}
+
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+# ###########################################################################
+#
+
+#
+# ###########################################################################
+HISTFILE=~/.histfile
+HISTSIZE=9999
+SAVEHIST=9999
+
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+autoload -Uz vcs_info
+
+# Git in the prompt
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*:*' get-revision true
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:*' formats " [%b%c%u%m]"
+zstyle ':vcs_info:*' actionformats " (%s|%a) [%b%c%u%m]"
+zstyle ':vcs_info:git*+set-message:*' hooks git-aheadbehind git-stash
+
+precmd() {
+    vcs_info
+}
+
+# https://github.com/blaenk/dots/blob/master/zsh/zsh/vcsinfo.zsh
+function +vi-git-aheadbehind() {
+    local ahead behind
+    local -a gitstatus
+
+    behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
+    (( $behind )) && gitstatus+=( " -${behind}%f" )
+
+    ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
+    (( $ahead )) && gitstatus+=( " +${ahead}%f" )
+
+    hook_com[misc]+=${(j::)gitstatus}
+
+    if [[ -n ${hook_com[misc]} ]]
+    then
+        hook_com[misc]=" ∷%f${hook_com[misc]}"
+    fi
+}
+
+function +vi-git-stash() {
+    if [[ -s ${hook_com[base]}/.git/refs/stash ]]
+    then
+        hook_com[misc]+="\$"
+    fi
+}
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+# http://blog.viridian-project.de/2008/07/03/zsh-tip-handling-urls-with-url-quote-magic/
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+function z() {
+  if [ -r ~/.zshrc ]
+  then
+    source ~/.zshrc
+    echo "Sourced ~/.zshrc"
+  else
+    echo "Doing nothing"
+    return 1
+  fi
+}
+
+function running() {
+  ps auwx | grep "$@" | grep -v grep
+}
+
+function gen_pass() {
+  LC_ALL=C tr -dc '[:alnum:]._\-' < /dev/urandom | head -c${1:-20}; echo
+}
+
+if [[ "Darwin" == "$(uname)" ]]
+then
+    alias ls='ls -G -F'
+else
+    alias ls='ls --color=auto -F'
+fi
+
+alias l='ls -l'
+alias ll='ls -la'
+alias lt='ls -lrt'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias vi='vim'
+alias vihosts='sudo vim /etc/hosts'
+
+alias mv='mv -vi'
+alias cp='cp -vi'
+
+alias drop_caches='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+
+alias jsonfmt='python -mjson.tool'
+
+alias sshc='ssh -o StrictHostKeychecking=no'
+# ###########################################################################
+#
+
+
+#
+# ###########################################################################
+source ~/.dotfiles/shell/functions/venv
+
+[ -f $HOME/.zshrc-local ] && source $HOME/.zshrc-local

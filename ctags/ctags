@@ -1,0 +1,9 @@
+--recurse
+--totals=yes
+
+--exclude=.git
+--exclude=.svn
+
+--php-kinds=cidf
+
+--python-kinds=-i

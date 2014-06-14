@@ -1,0 +1,17 @@
+snippet me "My name (taken from git configuration)"
+`git config --get user.name` ${1}
+endsnippet
+
+snippet now "Insert the current date and time"
+`date +"%Y-%m-%d %H:%M:%S"` ${1}
+endsnippet
+
+snippet today "Insert the current day"
+`date +%Y-%m-%d` ${1}
+endsnippet
+
+# Specifications taken from here:
+#   http://www.riedquat.de/TR/TODO_Syntax/
+snippet todo "Insert a TODO according to specifications"
+TODO:`git config --get user.name`:`date +%Y-%m-%d`:${1}
+endsnippet

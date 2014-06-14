@@ -1,0 +1,29 @@
+#!/bin/bash
+
+OPTS=''
+MYSQL="/usr/bin/mysql $OPTS"
+
+case "$1" in
+  databases)
+    $MYSQL -e "SELECT table_schema as 'Database Name', SUM(data_length + index_length)/1024/1024 as 'Database Size in MB' FROM information_schema.TABLES GROUP BY table_schema;"
+    ;;
+  database)
+    $MYSQL -e "SELECT TABLE_NAME, table_rows, data_length, index_length, round(((data_length + index_length) / 1024 / 1024),2) 'Size in MB' FROM information_schema.TABLES WHERE table_schema = '$2';"
+    ;;
+  users)
+    $MYSQL -e "SELECT CONCAT_WS('@', user, host) as 'User' FROM mysql.user"
+    ;;
+  user)
+    $MYSQL -e "SHOW GRANTS FOR $2"
+    ;;
+  adduser)
+    $MYSQL -e "GRANT ALL PRIVILEGES ON *.* TO $1 IDENTIFIED BY '$PASS'; FLUSH PRIVILEGES;"
+    ;;
+  dropuser)
+    $MYSQL -e "DROP USER $1; FLUSH PRIVILEGES;"
+    ;;
+  help|* )
+    echo "Usage: `basename $0` {databases|database [db_name]|users|user|adduser|dropuser|help}"
+    ;;
+esac
+
