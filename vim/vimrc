@@ -2,38 +2,40 @@
   set nocompatible                                " Set vim to not be backwards compatible for cooler features
   filetype off
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  if filereadable($HOME . '/.vim/bundle/vundle/autoload/vundle.vim')
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
 
-  Bundle 'gmarik/vundle'
-  Bundle 'bling/vim-airline'
-  Bundle 'indentpython.vim'
-  Bundle 'kien/ctrlp.vim'
+    Bundle 'gmarik/vundle'
+    Bundle 'bling/vim-airline'
+    Bundle 'indentpython.vim'
+    Bundle 'kien/ctrlp.vim'
 
-  Bundle 'SirVer/ultisnips'
+    Bundle 'SirVer/ultisnips'
 
-  Bundle 'tpope/vim-commentary'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'tpope/vim-ragtag'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-unimpaired'
+    Bundle 'tpope/vim-commentary'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'tpope/vim-markdown'
+    Bundle 'tpope/vim-ragtag'
+    Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-unimpaired'
 
-  " Syntax bundles
-  Bundle 'git://fedorapeople.org/home/fedora/wwoods/public_git/vim-scripts.git'
-  Bundle 'jelera/vim-javascript-syntax'
-  Bundle 'jinfield/vim-nginx'
-  Bundle 'me-vlad/python-syntax.vim'
-  Bundle 'zaiste/tmux.vim'
-  Bundle 'confluencewiki.vim'
-  Bundle 'mitsuhiko/vim-jinja'
+    " Syntax bundles
+    Bundle 'git://fedorapeople.org/home/fedora/wwoods/public_git/vim-scripts.git'
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'jinfield/vim-nginx'
+    Bundle 'me-vlad/python-syntax.vim'
+    Bundle 'zaiste/tmux.vim'
+    Bundle 'confluencewiki.vim'
+    Bundle 'mitsuhiko/vim-jinja'
 
-  " php specific bundles
-  Bundle 'arnaud-lb/vim-php-namespace'
-  Bundle 'sumpygump/php-documentor-vim'
-  Bundle 'vsushkov/vim-phpcs'
-  Bundle 'nrocco/vim-phplint'
-  Bundle 'shawncplus/phpcomplete.vim'
+    " php specific bundles
+    Bundle 'arnaud-lb/vim-php-namespace'
+    Bundle 'sumpygump/php-documentor-vim'
+    Bundle 'vsushkov/vim-phpcs'
+    Bundle 'nrocco/vim-phplint'
+    Bundle 'shawncplus/phpcomplete.vim'
+  endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
