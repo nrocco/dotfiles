@@ -219,6 +219,17 @@ endfunction
 " ---------------------------------------------------------------
 
 
+" ---------------------------------------------------------------
+" Fix Home/End keys in vim
+  :map  <ESC>[H <Home>
+  :map  <ESC>[F <End>
+  :imap <ESC>[H <C-O><Home>
+  :imap <ESC>[F <C-O><End>
+  :cmap <ESC>[H <Home>
+  :cmap <ESC>[F <End>
+" ---------------------------------------------------------------
+
+
 
 " Read settings from a system local vimrc
 if filereadable($HOME . '/.vimrclocal')
