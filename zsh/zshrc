@@ -1,13 +1,14 @@
 # Set some options
-setopt EXTENDED_GLOB
+setopt EXTENDED_GLOB        # Patterns, to match the name of files and other things
 setopt NOMATCH
-setopt NOTIFY
-setopt COMPLETE_ALIASES
-setopt PROMPT_SUBST
+setopt NOTIFY               # When a background job finishes, print a message
+setopt COMPLETE_ALIASES     # aliases on the command line are not internally substituted before completion is attempted
+setopt PROMPT_SUBST         # parameter expansion, command substitution and arithmetic expansion is performed in prompts
 setopt NO_CASE_GLOB
-setopt NO_AUTO_CD
-setopt NO_BEEP
-setopt NO_MENU_COMPLETE
+setopt NO_AUTO_CD           # Do not interpret a non existing command as a `cd` command
+setopt NO_BEEP              # Beep
+setopt NO_AUTO_MENU         # No menu completion after the second consecutive request for completion
+setopt NO_MENU_COMPLETE     # On ambigious match, do not insert the first match immediately
 
 
 #
@@ -65,8 +66,8 @@ export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 autoload -U compinit && compinit -C
 autoload -U bashcompinit && bashcompinit
 
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
+setopt COMPLETE_IN_WORD     # Cursor stays where it is and completion is done from both ends
+setopt ALWAYS_TO_END        # Place cursor at the end after successful match
 
 zstyle ':completion:*'              menu select
 
@@ -89,15 +90,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
-# Complete known hosts
-local _ssh_hosts
-[ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
-_hosts=(
-    "$_ssh_hosts[@]"
-)
-zstyle ':completion:*:(ping|ssh|scp|sftp):*' hosts $_hosts
-
-
 # Show red dots while completing
 expand-or-complete-with-dots() {
     echo -n "\e[31m...\e[0m"
@@ -112,19 +104,19 @@ bindkey "^I" expand-or-complete-with-dots
 
 #
 # ###########################################################################
-HISTFILE=~/.histfile
-HISTSIZE=9999
-SAVEHIST=9999
+HISTFILE=~/.histfile           # the name of the file where to save history
+HISTSIZE=9999                  # the number of lines the shell will keep within one session
+SAVEHIST=9999                  # the number of lines of your history you want saved
 
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
+setopt APPEND_HISTORY          # append the new history to the old
+setopt EXTENDED_HISTORY        # saves the time when the command was started and how long it ran for.
+setopt HIST_EXPIRE_DUPS_FIRST  # preferentially removes duplicates when the history fills up
+setopt HIST_IGNORE_ALL_DUPS    # removes copies of lines still in the history list
+setopt HIST_IGNORE_DUPS        # tells the shell not to store a history line if it's the same as the previous one
+setopt HIST_IGNORE_SPACE       # lines which begin with a space don't go into the history
 setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY      # each line is added to the history in this way as it is executed
+setopt SHARE_HISTORY           # as each line is added, the history file notify all other shells
 # ###########################################################################
 #
 
