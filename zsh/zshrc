@@ -48,8 +48,6 @@ bindkey "\e[1~"     beginning-of-line
 bindkey "\e[7~"     beginning-of-line
 bindkey "\e[H"      beginning-of-line
 
-# bindkey "\e[2~"     quoted-insert
-
 bindkey "\e[3;3~"   delete-word
 bindkey "\e[3~"     delete-char
 
@@ -66,19 +64,6 @@ bindkey "\e[6~"     history-beginning-search-forward
 # insert the last used word
 # bindkey "\e." insert-last-word
 # bindkey "^I"  expand-or-complete
-
-# menu completion via esc-m
-bindkey "\em"  menu-complete
-bindkey "\e[Z" reverse-menu-complete
-
-# press ctrl-h to view help for current command
-autoload run-help
-bindkey "^H" run-help
-
-# press esc-e to edit command line with $EDITOR or $VISUAL
-# autoload -U edit-command-line
-# zle -N edit-command-line
-# bindkey '\ee' edit-command-line
 # ###########################################################################
 #
 
