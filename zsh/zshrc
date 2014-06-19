@@ -23,13 +23,62 @@ PROMPT='%(?..%{$fg[red]%}|%?|)%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[yellow]%
 
 #
 # ###########################################################################
-# Use `tput smkx; cat; tput rmkx` to get proper key codes
+# use emacs keybindings
 bindkey -e
+
+# remove some bindings
+bindkey -r '^O'
+
+# also do history expansion on space
+bindkey " "         magic-space
+
+bindkey "\eOc"      forward-word
+bindkey "\e[1;3C"   forward-word
+bindkey "\e[1;5C"   forward-word
+bindkey "\e[5C"     forward-word
+bindkey "\e\e[C"    forward-word         # urxvt: alt + right arrow
+
+bindkey "\e[5D"     backward-word
+bindkey "\eOd"      backward-word
+bindkey "\e[1;3D"   backward-word
+bindkey "\e[1;5D"   backward-word
+bindkey "\e\e[D"    backward-word        # urxvt: alt + left arrow
+
+bindkey "\e[1~"     beginning-of-line
+bindkey "\e[7~"     beginning-of-line
 bindkey "\e[H"      beginning-of-line
-bindkey "\e[F"      end-of-line
-bindkey "\e[5~"     history-search-backward
-bindkey "\e[6~"     history-search-forward
+
+# bindkey "\e[2~"     quoted-insert
+
+bindkey "\e[3;3~"   delete-word
 bindkey "\e[3~"     delete-char
+
+bindkey "\e[4~"     end-of-line
+bindkey "\e[8~"     end-of-line
+bindkey "\e[F"      end-of-line
+
+bindkey "\e[5~"     history-beginning-search-backward
+bindkey "\e[6~"     history-beginning-search-forward
+
+
+# bindkey "\e[1;3A" alt-up
+# bindkey "\e[1;3B" alt-down
+# insert the last used word
+# bindkey "\e." insert-last-word
+# bindkey "^I"  expand-or-complete
+
+# menu completion via esc-m
+bindkey "\em"  menu-complete
+bindkey "\e[Z" reverse-menu-complete
+
+# press ctrl-h to view help for current command
+autoload run-help
+bindkey "^H" run-help
+
+# press esc-e to edit command line with $EDITOR or $VISUAL
+# autoload -U edit-command-line
+# zle -N edit-command-line
+# bindkey '\ee' edit-command-line
 # ###########################################################################
 #
 
