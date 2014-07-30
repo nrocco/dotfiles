@@ -114,7 +114,6 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:(rm|kill|diff):*' ignore-line yes
 
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
 # Nice menu when doing kill
