@@ -24,5 +24,6 @@
     slist = stash list
     lg = log --graph --pretty=format:'%C(yellow)%h %C(black)%ci%C(reset) %s %C(black)by %an%C(reset)% C(green)%d%C(reset)' --date-order --color --all
     last = "!git --no-pager log --oneline HEAD~1..HEAD"
+    ignore = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 [push]
     default = simple
