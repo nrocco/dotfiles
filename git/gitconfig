@@ -26,4 +26,4 @@
     last = "!git --no-pager log --oneline HEAD~1..HEAD"
     ignore = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 [push]
-    default = simple
+    default = nothing
