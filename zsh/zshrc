@@ -254,6 +254,7 @@ alias drop_caches='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 alias jsonfmt='python -mjson.tool'
 
 alias sshc='ssh -o "StrictHostKeychecking no" -o "UserKnownHostsFile /dev/null"'
+alias scpc='scp -o "StrictHostKeychecking no" -o "UserKnownHostsFile /dev/null"'
 # ###########################################################################
 #
 
