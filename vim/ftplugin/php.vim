@@ -1,24 +1,21 @@
-  set omnifunc=phpcomplete#CompletePHP
-
-" Execute current php script
-  noremap <C-b> :!php %<CR>
-
-
 " ---------------------------------------------------------------
 " GENERAL: PHP Settings
 " ---------------------------------------------------------------
+  set omnifunc=phpcomplete#CompletePHP
+
+  " Execute current php script
+  noremap <C-b> :!php %<CR>
+
   let php_sql_query=1                             " Highlight sql in php strings
   let php_htmlInStrings=1                         " Highlight HTML in php strings
   let php_noShortTags=1                           " Disable PHP Short Tags
   let g:PHP_vintage_case_default_indent=1         " Fix case/break indentation
 
   set keywordprg=pman
-" ---------------------------------------------------------------
 
-
-" Highlight end of line whitespace and literal tab characters.
   highlight WhitespaceEOL ctermbg=red guibg=red
   match WhitespaceEOL /\s\+$\|\t/
+" ---------------------------------------------------------------
 
 
 " ---------------------------------------------------------------
@@ -47,9 +44,7 @@
 " ---------------------------------------------------------------
 " PLUGIN: vim-phpdoc plugin
 " ---------------------------------------------------------------
-  inoremap <buffer> <leader>d :call PhpDoc()<CR>
   nnoremap <buffer> <leader>d :call PhpDoc()<CR>
-  vnoremap <buffer> <leader>d :call PhpDocRange()<CR>
 
-  let g:pdv_cfg_ClassTags = ["author","version"]
+  let g:pdv_cfg_ClassTags = ["author"]
 " ---------------------------------------------------------------

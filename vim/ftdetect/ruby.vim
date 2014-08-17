@@ -1,1 +1,1 @@
-au BufNewFile,BufRead Vagrantfile set filetype=ruby
+au BufNewFile,BufRead Vagrantfile,Berksfile set filetype=ruby
