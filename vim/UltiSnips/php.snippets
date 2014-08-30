@@ -135,3 +135,8 @@ catch (${2:\Exception} as $e) {
 	${3:// catch this}
 }$0
 endsnippet
+
+
+snippet fpc "file put contents and die"
+file_put_contents('/tmp/fpc.log', ${1} . PHP_EOL, FILE_APPEND); die();
+endsnippet
