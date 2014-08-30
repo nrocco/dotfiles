@@ -21,8 +21,10 @@
 " ---------------------------------------------------------------
 " PLUGIN: vim-php-insert-use statements
 " ---------------------------------------------------------------
-  imap <buffer> <leader>m   <C-O>:call PhpInsertUse()<CR>
-  map <buffer> <leader>m    :call PhpInsertUse()<CR>
+  inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+  noremap  <Leader>u :call PhpInsertUse()<CR>
+  inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+  noremap  <Leader>e :call PhpExpandClass()<CR>
 " ---------------------------------------------------------------
 
 
