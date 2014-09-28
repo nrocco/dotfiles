@@ -1,11 +1,9 @@
-# Most of these from http://sontek.net/tips-and-tricks-for-the-python-interpreter
+# Most of these from
+#   http://sontek.net/tips-and-tricks-for-the-python-interpreter
+#   http://macimproved.wordpress.com/2010/01/11/python-improved/
+
 import os
 import sys
-import logging
-import re
-import datetime
-
-logging.basicConfig(format='[%(asctime)s] %(message)s', level=logging.DEBUG)
 
 try:
     import readline
@@ -18,16 +16,11 @@ else:
     else:
         readline.parse_and_bind("tab: complete")
 
-    # Enable a History
     HISTFILE="%s/.python_history" % os.environ["HOME"]
-
-    # Read the existing history if there is one
     try:
         readline.read_history_file(HISTFILE)
     except:
         pass
-
-    # Set maximum number of items that will be written to the history file
     readline.set_history_length(300)
 
     def savehist():
@@ -40,19 +33,3 @@ else:
     del atexit
 finally:
     del rlcompleter
-
-
-# Enable Pretty Printing for stdout
-def my_displayhook(value):
-    if value is not None:
-        try:
-            import __builtin__
-            __builtin__._ = value
-        except ImportError:
-            __builtins__._ = value
-
-        import pprint
-        pprint.pprint(value)
-        del pprint
-
-sys.displayhook = my_displayhook
