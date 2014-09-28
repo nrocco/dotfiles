@@ -28,6 +28,7 @@
     Bundle 'zaiste/tmux.vim'
     Bundle 'confluencewiki.vim'
     Bundle 'mitsuhiko/vim-jinja'
+    Bundle 'vim-scripts/PKGBUILD'
 
     " php specific bundles
     Bundle 'arnaud-lb/vim-php-namespace'
