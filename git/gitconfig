@@ -15,16 +15,13 @@
 [merge]
     tool = vimdiff
 [alias]
-    current = log -1 --stat HEAD
     everything = "! f() { git fetch --all --prune && git fetch --tags --prune; }; f"
-    recent = log --pretty=format:'%h %Cgreen[%ci]%Creset %s %Cgreen[%an]%Creset' --graph --all
     st = status
     unstage = reset HEAD --
     prepush = log --name-status --branches --not --remotes
     slist = stash list
     lg = log --graph --pretty=format:'%C(yellow)%h %C(black)%ci%C(reset) %s %C(black)by %an%C(reset)% C(green)%d%C(reset)' --date-order --color --all
-    last = "!git --no-pager log --oneline HEAD~1..HEAD"
-    ignore = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
+    last = "!git --no-pager log --oneline -1"
     mirror = "!f() { local cur_branch=$(git rev-parse --abbrev-ref HEAD); git --version | grep 'git version 1.7' > /dev/null && git branch --set-upstream $cur_branch ${1:-origin}/$cur_branch || git branch --set-upstream-to=${1:-origin}/$cur_branch $cur_branch; }; f"
 [push]
     default = simple
