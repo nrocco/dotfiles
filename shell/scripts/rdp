@@ -19,7 +19,7 @@ fi
 
 if [[ ! $@ =~ /size:[0-9x]* ]]; then
     WIDTH=$(xrandr | grep \* | tail -1 | awk '{print $1}' | cut -dx -f1)
-    HEIGHT=$(($(xrandr | grep \* | tail -1 | awk '{print $1}' | cut -dx -f2)-20))
+    HEIGHT=$(($(xrandr | grep \* | tail -1 | awk '{print $1}' | cut -dx -f2)-40))
     ARGS="${ARGS} /size:${WIDTH}x${HEIGHT}"
 fi
 
