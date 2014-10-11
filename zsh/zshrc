@@ -95,7 +95,7 @@ export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 
 #
 # ###########################################################################
-autoload -U compinit && compinit -C
+autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 
 setopt COMPLETE_IN_WORD     # Cursor stays where it is and completion is done from both ends
