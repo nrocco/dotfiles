@@ -46,6 +46,7 @@
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
   set t_Co=16                                     " Use 16 ansi color terminal by default
+  set background=dark
   colorscheme ir_black
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
@@ -204,7 +205,7 @@ endfunction
   vmap          <leader>s       :s/
 
 " Shortcut for opening a file in a new tab
-  nmap          <leader>f       :tabe 
+  nmap          <leader>f       :tabe
 
 " Clearing highlighted search
   nmap <silent> <leader>/ :nohlsearch<CR>
