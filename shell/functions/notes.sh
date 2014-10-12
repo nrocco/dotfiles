@@ -30,7 +30,7 @@ n() {
         ls -lrt "$NOTEDIR"
     # If a note was given, open it.
     else
-        $EDITOR $(buildfile "$NOTEDIR"/"$1")
+        $EDITOR -p -c 'set filetype=rst' $(buildfile "$NOTEDIR"/"$1")
     fi
 }
 
