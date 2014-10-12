@@ -205,7 +205,7 @@ endfunction
   vmap          <leader>s       :s/
 
 " Shortcut for opening a file in a new tab
-  nmap          <leader>f       :tabe
+  nmap          <leader>f       :tabe 
 
 " Clearing highlighted search
   nmap <silent> <leader>/ :nohlsearch<CR>
