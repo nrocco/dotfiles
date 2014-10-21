@@ -234,7 +234,8 @@ endfunction
   :cmap <ESC>[F <End>
 " ---------------------------------------------------------------
 
-
+" Automatically save non-existent directories on save
+autocmd BufWritePre * :silent !mkdir -p %:p:h
 
 " Read settings from a system local vimrc
 if filereadable($HOME . '/.vimrclocal')
