@@ -55,8 +55,6 @@ endsnippet
 snippet getter "PHP Class Getter" !b
 /*
  * Getter for $1
- *
- * 
  */
 public function get`!p snip.rv = underscore_to_capitalized(t[1])`()
 {
@@ -128,10 +126,12 @@ endsnippet
 
 
 snippet try "add a try/catch block"
-try {
+try
+{
 	${VISUAL}$1
 }
-catch (${2:\Exception} as $e) {
+catch (${2:\Exception} as $e)
+{
 	${3:// catch this}
 }$0
 endsnippet
