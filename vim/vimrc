@@ -12,6 +12,8 @@
     Bundle 'kien/ctrlp.vim'
 
     Bundle 'SirVer/ultisnips'
+    Bundle 'gregf/ultisnips-chef'
+
     Bundle 'scrooloose/syntastic'
 
     Bundle 'tpope/vim-commentary'
