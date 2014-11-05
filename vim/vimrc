@@ -36,7 +36,6 @@
     Bundle 'vsushkov/vim-phpcs'
     Bundle 'nrocco/vim-phplint'
     Bundle 'shawncplus/phpcomplete.vim'
-    Bundle 'joonty/vdebug'
 
     Bundle 'ngmy/vim-rubocop'
   endif
