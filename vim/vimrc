@@ -177,7 +177,6 @@ endfunction
 
 " Open ctag in new tab
   nnoremap      <C-\>           :tab tjump <C-r><C-w><CR>
-  noremap       <C-]>           g<C-]>
 
 " Keep selection in visual mode after indenting lines
   vnoremap      <               <gv
