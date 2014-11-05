@@ -1,2 +1,2 @@
-" format an xml document using the `xmllint` cli program
-  map <leader>l       :silent 1,$!xmllint --format --recover - 2>/dev/null<CR>
+" Set tabs to 2 spaces
+  setlocal sw=2 sts=2 et

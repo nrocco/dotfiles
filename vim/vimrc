@@ -12,6 +12,7 @@
     Bundle 'kien/ctrlp.vim'
 
     Bundle 'SirVer/ultisnips'
+    Bundle 'scrooloose/syntastic'
 
     Bundle 'tpope/vim-commentary'
     Bundle 'tpope/vim-fugitive'
@@ -29,15 +30,11 @@
     Bundle 'confluencewiki.vim'
     Bundle 'mitsuhiko/vim-jinja'
     Bundle 'vim-scripts/PKGBUILD'
+    Bundle 'dougireton/vim-chef'
+    Bundle 'elzr/vim-json'
 
-    " php specific bundles
     Bundle 'arnaud-lb/vim-php-namespace'
     Bundle 'sumpygump/php-documentor-vim'
-    Bundle 'vsushkov/vim-phpcs'
-    Bundle 'nrocco/vim-phplint'
-    Bundle 'shawncplus/phpcomplete.vim'
-
-    Bundle 'ngmy/vim-rubocop'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -182,18 +179,12 @@ endfunction
   vnoremap      <               <gv
   vnoremap      >               >gv
 
-" Works on Mac OSX
-  nmap          <leader>p       :set paste!<CR>
-
 " Wrapped lines goes down/up to next row, rather than next line in file.
   nnoremap      j               gj
   nnoremap      k               gk
 
 " For when you forget to sudo.. Really Write the file.
   cmap          w!!             w !sudo tee % >/dev/null
-
-" Shortcut for toggliging show/hide invisibles
-  " nmap          <leader>l       :set list!<CR>
 
 " Fix indentiation in whole file
   nnoremap      <leader>i       mzgg=G`z<CR>
@@ -204,9 +195,6 @@ endfunction
 
 " Shortcut for opening a file in a new tab
   nmap          <leader>f       :tabe 
-
-" Clearing highlighted search
-  nmap <silent> <leader>/ :nohlsearch<CR>
 
 " Add a line with --- below the current line
   map           <leader>h       yypVr-<CR>
