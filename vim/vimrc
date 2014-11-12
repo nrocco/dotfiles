@@ -132,6 +132,7 @@ endfunction
       \ 'AcceptSelection("e")': ['<c-t>'],
       \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
       \ }
+  nmap          <leader>a         :CtrlP<CR>
 " ---------------------------------------------------------------
 
 
