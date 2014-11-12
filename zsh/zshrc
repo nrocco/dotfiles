@@ -33,22 +33,16 @@ bindkey -r '^O'
 bindkey " "         magic-space
 
 bindkey "\e\e[C"    forward-word  # URxvt: alt+right
-bindkey "\e[1;2C"   forward-word  # OS X Terminal: shift+right
-
 bindkey "\e\e[D"    backward-word  # URxvt: alt+left
-bindkey "\e[1;2D"   backward-word  # OS X Terminal: shift+left
 
 bindkey "\e[7~"     beginning-of-line  # URxvt: Home
-bindkey "\eb"       beginning-of-line  # OS X Terminal: option+right
+bindkey "\e[H"      beginning-of-line  # OS X iTerm: fn+right
 
 bindkey "\e[8~"     end-of-line  # URxvt: End
-bindkey "\ef"       end-of-line  # OS X Terminal: option+left
+bindkey "\e[F"      end-of-line  # OS X iTerm: fn+left
 
 bindkey "\e[5~"     history-beginning-search-backward  # URxvt: pageup
-bindkey "\e[1;2A"   history-beginning-search-backward  # OS X Terminal: shift+up (custom)
-
 bindkey "\e[6~"     history-beginning-search-forward  # URxvt: pagedown
-bindkey "\e[1;2B"   history-beginning-search-forward  # OS X Terminal: shift+down (custom)
 # ###########################################################################
 #
 
