@@ -228,3 +228,8 @@ autocmd BufWritePre * :silent !mkdir -p %:p:h
 if filereadable($HOME . '/.vimrclocal')
   source $HOME/.vimrclocal
 endif
+
+
+let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
+let g:syntastic_mode_map = { "mode": "passive" }
+nmap    <leader>l   :SyntasticCheck<CR>
