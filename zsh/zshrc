@@ -34,6 +34,8 @@ bindkey " "         magic-space
 
 bindkey "\e\e[C"    forward-word  # URxvt: alt+right
 bindkey "\e\e[D"    backward-word  # URxvt: alt+left
+bindkey "\e[1;9D"   backward-word
+bindkey "\e[1;9C"   forward-word
 
 bindkey "\e[7~"     beginning-of-line  # URxvt: Home
 bindkey "\e[H"      beginning-of-line  # OS X iTerm: fn+right
