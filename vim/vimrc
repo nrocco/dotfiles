@@ -224,6 +224,9 @@ endfunction
 " Automatically save non-existent directories on save
 autocmd BufWritePre * :silent !mkdir -p %:p:h
 
+" vim-json: disable concealing of double quotes
+let g:vim_json_syntax_conceal = 0
+
 " Read settings from a system local vimrc
 if filereadable($HOME . '/.vimrclocal')
   source $HOME/.vimrclocal
