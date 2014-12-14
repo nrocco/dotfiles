@@ -63,9 +63,6 @@ export PAGER=less
 # Set default options for the less pager
 export LESS="--RAW-CONTROL-CHARS --LONG-PROMPT --quiet"
 
-# Set default options for grep
-export GREP_OPTIONS='--color=auto'
-
 # Set pythonrc file path
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 
@@ -84,7 +81,7 @@ setopt ALWAYS_TO_END        # Place cursor at the end after successful match
 
 zstyle ':completion:*'              menu select
 
-## case-insensitive (all),partial-word and then substring completion
+# case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*'              matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 zstyle ':completion::complete:*'    use-cache on
@@ -214,16 +211,13 @@ function xkpass() {
 }
 
 
-if [[ "Darwin" == "$(uname)" ]]
-then
-    alias ls='ls -G -F'
-else
-    alias ls='ls --color=auto -F'
-fi
-
+alias ls='ls --color=always'
 alias l='ls -l'
 alias ll='ls -la'
 alias lt='ls -lrt'
+
+alias grep='grep --color=always'
+alias egrep='egrep --color=always'
 
 alias ..='cd ..'
 alias ...='cd ../..'
