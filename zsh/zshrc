@@ -207,10 +207,6 @@ function running() {
 function gen_pass() {
   LC_ALL=C tr -dc '[:alnum:]._\-' < /dev/urandom | head -c${1:-20}; echo
 }
-function xkpass() {
-  echo -e "$(curl -s 'https://www.xkpasswd.net/c/index.cgi?fname=generatePassword&args=4&num_words=4&args=4&MIN_WORD_LENGTH=4&args=8&MAX_WORD_LENGTH=8&args=CAPITAL&case_transform=CAPITAL&args=e%3Ao&l33t_subs_list=e%3Ao&args=%3D&custom_separator=%3D&args=0&preppend_numbers=0&args=3&append_numbers=3&args=SEPARATOR&pad_char=SEPARATOR&args=1&pre_pad=1&args=1&post_pad=1&args=0&adaptive_padding=0' | sed 's/+/ /g;s/%\(..\)/\\x\1/g;')"
-}
-
 
 alias ls='ls --color=always'
 alias l='ls -l'
