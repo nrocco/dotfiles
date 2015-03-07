@@ -53,23 +53,17 @@ endsnippet
 
 
 snippet getter "PHP Class Getter" !b
-/*
- * Getter for $1
- */
 public function get`!p snip.rv = underscore_to_capitalized(t[1])`()
 {
-    return $this->${1/\w+\s*/\l$0/};
+	return $this->$1;
 }$0
 endsnippet
 
 
 snippet setter "PHP Class Setter" !b
-/*
- * Setter for $1
- */
-public function set`!p snip.rv = underscore_to_capitalized(t[1])`($2$${1/\w+\s*/\l$0/})
+public function set`!p snip.rv = underscore_to_capitalized(t[1])`($$1)
 {
-    $this->${1/\w+\s*/\l$0/} = $${1/\w+\s*/\l$0/};
+	$this->$1 = $$1;
 }$0
 endsnippet
 
@@ -115,6 +109,13 @@ foreach ($${1:variable} as $${2:key} => $${3:value}) {
 endsnippet
 
 
+snippet for "for i is 0 until x do i++"
+for ($${1:i} = 0; $$1 < $2; $$1++) {
+    ${VISUAL}$0
+}
+endsnippet
+
+
 snippet vd "var_dump"
 var_dump($1);$0
 endsnippet
@@ -126,12 +127,9 @@ endsnippet
 
 
 snippet try "add a try/catch block"
-try
-{
+try {
 	${VISUAL}$1
-}
-catch (${2:\Exception} as $e)
-{
+} catch (${2:\Exception} as $e) {
 	${3:// catch this}
 }$0
 endsnippet
