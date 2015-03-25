@@ -11,6 +11,8 @@
     Bundle 'indentpython.vim'
     Bundle 'kien/ctrlp.vim'
 
+    Bundle 'nrocco/vim-phplint'
+
     Bundle 'SirVer/ultisnips'
     Bundle 'gregf/ultisnips-chef'
 

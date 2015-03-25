@@ -25,3 +25,7 @@
 " PLUGIN: vim-phpdoc plugin
   nnoremap <buffer> <leader>d :call PhpDoc()<CR>
   let g:pdv_cfg_ClassTags = ["author"]
+
+
+" PHP Lintian check
+  noremap <leader>l :Phplint<CR>
