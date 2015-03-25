@@ -12,6 +12,7 @@
     Bundle 'kien/ctrlp.vim'
 
     Bundle 'nrocco/vim-phplint'
+    Bundle 'ngmy/vim-rubocop'
 
     Bundle 'SirVer/ultisnips'
     Bundle 'gregf/ultisnips-chef'
