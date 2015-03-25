@@ -14,8 +14,6 @@
     Bundle 'SirVer/ultisnips'
     Bundle 'gregf/ultisnips-chef'
 
-    Bundle 'scrooloose/syntastic'
-
     Bundle 'tpope/vim-commentary'
     Bundle 'tpope/vim-fugitive'
     Bundle 'tpope/vim-markdown'
@@ -232,11 +230,6 @@ let g:vim_json_syntax_conceal = 0
 if filereadable($HOME . '/.vimrclocal')
   source $HOME/.vimrclocal
 endif
-
-
-let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
-let g:syntastic_mode_map = { "mode": "passive" }
-nmap    <leader>l   :SyntasticCheck<CR>
 
 " Remove the current buffer file from disk
 command Rm call delete(expand('%')) | bdelete!
