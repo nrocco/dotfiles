@@ -11,4 +11,4 @@ SCHEME=`jsonval ~/.httpie/sessions/$BASE/$SESSION.json scheme`
 
 shift 3
 
-HTTPIE_BASEURL=${SCHEME:-http}://${BASE} http --session=${SESSION} "$@"
+HTTPIE_BASEURL=${SCHEME:-http}://${BASE} http --session-read-only=${SESSION} "$@"
