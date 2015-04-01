@@ -2,3 +2,6 @@
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
         branch = master
+[submodule "zsh"]
+	path = zsh
+	url = git@github.com:nrocco/zshrc.git
