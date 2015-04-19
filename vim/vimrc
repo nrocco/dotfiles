@@ -8,14 +8,9 @@
 
     Bundle 'gmarik/vundle'
     Bundle 'bling/vim-airline'
-    Bundle 'indentpython.vim'
     Bundle 'kien/ctrlp.vim'
 
-    Bundle 'nrocco/vim-phplint'
-    Bundle 'ngmy/vim-rubocop'
-
     Bundle 'SirVer/ultisnips'
-    Bundle 'gregf/ultisnips-chef'
 
     Bundle 'tpope/vim-commentary'
     Bundle 'tpope/vim-fugitive'
@@ -28,16 +23,27 @@
     Bundle 'git://fedorapeople.org/home/fedora/wwoods/public_git/vim-scripts.git'
     Bundle 'jelera/vim-javascript-syntax'
     Bundle 'jinfield/vim-nginx'
-    Bundle 'me-vlad/python-syntax.vim'
     Bundle 'zaiste/tmux.vim'
-    Bundle 'confluencewiki.vim'
-    Bundle 'mitsuhiko/vim-jinja'
     Bundle 'vim-scripts/PKGBUILD'
-    Bundle 'dougireton/vim-chef'
     Bundle 'elzr/vim-json'
 
+    " php stuff
+    Bundle 'nrocco/vim-phplint'
     Bundle 'arnaud-lb/vim-php-namespace'
     Bundle 'sumpygump/php-documentor-vim'
+
+    " chef stuff
+    Bundle 'gregf/ultisnips-chef'
+    Bundle 'ngmy/vim-rubocop'
+    Bundle 'dougireton/vim-chef'
+
+    " ansible stuff
+    Bundle 'chase/vim-ansible-yaml'
+
+    " python stuff
+    Bundle 'indentpython.vim'
+    Bundle 'mitsuhiko/vim-jinja'
+    Bundle 'me-vlad/python-syntax.vim'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -135,6 +141,9 @@ endfunction
       \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
       \ }
   nmap          <leader>a         :CtrlP<CR>
+  let g:ctrlp_buftag_types = {
+      \ 'yaml': '--languages=ansible --ansible-types=k',
+      \ }
 " ---------------------------------------------------------------
 
 
