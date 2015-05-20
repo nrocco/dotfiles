@@ -9,6 +9,7 @@
     Bundle 'gmarik/vundle'
     Bundle 'bling/vim-airline'
     Bundle 'kien/ctrlp.vim'
+    Bundle 'nrocco/vim-notsio'
 
     Bundle 'SirVer/ultisnips'
 
