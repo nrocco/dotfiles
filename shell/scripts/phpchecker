@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 VERBOSE=0
 EXIT_STATUS=0
@@ -14,117 +14,121 @@ CHECK_SPACES='yes'
 
 while test $# -gt 0
 do
-  case "$1" in
-    --help)
-      echo "Usage: $(basename $0) [--skip-classname] [--skip-namespace] [--skip-imports] [--skip-tabs] [--skip-spaces] [--verbose] file <...file>"
-      exit 3
-      ;;
-    --skip-classname)
-      CHECK_CLASSNAME='no'
-      ;;
-    --skip-namespace)
-      CHECK_NAMESPACE='no'
-      ;;
-    --skip-imports)
-      CHECK_IMPORTS='no'
-      ;;
-    --skip-tabs)
-      CHECK_TABS='no'
-      ;;
-    --skip-spaces)
-      CHECK_SPACES='no'
-      ;;
-    --verbose)
-      VERBOSE=1
-      ;;
-    *)
-      FILES+=("$1")
-      ;;
-  esac
+    case "$1" in
+        --help)
+            /bin/echo "Usage: $(basename $0) [--skip-classname] [--skip-namespace] [--skip-imports] [--skip-tabs] [--skip-spaces] [--verbose] file <...file>"
+            exit 3
+            ;;
+        --skip-classname)
+            CHECK_CLASSNAME='no'
+            ;;
+        --skip-namespace)
+            CHECK_NAMESPACE='no'
+            ;;
+        --skip-imports)
+            CHECK_IMPORTS='no'
+            ;;
+        --skip-tabs)
+            CHECK_TABS='no'
+            ;;
+        --skip-spaces)
+            CHECK_SPACES='no'
+            ;;
+        --verbose)
+            VERBOSE=1
+            ;;
+        *)
+            FILES+=("$1")
+            ;;
+    esac
 
-  shift
+    shift
 done
 
 
 function log() {
-  if [[ ! "$VERBOSE" == "" && ! "$VERBOSE" == "0" ]]; then
-    echo -e "\033[01;32m$1\033[00m: $2"
-  fi
+    if [[ ! "$VERBOSE" == "" && ! "$VERBOSE" == "0" ]]; then
+        printf "\033[1;32m"
+        /bin/echo -n $1
+        printf "\033[0m"
+        /bin/echo ": $2"
+    fi
 }
 
 function error() {
-  EXIT_STATUS=1
+    EXIT_STATUS=1
 
-  echo -e "\033[01;31m$1\033[00m: $2"
+    printf "\033[1;31m"
+    /bin/echo -n $1
+    printf "\033[0m"
+    /bin/echo ": $2"
 }
 
 function __check_classname() {
-  local classname=$(sed -n 's/^.*class \([^ ]\+\).*$/\1/p' "$1")
+    local classname=$(sed -n 's/^.*class \([^ ]\+\).*$/\1/p' "$1")
 
-  log "$1" "Found Class in file with Name: $classname"
-
-  if grep -Eq "$classname.php$" <<<$1
-  then
-    log "$1" "Filename and class name match. Ok!"
-  else
-    error "$1" "File contains wrong class $classname"
-  fi
+    if /bin/grep -Eq "$classname.php$" <<<$1
+    then
+        log "$1" "Filename matches the class name $classname"
+    else
+        error "$1" "File contains the wrong class $classname"
+    fi
 }
 
 function __check_namespace() {
-  local namespace=$(sed -n 's/namespace \([^;]\+\);/\1/p' $1)
+    local namespace=$(sed -n 's/^namespace \([^;]\+\);.*/\1/p' $1)
+    local filename=$(/bin/echo $namespace | sed 's#\\#/#g')
 
-  if grep -q $(echo $namespace | sed 's/\\/\//g') <<<$1; then
-    log "$1" "The namespace of the files matches the directory it is in. Ok!"
-  else
-    error "$1" "Class is in the wrong namespace $namespace"
-  fi
+    if /bin/grep -qE $filename <<<$1
+    then
+        log "$1" "The namespace of the file matches the directory it is in."
+    else
+        error "$1" "Class is in the wrong namespace $namespace"
+    fi
 }
 
 function __check_imports() {
-  while read -r use; do
-    local class=$(echo $use | sed -n 's/.*[ \\]\([^\\ ]*$\)/\1/p')
+    while read -r use; do
+        local class=$(/bin/echo $use | sed -n 's/.*[ \\]\([^\\ ]*$\)/\1/p')
 
-    log "$1" "Checking use statement $use. Finding references to class $class in file"
-
-    if [ "1" -eq "$(grep -c $class $1)" ]; then
-      error "$1" "$class is not used in file. Consider removing 'use $use'"
-    else
-      log "$1" "$use is used. Ok!"
-    fi
-  done <<< "$(sed -n 's/^[ ]*use \(.*\);$/\1/p' $1)"
+        if [ 1 -eq $(/bin/grep -Ec "\<${class}\>" $1) ]; then
+            error "$1" "$class is not used in file. Consider removing 'use $use'"
+        else
+            log "$1" "Use statement for $use is ok!"
+        fi
+    done <<< "$(sed -n 's#^use \(.*\);.*#\1#p' $1)"
 }
 
 function __check_tabs() {
-  if grep -qE "$(echo -ne \\t)" $1; then
-    error "$1" "Found literal tab characters"
-  else
-    log "$1" "No literal tab characters found!"
-  fi
+    if /bin/grep -qE "$(/bin/echo -ne \\t)" $1; then
+        error "$1" "Found literal tab characters"
+    else
+        log "$1" "No literal tab characters found!"
+    fi
 }
 
 
 function __check_spaces() {
-  if grep -qE ' +$' $1; then
-    error "$1" "Found trailing whitespaces"
-  else
-    log "$1" "No trailing whitespace found!"
-  fi
+    if /bin/grep -qE ' +$' $1; then
+        error "$1" "Found trailing whitespaces"
+    else
+        log "$1" "No trailing whitespace found!"
+    fi
 }
-  
+
 
 for file in "${FILES[@]}"
 do
-  if [ ! -f "$file" ]
-  then
-    log "$file" "File does not exist. Ignoring." && continue
-  fi
+    if [ ! -f "$file" ]
+    then
+        log "$file" "File does not exist. Ignoring." && continue
+    fi
 
-  [[ 'yes' == "$CHECK_CLASSNAME" ]] && __check_classname "$file"
-  [[ 'yes' == "$CHECK_NAMESPACE" ]] && __check_namespace "$file"
-  [[ 'yes' == "$CHECK_IMPORTS" ]] && __check_imports "$file"
-  [[ 'yes' == "$CHECK_TABS" ]] && __check_tabs "$file"
-  [[ 'yes' == "$CHECK_SPACES" ]] && __check_spaces "$file"
+    [[ 'yes' == "$CHECK_CLASSNAME" ]] && __check_classname "$file"
+    [[ 'yes' == "$CHECK_NAMESPACE" ]] && __check_namespace "$file"
+    [[ 'yes' == "$CHECK_IMPORTS" ]] && __check_imports "$file"
+    [[ 'yes' == "$CHECK_TABS" ]] && __check_tabs "$file"
+    [[ 'yes' == "$CHECK_SPACES" ]] && __check_spaces "$file"
 done
 
 exit $EXIT_STATUS
