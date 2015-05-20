@@ -28,6 +28,7 @@
     Bundle 'elzr/vim-json'
 
     " php stuff
+    Bundle 'nrocco/vim-phpunit'
     Bundle 'nrocco/vim-phplint'
     Bundle 'arnaud-lb/vim-php-namespace'
     Bundle 'sumpygump/php-documentor-vim'
@@ -238,10 +239,10 @@ autocmd BufWritePre * :silent !mkdir -p %:p:h
 " vim-json: disable concealing of double quotes
 let g:vim_json_syntax_conceal = 0
 
+" Remove the current buffer file from disk
+command Rm call delete(expand('%')) | bdelete!
+
 " Read settings from a system local vimrc
 if filereadable($HOME . '/.vimrclocal')
   source $HOME/.vimrclocal
 endif
-
-" Remove the current buffer file from disk
-command Rm call delete(expand('%')) | bdelete!
