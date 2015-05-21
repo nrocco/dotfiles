@@ -20,7 +20,7 @@ function warmup() {
     echo "==> Storying results in $cache_file"
 
     # Use a subshell to avoid changing your shell's current directory
-    ( cd "$project" && find * $prune \( -type f -and -print \) ) #> "$cache_file"
+    ( cd "$project" && find * $prune \( -type f -and -print \) ) > "$cache_file"
 }
 
 
