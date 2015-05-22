@@ -41,14 +41,14 @@ nnore <Plug>(simple-todo-above) O<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<
 inore <Plug>(simple-todo-above) <Esc>O<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<space>
 
 " Mark item under cursor as done
-nnore <Plug>(simple-todo-mark-as-done) :s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>
-vnore <Plug>(simple-todo-mark-as-done) :s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>
-inore <Plug>(simple-todo-mark-as-done) <Esc>:s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>
+nnore <Plug>(simple-todo-mark-as-done) :s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>:nohlsearch<cr>
+vnore <Plug>(simple-todo-mark-as-done) :s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>:nohlsearch<cr>
+inore <Plug>(simple-todo-mark-as-done) <Esc>:s/^\(\s*[-+*]\?\s*\)\[ \]/\1[x]/<cr>:nohlsearch<cr>
 
 " Mark as undone
-nnore <Plug>(simple-todo-mark-as-undone) :s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>
-vnore <Plug>(simple-todo-mark-as-undone) :s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>
-inore <Plug>(simple-todo-mark-as-undone) <Esc>:s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>
+nnore <Plug>(simple-todo-mark-as-undone) :s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>:nohlsearch<cr>
+vnore <Plug>(simple-todo-mark-as-undone) :s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>:nohlsearch<cr>
+inore <Plug>(simple-todo-mark-as-undone) <Esc>:s/^\(\s*[-+*]\?\s*\)\[x\]/\1[ ]/<cr>:nohlsearch<cr>
 
 " }}}
 " Key bindings {{{
