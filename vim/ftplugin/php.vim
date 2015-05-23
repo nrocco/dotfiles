@@ -29,3 +29,5 @@
 
 " PHP Lintian check
   noremap <leader>l :Phplint<CR>
+
+  set tags+=.git/tags_vendors
