@@ -1,7 +1,8 @@
 global !p
 
 def underscore_to_capitalized(word):
-	return ''.join(x.capitalize() or '' for x in word.split('_'))
+	word = ''.join(w or '' for w in word.split('_'))
+	return word[0].upper() + word[1:] if len(word) > 1 else word
 
 def filepath_to_namespace(path):
 	abspath = os.path.abspath(path)
@@ -33,14 +34,14 @@ $0
 endsnippet
 
 
-snippet <? "Insert opening tag" b
+snippet <? "Insert opening tag" mb
 <?php
 
 $0
 endsnippet
 
 
-snippet php "Insert opening tag" b
+snippet php "Insert opening tag" mb
 <?php
 
 $0
@@ -49,6 +50,19 @@ endsnippet
 
 snippet ns "Insert the current PHP namespace" b!
 `!p snip.rv = 'namespace %s;' % filepath_to_namespace(path)`
+endsnippet
+
+
+snippet getset "PHP Class Getter and Setter" m!b
+public function get`!p snip.rv = underscore_to_capitalized(t[1])`()
+{
+	return $this->$1;
+}
+
+public function set`!p snip.rv = underscore_to_capitalized(t[1])`($$1)
+{
+	$this->$1 = $$1;
+}$0
 endsnippet
 
 
@@ -126,11 +140,28 @@ var_dump($1); die('dying maaan');$0
 endsnippet
 
 
+snippet pr "print_r"
+print_r($1);$0
+endsnippet
+
+
+snippet prd "print_r and die :)"
+print_r($1); die('dying maaan');$0
+endsnippet
+
+
 snippet try "add a try/catch block"
 try {
 	${VISUAL}$1
 } catch (${2:\Exception} as $e) {
 	${3:// catch this}
+}$0
+endsnippet
+
+
+snippet catch "add a catch block to an existing try"
+catch (${1:\Exception} as $e) {
+	${2:// catch this}
 }$0
 endsnippet
 
