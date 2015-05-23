@@ -2,8 +2,6 @@
 
 options=""
 repositories=()
-
-current_dir=$(pwd)
 action=$1
 
 shift
@@ -45,11 +43,11 @@ do
         continue
     fi
 
-    cd $repo
+    (
+        cd $repo
 
-    echo -e "==> Working on \033[0;32m$repo$(tput sgr0)"
-    git --no-pager $action $options
-    echo
-
-    cd $current_dir
+        echo -e "==> Working on \033[0;32m$repo$(tput sgr0)"
+        git --no-pager $action $options
+        echo
+    )
 done

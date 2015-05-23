@@ -10,13 +10,13 @@ CHECK_NAMESPACE='yes'
 CHECK_IMPORTS='yes'
 CHECK_TABS='yes'
 CHECK_SPACES='yes'
-
+CHECK_EOL='yes'
 
 while test $# -gt 0
 do
     case "$1" in
         --help)
-            /bin/echo "Usage: $(basename $0) [--skip-classname] [--skip-namespace] [--skip-imports] [--skip-tabs] [--skip-spaces] [--verbose] file <...file>"
+            /bin/echo "Usage: $(basename $0) [--skip-classname] [--skip-namespace] [--skip-imports] [--skip-tabs] [--skip-spaces] [--skip-eol] [--verbose] file <...file>"
             exit 3
             ;;
         --skip-classname)
@@ -33,6 +33,9 @@ do
             ;;
         --skip-spaces)
             CHECK_SPACES='no'
+            ;;
+        --skip-eol)
+            CHECK_EOL='no'
             ;;
         --verbose)
             VERBOSE=1
@@ -76,6 +79,12 @@ function __check_classname() {
 }
 
 function __check_namespace() {
+    if ! /bin/grep -Eq '^namespace [^;]+;.*$' "$1"
+    then
+        error "$1" "This class is missing the namespace definition."
+        return
+    fi
+
     local namespace=$(sed -n 's/^namespace \([^;]\+\);.*/\1/p' $1)
     local filename=$(/bin/echo $namespace | sed 's#\\#/#g')
 
@@ -117,8 +126,17 @@ function __check_spaces() {
 }
 
 
-for file in "${FILES[@]}"
-do
+function __check_eol() {
+    if grep -q --color=never -R $'\r' "$1"
+    then
+        error "$1" "Found windows style line endings"
+    else
+        log "$1" "No windows style line endings found!"
+    fi
+}
+
+
+function __run_checks_on_file() {
     if [ ! -f "$file" ]
     then
         log "$file" "File does not exist. Ignoring." && continue
@@ -129,6 +147,24 @@ do
     [[ 'yes' == "$CHECK_IMPORTS" ]] && __check_imports "$file"
     [[ 'yes' == "$CHECK_TABS" ]] && __check_tabs "$file"
     [[ 'yes' == "$CHECK_SPACES" ]] && __check_spaces "$file"
-done
+    [[ 'yes' == "$CHECK_EOL" ]] && __check_eol "$file"
+}
+
+
+if [ -t 0 ]; then
+
+    for file in "${FILES[@]}"
+    do
+        __run_checks_on_file "$file"
+    done
+
+else
+
+    # Files are coming from a pipe (/dev/stdin)
+    while read -r file ; do
+        __run_checks_on_file "$file"
+    done
+
+fi
 
 exit $EXIT_STATUS
