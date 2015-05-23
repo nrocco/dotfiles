@@ -30,4 +30,10 @@
 " PHP Lintian check
   noremap <leader>l :Phplint<CR>
 
+
+" ctags for vendors are in their own file
   set tags+=.git/tags_vendors
+
+
+" Sort all the use statements in the current file
+  noremap <leader>g :0;/^use /;/^$/-1 sort u<CR>
