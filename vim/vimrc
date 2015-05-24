@@ -212,9 +212,6 @@ endfunction
 " Shortcut for opening a file in a new tab
   nmap          <leader>f       :tabe 
 
-" Add a line with --- below the current line
-  map           <leader>h       yypVr-<CR>
-
 " ---------------------------------------------------------------
 " Tab navigation
   map  <C-h>  <ESC>:tabprevious<CR>
