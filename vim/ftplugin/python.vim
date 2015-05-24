@@ -14,3 +14,6 @@
 " Highlight end of line whitespace and literal tab characters.
   highlight WhitespaceEOL ctermbg=red guibg=red
   match WhitespaceEOL /\s\+$\|\t/
+
+
+  set tags+=.git/tags_vendors
