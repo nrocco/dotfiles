@@ -10,7 +10,10 @@ shift
 # them in repositories and options for git
 for opt in "$@"
 do
-    if [ -d "$opt" ]
+    if [[ '--' == "$opt" ]]
+    then
+        opts_done="yes"
+    elif [[ "yes" == "$opts_done" ]]
     then
         repositories+=("$opt")
     else
