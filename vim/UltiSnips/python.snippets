@@ -11,6 +11,7 @@ except ${2:Exception} as ${3:e}:
 	${4:raise $3}
 endsnippet
 
+
 snippet trye "Try / Except / Else" b!
 try:
 	${1:pass}
@@ -19,6 +20,7 @@ except ${2:Exception} as ${3:e}:
 else:
 	${5:pass}
 endsnippet
+
 
 snippet tryf "Try / Except / Finally" b!
 try:
@@ -29,6 +31,7 @@ finally:
 	${5:pass}
 endsnippet
 
+
 snippet tryeef "Try / Except / Else / Finally" b!
 try:
 	${1:pass}
@@ -38,4 +41,13 @@ else:
 	${6:pass}
 finally:
 	${7:pass}
+endsnippet
+
+
+snippet ifm "if main" b!
+def main():
+	$0
+
+if __name__ == '__main__':
+	main()
 endsnippet
