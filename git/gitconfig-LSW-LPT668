@@ -1,6 +1,6 @@
 [user]
     name = Nico Di Rocco
-    email = dirocco.nico@gmail.com
+    email = n.dirocco@tech.leaseweb.com
 [core]
     editor = vim
     excludesfile = ~/.gitignore

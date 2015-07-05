@@ -17,4 +17,4 @@
 /usr/bin/redshift &
 
 # Start screen locker
-/usr/bin/xss-lock -- /usr/bin/i3lock -t -n -i /home/nrocco/.xorgfiles/backgrounds/ios-linen.png
+/usr/bin/xss-lock -- /usr/bin/i3lock -t -n -i /home/nrocco/.dotfiles/backgrounds/ios-linen.png

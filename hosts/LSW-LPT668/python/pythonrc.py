@@ -5,16 +5,15 @@
 import os
 import sys
 
+from lswapi import *
+
 try:
     import readline
 except ImportError:
     print('Module readline not available.')
 else:
     import rlcompleter
-    if(sys.platform == 'darwin'):
-        readline.parse_and_bind ('bind ^I rl_complete')
-    else:
-        readline.parse_and_bind("tab: complete")
+    readline.parse_and_bind('tab: complete')
 
     HISTFILE='{}/.python_history'.format(os.environ['HOME'])
     try:
