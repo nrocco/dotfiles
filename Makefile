@@ -3,21 +3,21 @@ host := $(shell hostname)
 curr := $(shell pwd)
 
 __link_if_not_exist = \
-					  if [ ! -e $(1) ]; \
-	                  then \
-	                      if [ -e $(curr)/hosts/$(host)/$(2) ]; \
-	                      then \
-	                  	      ln -s $(curr)/hosts/$(host)/$(2) $(1); \
-	                      else \
-	                  	      ln -s $(2) $(1); \
-	                      fi \
-	                  fi
+                      if [ ! -e $(1) ]; \
+                      then \
+                          if [ -e $(curr)/hosts/$(host)/$(2) ]; \
+                          then \
+                              ln -s $(curr)/hosts/$(host)/$(2) $(1); \
+                          else \
+                              ln -s $(curr)/$(2) $(1); \
+                          fi \
+                      fi
 
 __remove_if_exists  = \
-					  if [ -L $(1) ]; \
-					  then \
-					      rm $(1); \
-					  fi
+                      if [ -L $(1) ]; \
+                      then \
+                          rm $(1); \
+                      fi
 
 help:
 	@echo "Usage: make {instal|remove}"
