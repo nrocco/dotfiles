@@ -2,17 +2,14 @@ dest := ~
 host := $(shell hostname)
 curr := $(shell pwd)
 
-__install = if [ ! -e $(1) ]; \
-            then \
-                if [ -e $(curr)/hosts/$(host)/$(2) ]; \
-                then \
+__install = if [ ! -e $(1) ]; then \
+                if [ -e $(curr)/hosts/$(host)/$(2) ]; then \
                     ln -s $(curr)/hosts/$(host)/$(2) $(1); \
 					ls -gG $(1); \
-                elif [ -e $(1) ]; \
-                then \
+                elif [ -e $(curr)/$(2) ]; then \
                     ln -s $(curr)/$(2) $(1); \
 					ls -gG $(1); \
-                fi \
+                fi; \
             else \
                 ls -gG $(1); \
             fi
@@ -23,7 +20,7 @@ __remove  = if [ -L $(1) ]; \
             fi
 
 help:
-	@echo "Usage: make {instal|remove}"
+	@echo "Usage: make {zsh|vim|git|tmux|ctags|nano|pythonrc|xorg}"
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
