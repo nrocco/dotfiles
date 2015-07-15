@@ -1,10 +1,20 @@
+# Set the modifier key
 set $mod Mod4
+
+#exec --no-startup-id xprofile activate
+exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
+exec --no-startup-id feh --bg-tile '/home/nrocco/.dotfiles/backgrounds/px_by_Gre3g.png'
+exec --no-startup-id urxvtd -q -f -o
+exec --no-startup-id clipit
+exec --no-startup-id owncloud
+exec --no-startup-id redshift
+#exec --no-startup-id xss-lock -- /usr/bin/i3lock -t -n -i /home/nrocco/.dotfiles/backgrounds/ios-linen.png
 
 # Font for window titles.
 font pango:Terminus 8
 
 # Lock the screen
-bindsym $mod+l exec xset s activate
+bindsym $mod+l exec i3lock -t -n -i /home/nrocco/.dotfiles/backgrounds/ios-linen.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -16,7 +26,7 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -fn 'Terminus-8' -f -i -p '>'"
+bindsym $mod+d exec dmenu_run -fn 'Terminus-8' -f -i -p '>'
 
 # Jump to urgent window (with bell)
 bindsym $mod+x [urgent=latest] focus
@@ -111,11 +121,11 @@ bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFA
 bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Brightness keys
-bindsym XF86MonBrightnessUp     exec xbacklight +10%
-bindsym XF86MonBrightnessDown   exec xbacklight -5%
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight +10%
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5%
 
 # Turn touchpad on or off
-bindsym XF86TouchpadToggle      exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
+bindsym XF86TouchpadToggle      exec --no-startup-id synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 
 # Detect displays
 bindsym $mod+Shift+d            exec --no-startup-id xprofile activate
@@ -125,16 +135,16 @@ bindsym $mod+Shift+d            exec --no-startup-id xprofile activate
 # resize window (you can also use the mouse for that)
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
-    bindsym l     resize shrink width 10 px or 10 ppt
-    bindsym j     resize grow height 10 px or 10 ppt
-    bindsym k     resize shrink height 10 px or 10 ppt
-    bindsym h     resize grow width 10 px or 10 ppt
+    bindsym l     resize shrink width 5 px or 5 ppt
+    bindsym j     resize grow height 5 px or 5 ppt
+    bindsym k     resize shrink height 5 px or 5 ppt
+    bindsym h     resize grow width 5 px or 5 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left  resize shrink width 10 px or 10 ppt
-    bindsym Down  resize grow height 10 px or 10 ppt
-    bindsym Up    resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left  resize shrink width 5 px or 5 ppt
+    bindsym Down  resize grow height 5 px or 5 ppt
+    bindsym Up    resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -165,8 +175,6 @@ bar {
         background #111111
     }
 }
-
-
 
 for_window [class="xfreerdp"] floating disable
 for_window [class="(?i)pavucontrol"] floating enable; resize shrink width 10000px; resize grow width 720px; resize shrink height 10000px; resize grow height 420px;

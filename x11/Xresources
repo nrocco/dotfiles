@@ -84,8 +84,8 @@ URxvt*boldItalicFont:      xft:Terminus:bold:italic:antialias=true:pixelsize=8
 URxvt*transparent:         true
 URxvt*buffered:            true
 URxvt*cursorBlink:         true
-URxvt*fading:              40
-URxvt*shading:             50
+URxvt*fading:              30
+URxvt*shading:             60
 URxvt*depth:               32
 URxvt*borderless:          true
 URxvt*scrollBar:           false
