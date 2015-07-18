@@ -4,4 +4,4 @@
         branch = master
 [submodule "zsh"]
 	path = zsh
-	url = git@github.com:nrocco/zshrc.git
+	url = https://github.com/m4rcu5/zshrc.git
