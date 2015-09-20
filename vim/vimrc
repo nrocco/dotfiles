@@ -55,7 +55,7 @@
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
   set t_Co=16                                     " Use 16 ansi color terminal by default
-  colorscheme Tomorrow-Night
+  colorscheme smyck
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
   set nopaste
