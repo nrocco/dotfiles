@@ -1,5 +1,3 @@
-alias redis-server='redis-server /usr/local/etc/redis.conf'
-
 function json {
     if [ $# -eq 0 ]
     then
@@ -8,8 +6,6 @@ function json {
     jq --raw-output "$@"
 }
 
-alias ls='ls -G'
-alias ll='ls -lh'
 alias vim='vim -p'
 
 autoload -Uz _notsio
