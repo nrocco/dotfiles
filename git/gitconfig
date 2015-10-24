@@ -26,7 +26,7 @@
     ctags = !git ide ctags
     ctrlp = !git ide ctrlp
     warmup = "!f() { git ide ctags; git ide ctrlp; }; f"
-    phpchecker = "!f() { git ls-files $@ | /bin/grep -E php | phpchecker; }; f"
+    phpchecker = "!f() { git ls-files $@ | grep -E php | phpchecker; }; f"
 [push]
     default = nothing
 [pull]
