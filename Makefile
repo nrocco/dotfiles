@@ -20,7 +20,7 @@ __remove  = if [ -L $(1) ]; \
             fi
 
 help:
-	@echo "Usage: make {zsh|vim|git|tmux|ctags|nano|pythonrc|xorg}"
+	@echo "Usage: make {zsh|vim|git|tmux|ctags|nano|xorg}"
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
@@ -45,9 +45,6 @@ ctags:
 nano:
 	@$(call __install,$(dest)/.nanorc,nano/nanorc)
 
-pythonrc:
-	@$(call __install,$(dest)/.pythonrc.py,python/pythonrc.py)
-
 xorg:
 	@$(call __install,$(dest)/.xserverrc,x11/xserverrc)
 	@$(call __install,$(dest)/.Xresources,x11/Xresources)
@@ -67,6 +64,5 @@ remove:
 	@$(call __remove,$(dest)/.tmux.conf)
 	@$(call __remove,$(dest)/.ctags)
 	@$(call __remove,$(dest)/.nanorc)
-	@$(call __remove,$(dest)/.pythonrc.py)
 
-.PHONY: zsh vim git tmux ctags nano pythonrc xorg update remove help
+.PHONY: zsh vim git tmux ctags nano xorg update remove help
