@@ -7,9 +7,6 @@ alias gen_pass='f() { LC_ALL=C tr -dc "[:alnum:]" < /dev/urandom | head -c${1:-2
 export EDITOR=vim
 export VISUAL=vim
 
-# Set pythonrc file path
-export PYTHONSTARTUP=$HOME/.pythonrc.py
-
 # Make sure mtr has transparent background: https://github.com/traviscross/mtr/issues/72
 alias mtr='TERM=linux-m mtr'
 
