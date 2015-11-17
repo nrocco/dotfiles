@@ -4,11 +4,10 @@ set $mod Mod4
 #exec --no-startup-id xprofile activate
 exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
 exec --no-startup-id feh --bg-tile '/home/nrocco/.dotfiles/backgrounds/px_by_Gre3g.png'
-exec --no-startup-id urxvtd -q -f -o
+#exec --no-startup-id urxvtd -q -f -o
 exec --no-startup-id clipit
-exec --no-startup-id owncloud
 exec --no-startup-id redshift
-#exec --no-startup-id xss-lock -- /usr/bin/i3lock -t -n -i /home/nrocco/.dotfiles/backgrounds/ios-linen.png
+#exec --no-startup-id /home/nrocco/.i3/i3lock-wait-for-suspend
 
 # Font for window titles.
 font pango:Terminus 8
@@ -20,7 +19,7 @@ bindsym $mod+l exec i3lock -t -n -i /home/nrocco/.dotfiles/backgrounds/ios-linen
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -127,9 +126,6 @@ bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5%
 # Turn touchpad on or off
 bindsym XF86TouchpadToggle      exec --no-startup-id synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 
-# Detect displays
-bindsym $mod+Shift+d            exec --no-startup-id xprofile activate
-
 
 
 # resize window (you can also use the mouse for that)
@@ -156,13 +152,26 @@ bindsym $mod+r mode "resize"
 # Special mode to take screen shots
 set $mode_screenshot Take a screenshot (1) Screen, (3) Area
 mode "$mode_screenshot" {
-    bindsym 1 exec --no-startup-id scrot -e 'echo -n $f | xsel && notify-send -t 3000 -u low -a scrot "screenhot made @ $n"' ~/%Y.%m.%d-%H.%M.%S-screenshot.png, mode "default"
-    bindsym 3 exec --no-startup-id sleep 0.1 && scrot -e 'echo -n $f | xsel && notify-send -t 3000 -u low -a scrot "screenhot made @ $n"' --select ~/%Y.%m.%d-%H.%M.%S-screenshot.png, mode "default"
+    bindsym 1 exec --no-startup-id scrot -e 'echo -n $f | xsel && notify-send -t 3000 -u low -a scrot "screenhot made @ $n"' ~/Dropbox/Screenshots/%Y.%m.%d-%H.%M.%S-screenshot.png, mode "default"
+    bindsym 3 exec --no-startup-id sleep 0.1 && scrot -s -e 'echo -n $f | xsel && notify-send -t 3000 -u low -a scrot "screenhot made @ $n"' ~/Dropbox/Screenshots/%Y.%m.%d-%H.%M.%S-screenshot.png, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+Print mode "$mode_screenshot"
+
+
+
+# Special mode for xrandr
+#set $mode_display Configure display for (1) Desk, (2) Beamer, (3) Laptop, (4) Auto
+set $mode_display Configure display for (1) Auto, (2) Turn off laptop
+mode "$mode_display" {
+    bindsym 1 exec --no-startup-id xrandr --output eDP1 --auto --output HDMI1 --auto --output DP1-1 --auto --right-of DP1-2 --output DP1-2 --auto && sleep 1 && i3-msg restart, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output eDP1 --off && sleep 1 && i3-msg restart, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+d mode "$mode_display"
 
 
 
@@ -178,5 +187,7 @@ bar {
 
 for_window [class="xfreerdp"] floating disable
 for_window [class="(?i)pavucontrol"] floating enable; resize shrink width 10000px; resize grow width 720px; resize shrink height 10000px; resize grow height 420px;
+for_window [instance="keepassx"] move window to scratchpad, scratchpad show
 
-exec ~/.i3/startup
+bindsym $mod+k [instance="keepassx"] scratchpad show
+bindsym $mod+g [class="Firefox"] scratchpad show
