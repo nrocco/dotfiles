@@ -1,5 +1,5 @@
 dest := ~
-host := $(shell hostname)
+host := $(shell hostname -s)
 curr := $(shell pwd)
 
 __install = if [ ! -e $(1) ]; then \
