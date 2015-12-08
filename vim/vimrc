@@ -46,6 +46,8 @@
     Bundle 'indentpython.vim'
     Bundle 'mitsuhiko/vim-jinja'
     Bundle 'me-vlad/python-syntax.vim'
+
+    Bundle 'jamessan/vim-gnupg'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
