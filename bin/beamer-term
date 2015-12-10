@@ -1,5 +1,0 @@
-exec /usr/bin/urxvt \
-    -fn  "xft:Ubuntu Mono:pixelsize=20,style=regular" \
-    -fb  "xft:Ubuntu Mono:pixelsize=20,style=regular" \
-    -fi  "xft:Ubuntu Mono:pixelsize=20,style=regular" \
-    -fbi "xft:Ubuntu Mono:pixelsize=20,style=regular" \

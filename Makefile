@@ -20,7 +20,7 @@ __remove  = if [ -L $(1) ]; \
             fi
 
 help:
-	@echo "Usage: make {zsh|vim|git|tmux|ctags|nano|xorg}"
+	@echo "Usage: make {zsh|vim|git|tmux|ctags}"
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
@@ -42,16 +42,6 @@ tmux:
 ctags:
 	@$(call __install,$(dest)/.ctags,ctags/ctags)
 
-nano:
-	@$(call __install,$(dest)/.nanorc,nano/nanorc)
-
-xorg:
-	@$(call __install,$(dest)/.xserverrc,x11/xserverrc)
-	@$(call __install,$(dest)/.Xresources,x11/Xresources)
-	@$(call __install,$(dest)/.xinitrc,x11/xinitrc)
-	@$(call __install,$(dest)/.xmodmap,x11/xmodmap)
-	@$(call __install,$(dest)/.i3,i3)
-
 update:
 	git fetch --all
 	git submodule update
@@ -63,6 +53,5 @@ remove:
 	@$(call __remove,$(dest)/.gitconfig)
 	@$(call __remove,$(dest)/.tmux.conf)
 	@$(call __remove,$(dest)/.ctags)
-	@$(call __remove,$(dest)/.nanorc)
 
-.PHONY: zsh vim git tmux ctags nano xorg update remove help
+.PHONY: zsh vim git tmux ctags update remove help

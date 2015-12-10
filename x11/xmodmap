@@ -1,3 +1,0 @@
-! Map the Mac keyboard eject key to Insert
-!keycode 169 = Insert
-!keycode 94 = grave asciitilde
