@@ -20,7 +20,9 @@ __remove  = if [ -L $(1) ]; \
             fi
 
 help:
-	@echo "Usage: make {zsh|vim|git|tmux|ctags}"
+	@echo "Usage: make {all|zsh|vim|git|tmux|ctags}"
+
+all: zsh vim git tmux ctags
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
