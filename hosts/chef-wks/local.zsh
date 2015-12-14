@@ -1,3 +1,5 @@
+eval "$(chef shell-init zsh)"
+
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
