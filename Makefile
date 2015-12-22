@@ -20,9 +20,9 @@ __remove  = if [ -L $(1) ]; \
             fi
 
 help:
-	@echo "Usage: make {all|zsh|vim|git|tmux|ctags}"
+	@echo "Usage: make {all|zsh|vim|git|gpg|tmux|ctags}"
 
-all: zsh vim git tmux ctags
+all: zsh vim git tmux ctags gpg
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
@@ -44,6 +44,10 @@ tmux:
 ctags:
 	@$(call __install,$(dest)/.ctags,ctags/ctags)
 
+gpg:
+	@$(call __install,$(dest)/.gnupg/gpg.conf,gpg/gpg.conf)
+	@$(call __install,$(dest)/.gnupg/gpg-agent.conf,gpg/gpg-agent.conf)
+
 update:
 	git fetch --all
 	git submodule update
@@ -56,4 +60,4 @@ remove:
 	@$(call __remove,$(dest)/.tmux.conf)
 	@$(call __remove,$(dest)/.ctags)
 
-.PHONY: zsh vim git tmux ctags update remove help
+.PHONY: zsh vim git tmux ctags update remove help gpg
