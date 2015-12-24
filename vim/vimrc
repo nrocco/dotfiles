@@ -27,6 +27,7 @@
     Bundle 'zaiste/tmux.vim'
     Bundle 'vim-scripts/PKGBUILD'
     Bundle 'elzr/vim-json'
+    Bundle 'kennethzfeng/vim-raml'
 
     " php stuff
     Bundle 'nrocco/vim-phpunit'
