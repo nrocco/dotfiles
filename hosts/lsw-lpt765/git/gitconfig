@@ -23,6 +23,6 @@
     last = "!git --no-pager log --oneline -1"
     mirror = "!f() { local cur_branch=$(git rev-parse --abbrev-ref HEAD); git --version | grep 'git version 1.7' > /dev/null && git branch --set-upstream $cur_branch ${1:-origin}/$cur_branch || git branch --set-upstream-to=${1:-origin}/$cur_branch $cur_branch; }; f"
 [push]
-    default = nothing
+    default = current
 [pull]
     rebase = true
