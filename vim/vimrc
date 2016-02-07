@@ -10,9 +10,10 @@
     Bundle 'vim-airline/vim-airline'
     Bundle 'vim-airline/vim-airline-themes'
     Bundle 'kien/ctrlp.vim'
-    Bundle 'nrocco/vim-notsio'
-
+    Bundle 'jamessan/vim-gnupg'
     Bundle 'SirVer/ultisnips'
+
+    Bundle 'nrocco/vim-notsio'
 
     Bundle 'tpope/vim-commentary'
     Bundle 'tpope/vim-fugitive'
@@ -22,11 +23,7 @@
     Bundle 'tpope/vim-unimpaired'
 
     " Syntax bundles
-    Bundle 'git://fedorapeople.org/home/fedora/wwoods/public_git/vim-scripts.git'
     Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'jinfield/vim-nginx'
-    Bundle 'zaiste/tmux.vim'
-    Bundle 'vim-scripts/PKGBUILD'
     Bundle 'elzr/vim-json'
     Bundle 'kennethzfeng/vim-raml'
 
@@ -46,10 +43,8 @@
 
     " python stuff
     Bundle 'indentpython.vim'
-    Bundle 'mitsuhiko/vim-jinja'
+    "Bundle 'mitsuhiko/vim-jinja'  TODO look for a twig syntax highlight
     Bundle 'me-vlad/python-syntax.vim'
-
-    Bundle 'jamessan/vim-gnupg'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
