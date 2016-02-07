@@ -1,5 +1,7 @@
 autoload -Uz _notsio
 
+alias ocomvpn='gpg -q --no-tty --decrypt ~/Dropbox/Configs/ocom.gpg | sudo openconnect --config ~/Dropbox/Configs/ocom.conf -- connect.ocom.com'
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
