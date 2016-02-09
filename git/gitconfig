@@ -22,7 +22,7 @@
     lg = log --graph --pretty=format:'%C(yellow)%h %C(black)%ci%C(reset) %s %C(black)by %an%C(reset)% C(green)%d%C(reset)' --date-order --color --all
     last = "!git --no-pager log --oneline -1"
     mirror = "!f() { local cur_branch=$(git rev-parse --abbrev-ref HEAD); git --version | grep 'git version 1.7' > /dev/null && git branch --set-upstream $cur_branch ${1:-origin}/$cur_branch || git branch --set-upstream-to=${1:-origin}/$cur_branch $cur_branch; }; f"
-    ide = !/Users/nrocco/Develop/ide/bin/ide
+    ide = !ide
     ctags = !git ide ctags
     ctrlp = !git ide ctrlp
     warmup = "!f() { git ide ctags; git ide ctrlp; }; f"
@@ -32,4 +32,6 @@
 [pull]
     rebase = true
 [ide "ctrlp"]
-    ignore = .svn .git __pycache__
+	warmup = true
+[ide "ctags"]
+	warmup = true
