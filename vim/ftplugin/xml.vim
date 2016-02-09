@@ -1,2 +1,2 @@
-" Set tabs to 2 spaces
-  setlocal sw=2 sts=2 et
+" Set tabs to 4 spaces
+  setlocal sw=4 sts=4 et
