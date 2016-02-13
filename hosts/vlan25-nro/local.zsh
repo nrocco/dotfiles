@@ -8,6 +8,10 @@ then
     export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 
+precmd () {
+    printf "\033]2;`[[ ${PWD} == ${HOME} ]] && echo '~' || basename ${PWD}`\033\\"
+}
+
 if which tmux &> /dev/null
 then
     if [[ -z "$TMUX" ]]
