@@ -3,6 +3,8 @@ autoload -Uz _notsio
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+alias gateway="netstat -nr | awk '/^default/ {print \$2}'"
+
 local envfile="$HOME/.gnupg/gpg-agent.env"
 
 if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
