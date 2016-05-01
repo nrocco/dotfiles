@@ -166,6 +166,9 @@ endfunction
   autocmd FileType nginx    set commentstring=#\ %s
   autocmd FileType php      set commentstring=//\ %s
   autocmd FileType markdown set commentstring=>\ %s
+
+  nmap          \\\         gcc
+  vmap          \\          gc
 " ---------------------------------------------------------------
 
 
