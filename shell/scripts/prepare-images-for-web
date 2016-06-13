@@ -1,0 +1,2 @@
+#!/bin/bash
+exec mogrify -auto-orient -resize '1920>' -interlace Plane -strip "$@"

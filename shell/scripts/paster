@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+endpoint=${PASTE_URL:-http://10.11.25.75/p}
+
+OUT="$(mktemp)"
+trap "rm -f $OUT" EXIT
+
+cat -- "$@" > $OUT
+
+mime=$(file --brief --mime-type $OUT)
+
+case "$mime" in
+    text/*|*xml*)
+        cat $OUT | curl --silent -F 'p=<-' $endpoint
+        ;;
+    image/*)
+        curl --silent -F "p=@$OUT" $endpoint
+        ;;
+    *)
+        echo "Could not detect mime: $mime"
+        exit 1
+        ;;
+esac
+
+exit 0
