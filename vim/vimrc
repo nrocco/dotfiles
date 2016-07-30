@@ -11,9 +11,8 @@
     Bundle 'vim-airline/vim-airline-themes'
     Bundle 'kien/ctrlp.vim'
     Bundle 'jamessan/vim-gnupg'
-    Bundle 'SirVer/ultisnips'
 
-    Bundle 'nrocco/vim-notsio'
+    Bundle 'SirVer/ultisnips'
 
     Bundle 'tpope/vim-commentary'
     Bundle 'tpope/vim-fugitive'
