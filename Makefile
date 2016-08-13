@@ -50,6 +50,8 @@ gpg:
 
 update:
 	git fetch --all
+	git submodule init
+	git submodule sync
 	git submodule update
 
 remove:
