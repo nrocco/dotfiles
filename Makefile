@@ -53,6 +53,7 @@ update:
 	git submodule init
 	git submodule sync
 	git submodule update
+	git submodule foreach git pull origin master
 
 remove:
 	@$(call __remove,$(dest)/.vim)
