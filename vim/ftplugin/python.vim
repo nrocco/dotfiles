@@ -7,18 +7,11 @@
 " Set smart indenting
   set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-" Highlight lines that are too long
-  set colorcolumn=80
-  highlight ColorColumn ctermbg=Black guibg=Black
-
 " Highlight end of line whitespace and literal tab characters.
   highlight WhitespaceEOL ctermbg=red guibg=red
   match WhitespaceEOL /\s\+$\|\t/
 
-
   set tags+=.git/tags_vendors
-
-
 
 
 " Get the current function the cursor is focussed on and run it through phpunit.
