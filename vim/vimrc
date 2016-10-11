@@ -43,7 +43,6 @@
     " python stuff
     Bundle 'indentpython.vim'
     "Bundle 'mitsuhiko/vim-jinja'  TODO look for a twig syntax highlight
-    Bundle 'me-vlad/python-syntax.vim'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
