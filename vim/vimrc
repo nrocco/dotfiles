@@ -24,7 +24,7 @@
     " Syntax bundles
     Bundle 'jelera/vim-javascript-syntax'
     Bundle 'elzr/vim-json'
-    Bundle 'kennethzfeng/vim-raml'
+    Bundle 'stephpy/vim-yaml'
 
     " php stuff
     Bundle 'nrocco/vim-phpunit'
@@ -36,9 +36,6 @@
     Bundle 'gregf/ultisnips-chef'
     Bundle 'ngmy/vim-rubocop'
     Bundle 'dougireton/vim-chef'
-
-    " ansible stuff
-    Bundle 'chase/vim-ansible-yaml'
 
     " python stuff
     Bundle 'indentpython.vim'
@@ -164,6 +161,7 @@ endfunction
   autocmd FileType nginx    set commentstring=#\ %s
   autocmd FileType php      set commentstring=//\ %s
   autocmd FileType markdown set commentstring=>\ %s
+  autocmd FileType yaml     set commentstring=#\ %s
 
   nmap          \\\         gcc
   vmap          \\          gc
