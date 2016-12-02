@@ -49,12 +49,14 @@ gpg:
 	@$(call __install,$(dest)/.gnupg/gpg-agent.conf,gpg/gpg-agent.conf)
 
 update:
-	git fetch --all
+	git fetch --all --prune
 	git submodule init
 	git submodule sync
 	git submodule update
 	git submodule foreach git checkout master
 	git submodule foreach git pull origin master
+	git gc
+	git status
 
 remove:
 	@$(call __remove,$(dest)/.vim)
