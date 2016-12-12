@@ -50,6 +50,7 @@ gpg:
 
 update:
 	git fetch --all --prune
+	git pull origin master
 	git submodule init
 	git submodule sync
 	git submodule update
