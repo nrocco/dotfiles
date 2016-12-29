@@ -106,6 +106,7 @@
   let mapleader = ","                             " Set mapleader key to ,
 
   set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
+  set wildignorecase
   let g:netrw_list_hide = '.*\.pyc'
 
 
