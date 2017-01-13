@@ -15,6 +15,7 @@ else
 fi
 
 export GPG_AGENT_INFO  # the env file does not contain the export statement
+export GPG_TTY=`tty`
 
 function wireshark-remote {
     ssh "$@" "tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -

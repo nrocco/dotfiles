@@ -38,5 +38,6 @@
     rebase = true
 [ide "ctrlp"]
     warmup = true
+    ignore = .git .svn __pycache__
 [ide "ctags"]
     warmup = true
