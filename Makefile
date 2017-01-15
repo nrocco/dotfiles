@@ -22,7 +22,7 @@ __remove  = if [ -L $(1) ]; \
 help:
 	@echo "Usage: make {all|zsh|vim|git|gpg|tmux|ctags}"
 
-all: zsh vim git tmux ctags gpg
+all: zsh vim git tmux ctags gpg curl
 
 zsh:
 	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
@@ -48,6 +48,9 @@ gpg:
 	@$(call __install,$(dest)/.gnupg/gpg.conf,gpg/gpg.conf)
 	@$(call __install,$(dest)/.gnupg/gpg-agent.conf,gpg/gpg-agent.conf)
 
+curl:
+	@$(call __install,$(dest)/.curlrc,curl/curlrc)
+
 update:
 	git fetch --all --prune
 	git pull origin master
@@ -66,5 +69,6 @@ remove:
 	@$(call __remove,$(dest)/.gitconfig)
 	@$(call __remove,$(dest)/.tmux.conf)
 	@$(call __remove,$(dest)/.ctags)
+	@$(call __remove,$(dest)/.curlrc)
 
-.PHONY: zsh vim git tmux ctags update remove help gpg
+.PHONY: zsh vim git tmux ctags update remove help gpg curl
