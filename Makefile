@@ -1,55 +1,6 @@
 dest := ~
-host := $(shell hostname -s)
-curr := $(shell pwd)
+host := $(shell hostname -s | tr '[A-Z]' '[a-z]')
 
-__install = if [ ! -e $(1) ]; then \
-                if [ -e $(curr)/hosts/$(host)/$(2) ]; then \
-                    ln -s $(curr)/hosts/$(host)/$(2) $(1); \
-					ls -gG $(1); \
-                elif [ -e $(curr)/$(2) ]; then \
-                    ln -s $(curr)/$(2) $(1); \
-					ls -gG $(1); \
-                fi; \
-            else \
-                ls -gG $(1); \
-            fi
-
-__remove  = if [ -L $(1) ]; \
-            then \
-                rm $(1); \
-            fi
-
-help:
-	@echo "Usage: make {all|zsh|vim|git|gpg|tmux|ctags}"
-
-all: zsh vim git tmux ctags gpg curl
-
-zsh:
-	@$(call __install,$(dest)/.zshrc,zsh/zshrc)
-	@$(call __install,$(dest)/.zsh,zsh)
-	@$(call __install,$(dest)/.zsh/95_General.zsh,general.zsh)
-	@$(call __install,$(dest)/.zsh/98_Local.zsh,local.zsh)
-
-vim:
-	@$(call __install,$(dest)/.vimrc,vim/vimrc)
-	@$(call __install,$(dest)/.vim,vim)
-
-git:
-	@$(call __install,$(dest)/.gitignore,git/gitignore)
-	@$(call __install,$(dest)/.gitconfig,git/gitconfig)
-
-tmux:
-	@$(call __install,$(dest)/.tmux.conf,tmux/tmux.conf)
-
-ctags:
-	@$(call __install,$(dest)/.ctags,ctags/ctags)
-
-gpg:
-	@$(call __install,$(dest)/.gnupg/gpg.conf,gpg/gpg.conf)
-	@$(call __install,$(dest)/.gnupg/gpg-agent.conf,gpg/gpg-agent.conf)
-
-curl:
-	@$(call __install,$(dest)/.curlrc,curl/curlrc)
 
 update:
 	git fetch --all --prune
@@ -62,13 +13,121 @@ update:
 	git gc
 	git status
 
+
+ifeq ($(wildcard hosts/$(host)/curl/curlrc),)
+$(dest)/.curlrc: curl/curlrc
+else
+$(dest)/.curlrc: hosts/$(host)/curl/curlrc
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/zsh/zshrc),)
+$(dest)/.zshrc: zsh/zshrc
+else
+$(dest)/.zshrc: hosts/$(host)/zsh/zshrc
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+$(dest)/.zsh: zsh/
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/zsh/general.zsh),)
+$(dest)/.zsh/95_General.zsh: general.zsh
+else
+$(dest)/.zsh/95_General.zsh: hosts/$(host)/zsh/general.zsh
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/local.zsh),)
+$(dest)/.zsh/98_Local.zsh:
+else
+$(dest)/.zsh/98_Local.zsh: hosts/$(host)/local.zsh
+	ln -sf "$(PWD)/$<" "$@"
+endif
+
+
+ifeq ($(wildcard hosts/$(host)/vim/vimrc),)
+$(dest)/.vimrc: vim/vimrc
+else
+$(dest)/.vimrc: hosts/$(host)/vim/vimrc
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+$(dest)/.vim: vim/
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/gpg/gpg.conf),)
+$(dest)/.gnupg/gpg.conf: gpg/gpg.conf
+else
+$(dest)/.gnupg/gpg.conf: hosts/$(host)/gpg/gpg.conf
+endif
+	mkdir -p "$(dest)/.gnupg"
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/gpg/gpg-agent.conf),)
+$(dest)/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+else
+$(dest)/.gnupg/gpg-agent.conf: hosts/$(host)/gpg/gpg-agent.conf
+endif
+	mkdir -p "$(dest)/.gnupg"
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/git/gitignore),)
+$(dest)/.gitignore: git/gitignore
+else
+$(dest)/.gitignore: hosts/$(host)/git/gitignore
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/git/gitconfig),)
+$(dest)/.gitconfig: git/gitconfig
+else
+$(dest)/.gitconfig: hosts/$(host)/git/gitconfig
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/tmux/tmux.conf),)
+$(dest)/.tmux.conf: tmux/tmux.conf
+else
+$(dest)/.tmux.conf: hosts/$(host)/tmux/tmux.conf
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
+ifeq ($(wildcard hosts/$(host)/ctags/ctags),)
+$(dest)/.ctags: ctags/ctags
+else
+$(dest)/.ctags: hosts/$(host)/ctags/ctags
+endif
+	ln -sf "$(PWD)/$<" "$@"
+
+
 remove:
-	@$(call __remove,$(dest)/.vim)
-	@$(call __remove,$(dest)/.vimrc)
-	@$(call __remove,$(dest)/.gitignore)
-	@$(call __remove,$(dest)/.gitconfig)
-	@$(call __remove,$(dest)/.tmux.conf)
 	@$(call __remove,$(dest)/.ctags)
 	@$(call __remove,$(dest)/.curlrc)
+	@$(call __remove,$(dest)/.gitconfig)
+	@$(call __remove,$(dest)/.gitignore)
+	@$(call __remove,$(dest)/.tmux.conf)
+	@$(call __remove,$(dest)/.vim)
+	@$(call __remove,$(dest)/.vimrc)
 
-.PHONY: zsh vim git tmux ctags update remove help gpg curl
+
+ctags: $(dest)/.ctags
+curl: $(dest)/.curlrc
+git: $(dest)/.gitignore $(dest)/.gitconfig
+gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf
+tmux: $(dest)/.tmux.conf
+vim: $(dest)/.vimrc $(dest)/.vim
+zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zsh/95_General.zsh $(dest)/.zsh/98_Local.zsh
+
+all: zsh ctags curl git vim
