@@ -25,6 +25,7 @@
     Bundle 'jelera/vim-javascript-syntax'
     Bundle 'elzr/vim-json'
     Bundle 'stephpy/vim-yaml'
+    Bundle 'leafgarland/typescript-vim'
 
     " php stuff
     Bundle 'nrocco/vim-phpunit'
