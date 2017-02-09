@@ -1,7 +1,10 @@
-alias tail_all='tail -f app/logs/* /var/log/apache2/*.log'
+alias tail_all='tail -fn0 app/logs/* /var/log/apache2/*.log'
 alias ack=ack-grep
 alias php-xdebug='php -d "zend_extension=/usr/lib/php5/20090626/xdebug.so"'
-alias php-coverage='SYMFONY_DEPRECATIONS_HELPER=weak php-xdebug bin/phpunit -c app --coverage-html build/coverage'
+
+php-coverage() {
+    SYMFONY_DEPRECATIONS_HELPER=weak php-xdebug vendor/phpunit/phpunit/phpunit --coverage-html "/var/www/io.nro.devleaseweb.com/coverage/$(basename $PWD)" "$@"
+}
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
