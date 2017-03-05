@@ -6,41 +6,53 @@
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
 
-    Bundle 'gmarik/vundle'
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'vim-airline/vim-airline-themes'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'jamessan/vim-gnupg'
+    Plugin 'gmarik/vundle'
+    Plugin 'joshdick/onedark.vim'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'jamessan/vim-gnupg'
 
-    Bundle 'SirVer/ultisnips'
+    Plugin 'SirVer/ultisnips'
 
-    Bundle 'tpope/vim-commentary'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-markdown'
-    Bundle 'tpope/vim-ragtag'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-unimpaired'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-ragtag'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-unimpaired'
 
     " Syntax bundles
-    Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'elzr/vim-json'
-    Bundle 'stephpy/vim-yaml'
-    Bundle 'leafgarland/typescript-vim'
+    Plugin 'IN3D/vim-raml'
+    Plugin 'JulesWang/css.vim'
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'elzr/vim-json'
+    Plugin 'honza/dockerfile.vim'
+    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'lumiliet/vim-twig'
+    Plugin 'othree/html5.vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'pearofducks/ansible-vim'
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'posva/vim-vue'
+    Plugin 'sheerun/vim-polyglot'
+    Plugin 'stephpy/vim-yaml'
+    Plugin 'tpope/vim-git'
+    Plugin 'vim-scripts/groovy.vim'
 
     " php stuff
-    Bundle 'nrocco/vim-phpunit'
-    Bundle 'nrocco/vim-phplint'
-    Bundle 'arnaud-lb/vim-php-namespace'
-    Bundle 'sumpygump/php-documentor-vim'
+    Plugin 'nrocco/vim-phpunit'
+    Plugin 'nrocco/vim-phplint'
+    Plugin 'arnaud-lb/vim-php-namespace'
+    Plugin 'sumpygump/php-documentor-vim'
 
     " chef stuff
-    Bundle 'gregf/ultisnips-chef'
-    Bundle 'ngmy/vim-rubocop'
-    Bundle 'dougireton/vim-chef'
+    Plugin 'gregf/ultisnips-chef'
+    Plugin 'ngmy/vim-rubocop'
+    Plugin 'dougireton/vim-chef'
 
     " python stuff
-    Bundle 'indentpython.vim'
-    "Bundle 'mitsuhiko/vim-jinja'  TODO look for a twig syntax highlight
+    Plugin 'indentpython.vim'
   endif
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -49,8 +61,9 @@
   set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
-  set t_Co=16                                     " Use 16 ansi color terminal by default
-  colorscheme smyck
+  " set t_Co=16                                     " Use 16 ansi color terminal by default
+  set termguicolors
+  colorscheme onedark
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
   set nopaste
@@ -133,16 +146,21 @@ endfunction
   let g:ctrlp_lazy_update = 50
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_show_hidden = 0
-  let g:ctrlp_follow_symlinks = 1
-  let g:ctrlp_open_new_file = 't'
+  " let g:ctrlp_follow_symlinks = 1
+  " let g:ctrlp_open_new_file = 't'
+  let g:ctrlp_working_path_mode = 'r'
   let g:ctrlp_extensions = ['tag']
-  let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("e")': ['<c-t>'],
-      \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-      \ }
-  let g:ctrlp_buftag_types = {
-      \ 'yaml': '--languages=ansible --ansible-types=k',
-      \ }
+  " let g:ctrlp_prompt_mappings = {
+  "     \ 'AcceptSelection("e")': ['<c-t>'],
+  "     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+  "     \ }
+  " let g:ctrlp_buftag_types = {
+  "     \ 'yaml': '--languages=ansible --ansible-types=k',
+  "     \ }
+  let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+      \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+      \}
 " ---------------------------------------------------------------
 
 
@@ -152,6 +170,10 @@ endfunction
   let g:airline_theme = 'bubblegum'
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
+  " Enable the list of buffers
+  let g:airline#extensions#tabline#enabled = 1
+  " Show just the filename
+  let g:airline#extensions#tabline#fnamemod = ':t'
 " ---------------------------------------------------------------
 
 
@@ -187,38 +209,36 @@ endfunction
 " ---------------------------------------------------------------
 
 " Shortcut to start command mode with the spacebar
-  nmap          <space>         :
-
-" Open ctag in new tab
-  nnoremap      <C-\>           :tab tjump <C-r><C-w><CR>
+  nmap <space> :
 
 " Keep selection in visual mode after indenting lines
-  vnoremap      <               <gv
-  vnoremap      >               >gv
+  vnoremap < <gv
+  vnoremap > >gv
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
-  nnoremap      j               gj
-  nnoremap      k               gk
-
-" For when you forget to sudo.. Really Write the file.
-  cmap          w!!             w !sudo tee % >/dev/null
+  nnoremap j gj
+  nnoremap k gk
 
 " Fix indentiation in whole file
-  nnoremap      <leader>i       mzgg=G`z<CR>
+  nnoremap <leader>i mzgg=G`z<CR>
 
 " Keyboard shortcut for find-and-replace
-  nnoremap      <leader>s       :%s/
-  vmap          <leader>s       :s/
-
-" Shortcut for opening a file in a new tab
-  nmap          <leader>f       :tabe 
+  nnoremap <leader>s :%s/
+  vmap <leader>s :s/
 
 " ---------------------------------------------------------------
-" Tab navigation
-  map  <C-h>  <ESC>:tabprevious<CR>
-  nmap <C-h>  <ESC>:tabprevious<CR>
-  map  <C-l>  <ESC>:tabnext<CR>
-  nmap <C-l>  <ESC>:tabnext<CR>
+" Buffer navigation
+  set hidden
+
+  map  <C-h>  <ESC>:bprevious<CR>
+  nmap <C-h>  <ESC>:bprevious<CR>
+  map  <C-l>  <ESC>:bnext<CR>
+  nmap <C-l>  <ESC>:bnext<CR>
+
+  nmap <leader>c :bprevious <BAR> bdelete #<CR>
+  nmap <leader>n :enew<CR>
+  nmap <leader>e :edit 
+  nmap <leader>b :CtrlPBuffer<CR>
 " ---------------------------------------------------------------
 
 
