@@ -61,7 +61,6 @@
   set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
-  " set t_Co=16                                     " Use 16 ansi color terminal by default
   set termguicolors
   colorscheme onedark
   set number                                      " Show line numbers
