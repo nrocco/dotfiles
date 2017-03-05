@@ -1,7 +1,6 @@
+alias tail_all='tail -fn0 app/logs/* /var/log/apache2/*.log'
 alias vagrant='VAGRANT_DEFAULT_PROVIDER=cloudstack vagrant'
 
-alias tail_all='tail -f app/logs/* /var/log/apache2/*.log'
-alias ack=ack-grep
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
