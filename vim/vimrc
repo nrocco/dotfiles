@@ -234,9 +234,9 @@ endfunction
   map  <C-l>  <ESC>:bnext<CR>
   nmap <C-l>  <ESC>:bnext<CR>
 
-  nmap <leader>c :bprevious <BAR> bdelete #<CR>
+  nmap <leader>q :bprevious <BAR> bdelete #<CR>
   nmap <leader>n :enew<CR>
-  nmap <leader>e :edit 
+  nmap <leader>f :edit 
   nmap <leader>b :CtrlPBuffer<CR>
 " ---------------------------------------------------------------
 
