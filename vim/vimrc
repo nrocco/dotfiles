@@ -260,6 +260,21 @@ let g:vim_json_syntax_conceal = 0
 " Remove the current buffer file from disk
 command Rm call delete(expand('%')) | bdelete!
 
+" ---------------------------------------------------------------
+" Map :q to close the buffer, and if it is the last buffer, close vim
+fun! s:quitiflast()
+    let bufcnt = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    bdelete
+    if bufcnt < 2
+        quit
+    endif
+endfun
+
+command! Bd :call s:quitiflast()
+
+cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'Bd' : 'q'
+" ---------------------------------------------------------------
+
 " Read settings from a system local vimrc
 if filereadable($HOME . '/.vimrclocal')
   source $HOME/.vimrclocal
