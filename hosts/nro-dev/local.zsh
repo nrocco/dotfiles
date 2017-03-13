@@ -1,8 +1,20 @@
 alias tail_all='tail -fn0 app/logs/* /var/log/apache2/*.log'
-alias php-xdebug='php -d "zend_extension=/usr/lib/php5/20090626/xdebug.so"'
 
-php-coverage() {
-    SYMFONY_DEPRECATIONS_HELPER=weak php-xdebug vendor/phpunit/phpunit/phpunit --coverage-html "/var/www/io.nro.devleaseweb.com/coverage/$(basename $PWD)" "$@"
+phpunit() {
+    if [[ -f vendor/phpunit/phpunit/phpunit ]]; then
+        local phpunit_bin=vendor/phpunit/phpunit/phpunit
+    elif which phpunit &> /dev/null; then
+        local phpunit_bin=phpunit
+    else
+        echo "No phpunit found"
+        exit 1
+    fi
+
+    $phpunit_bin "$@"
+}
+
+phpcoverage() {
+    SYMFONY_DEPRECATIONS_HELPER=weak phpunit --coverage-html "/var/www/io.nro.devleaseweb.com/coverage/$(basename $PWD)" "$@"
 }
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
