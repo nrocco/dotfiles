@@ -61,9 +61,8 @@
   set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
-  "set termguicolors
+  set termguicolors
   colorscheme onedark
-  let g:onedark_termcolors=16
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
   set nopaste
