@@ -17,3 +17,5 @@ function wireshark-remote-sudo {
 
 # Complete them as ssh
 compdef _ssh wireshark-remote=ssh
+
+eval "$(direnv hook zsh)"
