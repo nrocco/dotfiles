@@ -10,7 +10,7 @@ then
 fi
 
 precmd () {
-    printf "\033]2;`[[ ${PWD} == ${HOME} ]] && echo '~' || basename ${PWD}`\033\\"
+    tmux rename-window "${PWD##/*/}"
 }
 
 if which tmux &> /dev/null
