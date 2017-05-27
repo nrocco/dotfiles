@@ -1,0 +1,48 @@
+snippet component "A vue component" b!
+<template>
+	$0
+</template>
+
+<script>
+  export default {
+  }
+</script>
+
+<style scoped>
+</style>
+endsnippet
+
+snippet data "Data property for Vue components" b!
+data: () => ({
+	$1
+})$0
+endsnippet
+
+snippet methods "" b!
+methods: {
+	$0
+}
+endsnippet
+
+snippet props "" b!
+props: {
+	$0
+}
+endsnippet
+
+snippet prop "" b!
+${1:value}: {
+  type: [$2],
+  default: $3
+}$0
+endsnippet
+
+snippet f "Function" b!
+${1:functionName} ($2) {
+	$0
+}
+endsnippet
+
+snippet {{ "Function" b!
+{{ $1 }}$0
+endsnippet
