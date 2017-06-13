@@ -1,4 +1,5 @@
-alias tail_all='tail -fn0 app/logs/* /var/log/apache2/*.log'
+alias ll='ls -lhe'
+alias grep='grep'
 alias vagrant='VAGRANT_DEFAULT_PROVIDER=cloudstack vagrant'
 
 
