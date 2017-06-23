@@ -24,6 +24,9 @@
     " Syntax bundle
     Plugin 'sheerun/vim-polyglot'
 
+    " go stuff
+    Plugin 'fatih/vim-go'
+
     " php stuff
     Plugin 'nrocco/vim-phpunit'
     Plugin 'nrocco/vim-phplint'
