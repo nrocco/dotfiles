@@ -6,16 +6,16 @@ update:
 	git fetch --all --prune
 	git pull origin master
 	git submodule init
-	git submodule sync
+	git submodule sync --recursive
 	git submodule update
-	git submodule foreach git checkout master
-	git submodule foreach git pull origin master
+	git submodule foreach --recursive git checkout master
+	git submodule foreach --recursive git pull origin master
 	cd zsh && \
 		git submodule init && \
 		git submodule sync && \
 		git submodule update && \
-		git submodule foreach git checkout master && \
-		git submodule foreach git pull origin master
+		git submodule foreach --recursive git checkout master && \
+		git submodule foreach --recursive git pull origin master
 	git gc
 	git status
 
