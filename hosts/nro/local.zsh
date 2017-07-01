@@ -1,5 +1,3 @@
-alias vagrant='VAGRANT_DEFAULT_PROVIDER=cloudstack vagrant'
-
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
