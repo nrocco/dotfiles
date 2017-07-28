@@ -1,8 +1,7 @@
 vim/.netrwhist
 vim/doc/tags
 .git
-vim/bundle
-!vim/bundle/vundle
+vim/plugged/
 vim/temp
 doc/tags
 doc/tags-ja

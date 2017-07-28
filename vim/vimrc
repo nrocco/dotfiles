@@ -2,45 +2,42 @@
   set nocompatible                                " Set vim to not be backwards compatible for cooler features
   filetype off
 
-  if filereadable($HOME . '/.vim/bundle/vundle/autoload/vundle.vim')
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+  call plug#begin('~/.vim/plugged')
+    Plug 'joshdick/onedark.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
-    Plugin 'gmarik/vundle'
-    Plugin 'joshdick/onedark.vim'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'jamessan/vim-gnupg'
+    Plug 'jamessan/vim-gnupg'
 
-    Plugin 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-    Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-ragtag'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-ragtag'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
 
     " Syntax bundle
-    Plugin 'sheerun/vim-polyglot'
+    Plug 'sheerun/vim-polyglot'
 
     " go stuff
-    Plugin 'fatih/vim-go'
+    Plug 'fatih/vim-go'
 
     " php stuff
-    Plugin 'nrocco/vim-phpunit'
-    Plugin 'nrocco/vim-phplint'
-    Plugin 'arnaud-lb/vim-php-namespace'
-    Plugin 'sumpygump/php-documentor-vim'
+    Plug 'nrocco/vim-phpunit'
+    Plug 'nrocco/vim-phplint'
+    Plug 'arnaud-lb/vim-php-namespace'
+    Plug 'sumpygump/php-documentor-vim'
 
     " chef stuff
-    Plugin 'gregf/ultisnips-chef'
-    Plugin 'ngmy/vim-rubocop'
-    Plugin 'dougireton/vim-chef'
+    Plug 'gregf/ultisnips-chef'
+    Plug 'ngmy/vim-rubocop'
+    Plug 'dougireton/vim-chef'
 
     " python stuff
-    Plugin 'indentpython.vim'
-  endif
+    Plug 'vim-scripts/indentpython.vim'
+  call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -126,23 +123,6 @@ endfunction
 
 
 " ---------------------------------------------------------------
-" PLUGIN: ctrlp.vim
-" ---------------------------------------------------------------
-  let g:ctrlp_map = '<leader>a'
-  let g:ctrlp_lazy_update = 1
-  let g:ctrlp_regexp = 1
-  let g:ctrlp_clear_cache_on_exit = 0
-  let g:ctrlp_show_hidden = 0
-  let g:ctrlp_working_path_mode = 'r'
-  let g:ctrlp_extensions = ['tag']
-  let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-      \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-      \}
-" ---------------------------------------------------------------
-
-
-" ---------------------------------------------------------------
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
   let g:airline_theme = 'bubblegum'
@@ -180,7 +160,6 @@ endfunction
 " ---------------------------------------------------------------
 
 
-
 " ---------------------------------------------------------------
 " Keyboard shortcuts
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
@@ -216,7 +195,6 @@ endfunction
   nmap <leader>q :bprevious <BAR> bdelete #<CR>
   nmap <leader>n :enew<CR>
   nmap <leader>f :edit 
-  nmap <leader>b :CtrlPBuffer<CR>
 " ---------------------------------------------------------------
 
 
