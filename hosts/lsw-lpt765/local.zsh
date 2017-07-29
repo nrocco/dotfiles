@@ -17,8 +17,4 @@ function wireshark-remote-sudo {
 
 # Complete them as ssh
 compdef _ssh wireshark-remote=ssh
-
-eval "$(direnv hook zsh)"
-
-# A command-line fuzzy finder written in Go
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+compdef _ssh wireshark-remote-sudo=ssh

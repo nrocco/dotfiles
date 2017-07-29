@@ -8,6 +8,15 @@ export VISUAL=vim
 alias jsonfmt='python -mjson.tool'
 alias drop_caches='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 
+# A command-line fuzzy finder written in Go
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add
+if which direnv > /dev/null
+then
+  eval "$(direnv hook zsh)"
+fi
+
 if which jq > /dev/null
 then
     alias jq='jq --raw-output'

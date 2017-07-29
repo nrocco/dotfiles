@@ -9,8 +9,6 @@ precmd () {
     tmux rename-window "${PWD##/*/}"
 }
 
-eval "$(direnv hook zsh)"
-
 if which tmux &> /dev/null
 then
     if [[ -z "$TMUX" ]]
