@@ -5,12 +5,12 @@ then
     export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 
-precmd () {
-    tmux rename-window "${PWD##/*/}"
-}
-
 if which tmux &> /dev/null
 then
+    precmd () {
+        tmux rename-window "${PWD##/*/}"
+    }
+
     if [[ -z "$TMUX" ]]
     then
         if ! tmux has-session -t default 2>/dev/null

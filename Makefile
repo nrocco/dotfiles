@@ -34,18 +34,10 @@ $(dest)/.zsh: zsh/
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/zsh/general.zsh),)
-$(dest)/.zsh/95_General.zsh: general.zsh
-else
-$(dest)/.zsh/95_General.zsh: hosts/$(host)/zsh/general.zsh
-endif
-	ln -sf "$(PWD)/$<" "$@"
-
-
 ifeq ($(wildcard hosts/$(host)/local.zsh),)
-$(dest)/.zsh/98_Local.zsh:
+$(dest)/.zshrclocal:
 else
-$(dest)/.zsh/98_Local.zsh: hosts/$(host)/local.zsh
+$(dest)/.zshrclocal: hosts/$(host)/local.zsh
 	ln -sf "$(PWD)/$<" "$@"
 endif
 
@@ -128,6 +120,6 @@ git: $(dest)/.gitignore $(dest)/.gitconfig
 gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf
 tmux: $(dest)/.tmux.conf
 vim: $(dest)/.vimrc $(dest)/.vim
-zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zsh/95_General.zsh $(dest)/.zsh/98_Local.zsh
+zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zshrclocal
 
 all: zsh ctags curl git vim

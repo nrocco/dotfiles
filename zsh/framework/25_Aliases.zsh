@@ -9,6 +9,8 @@ alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 
+alias vi=vim
+
 # Adding color to our commands
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
