@@ -1,3 +1,5 @@
+export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
+
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
