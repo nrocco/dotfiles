@@ -98,11 +98,11 @@ zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 [[ -r /etc/hosts ]]          && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 [[ -r ${HOME}/.ssh/config ]] && _ssh_config_hosts=(${=${${${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }:#*\**}:#*\?*}}) || _ssh_config_hosts=()
 hosts=(
-	${HOST}
-	"$_ssh_config_hosts[@]"
-	"$_ssh_hosts[@]"
-	"$_etc_hosts[@]"
-	localhost
+    ${HOST}
+    "$_ssh_config_hosts[@]"
+    "$_ssh_hosts[@]"
+    "$_etc_hosts[@]"
+    localhost
 )
 zstyle ':completion::*:*:*:hosts' hosts $hosts
 
@@ -138,3 +138,11 @@ compdef _ssh sshc=ssh
 
 # Complete them as scp
 compdef _scp scpc=scp
+
+# Load 3rd party zsh-completions
+source "${0:h}/../completions/zsh-completions.plugin.zsh"
+
+# Compile the completion dump, to increase startup speed.
+if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]; then
+    zcompile "${ZSH_CACHE}/zcompdump"
+fi
