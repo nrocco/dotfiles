@@ -1,4 +1,11 @@
 export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+path=(
+    "${HOME}/bin"
+    "${HOME}/.composer/vendor/bin"
+    $path
+)
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
