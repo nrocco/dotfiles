@@ -11,6 +11,7 @@
 
     Plug 'SirVer/ultisnips'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'w0rp/ale'
 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -22,7 +23,7 @@
     Plug 'sheerun/vim-polyglot'
 
     " go stuff
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go', { 'for': 'go' }
 
     " php stuff
     Plug 'nrocco/vim-phpunit', { 'for': 'php' }
@@ -142,6 +143,11 @@ endfunction
   nnoremap <leader>a :FZF<CR>
 " ---------------------------------------------------------------
 
+" ---------------------------------------------------------------
+"  PLUGIN: ale - Asynchronous Lint Engine
+" ---------------------------------------------------------------
+  let g:ale_lint_delay = 500
+" ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
 " PLUGIN: commentary.vim
@@ -218,9 +224,6 @@ endfunction
 
 " Automatically save non-existent directories on save
 autocmd BufWritePre * :silent !mkdir -p %:p:h
-
-" vim-json: disable concealing of double quotes
-let g:vim_json_syntax_conceal = 0
 
 " Remove the current buffer file from disk
 command Rm call delete(expand('%')) | bdelete!
