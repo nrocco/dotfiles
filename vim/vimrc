@@ -27,7 +27,6 @@
 
     " php stuff
     Plug 'nrocco/vim-phpunit', { 'for': 'php' }
-    Plug 'nrocco/vim-phplint', { 'for': 'php' }
     Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
     Plug 'sumpygump/php-documentor-vim', { 'for': 'php' }
     Plug 'lvht/phpfold.vim', { 'for': 'php' }
