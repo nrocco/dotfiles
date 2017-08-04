@@ -140,7 +140,7 @@ compdef _ssh sshc=ssh
 compdef _scp scpc=scp
 
 # Load 3rd party zsh-completions
-source "${0:h}/../completions/zsh-completions.plugin.zsh"
+source "${HOME}/.zsh/completions/zsh-completions.plugin.zsh"
 
 # Compile the completion dump, to increase startup speed.
 if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]; then
