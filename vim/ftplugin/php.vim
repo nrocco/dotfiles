@@ -27,10 +27,6 @@
   let g:pdv_cfg_ClassTags = ["author"]
 
 
-" PHP Lintian check
-  noremap <leader>l :Phplint<CR>
-
-
 " ctags for vendors are in their own file
   set tags+=.git/tags_vendors
 
