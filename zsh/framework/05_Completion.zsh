@@ -142,6 +142,9 @@ compdef _scp scpc=scp
 # Load 3rd party zsh-completions
 source "${HOME}/.zsh/completions/zsh-completions.plugin.zsh"
 
+# Load custom local zsh-completions
+fpath=("${HOME}/.zsh/custom-completions" $fpath)
+
 # Compile the completion dump, to increase startup speed.
 if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]; then
     zcompile "${ZSH_CACHE}/zcompdump"
