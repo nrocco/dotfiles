@@ -1,2 +1,1 @@
 path=("${HOME}/go/bin" $path)
-fpath=("${HOME}/.completions" $fpath)
