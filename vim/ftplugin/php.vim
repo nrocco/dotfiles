@@ -1,6 +1,8 @@
+" Set tabs to 4 spaces
+  setlocal sw=4 sts=4 et
+
 " Execute current php script
   noremap <C-b> :!php %<CR>
-
 
 " Some php options
   set omnifunc=phpcomplete#CompletePHP
@@ -8,11 +10,6 @@
   let php_htmlInStrings=1                         " Highlight HTML in php strings
   let php_noShortTags=1                           " Disable PHP Short Tags
   let g:PHP_vintage_case_default_indent=1         " Fix case/break indentation
-
-
-" Highlight end of line whitespace and literal tab characters.
-  highlight WhitespaceEOL ctermbg=red guibg=red
-  match WhitespaceEOL /\s\+$\|\t/
 
 
 " PLUGIN: vim-php-insert-use statements
