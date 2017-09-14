@@ -15,7 +15,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
 " Enable highlighting of variables that are the same
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 
 " Auto import dependencies
 let g:go_fmt_command = "goimports"
