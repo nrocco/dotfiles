@@ -23,6 +23,7 @@
     last = "!git --no-pager log --oneline -1"
     mirror = "!f() { local cur_branch=$(git rev-parse --abbrev-ref HEAD); git --version | grep 'git version 1.7' > /dev/null && git branch --set-upstream $cur_branch ${1:-origin}/$cur_branch || git branch --set-upstream-to=${1:-origin}/$cur_branch $cur_branch; }; f"
     review = "!f() { local cur_branch=${2-$(git rev-parse --abbrev-ref HEAD)}; git remote -v | sed -n \"/fetch/s%^.*git.ocom.com/\\([^/]*\\)/\\([^.]*\\).*$%https://git.ocom.com/projects/\\1/repos/\\2/compare/diff?targetBranch=${1:-master}\\&sourceBranch=${cur_branch}%p\"; }; f"
+    bview = branch -va --sort=committerdate
     comm = commit -v
     padd = add -p
     pcheckout = checkout -p
