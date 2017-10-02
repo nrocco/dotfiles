@@ -1,1 +1,1 @@
-path=("${HOME}/go/bin" $path)
+path=("${HOME}/go/bin" "${HOME}/.composer/vendor/bin" $path)
