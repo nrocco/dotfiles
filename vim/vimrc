@@ -3,7 +3,6 @@
   filetype off
 
   call plug#begin('~/.vim/plugged')
-    Plug 'joshdick/onedark.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
@@ -29,7 +28,6 @@
     Plug 'nrocco/vim-phpunit', { 'for': 'php' }
     Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
     Plug 'sumpygump/php-documentor-vim', { 'for': 'php' }
-    Plug 'lvht/phpfold.vim', { 'for': 'php' }
 
     " chef stuff
     Plug 'gregf/ultisnips-chef'
@@ -47,16 +45,16 @@
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax enable                                   " Enable syntaxt highlighting/coloring
   set termguicolors
-  colorscheme onedark
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
   set nopaste
   set background=dark
-  set numberwidth=6                               " Make space to show line numbers up to 99999
+  set numberwidth=4                               " Make space to show line numbers up to 999
+  colorscheme base16-material-dark
 " ------------------------------------------------------------------------------------------------------------------------------
   set nowrap                                      " Disable wrapping of lines
   set linebreak                                   " If we enable wrapping. Make it at least sensible
-  " set nolist                                      " List disables linebreak
+  set nolist                                      " List disables linebreak
   set textwidth=0                                 " Prevent Vim from automatically inserting line breaks
   set wrapmargin=0                                " Prevent Vim from automatically inserting line breaks
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +137,7 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
-  let g:airline_theme = 'bubblegum'
+  let g:airline_theme = 'hybrid'
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
   " Enable the list of buffers
