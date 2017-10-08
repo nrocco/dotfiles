@@ -103,9 +103,9 @@
   set shiftwidth=2                                " Control how many columns text is indented with the reindent operations
 " ------------------------------------------------------------------------------------------------------------------------------
   set ruler                                       " Show line number and cursor position
-  if has('statusline')
-    set laststatus=2                              " Always show the status line
-  endif
+  " if has('statusline')
+  "   set laststatus=2                              " Always show the status line
+  " endif
   set cmdheight=2                                 " Height of the command bar
 " ------------------------------------------------------------------------------------------------------------------------------
   set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
@@ -122,7 +122,7 @@
 " ---------------------------------------------------------------
 " PLUGIN: Clean Trailing Whitespaces from file
 " ---------------------------------------------------------------
-nnoremap        <leader>c              :call <SID>CleanTrailingWhiteSpaces()<CR>
+nnoremap <leader>c :call <SID>CleanTrailingWhiteSpaces()<CR>
 function! <SID>CleanTrailingWhiteSpaces()
     let _s=@/
     let l = line(".")
@@ -138,10 +138,15 @@ endfunction
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
   let g:airline_theme = 'hybrid'
-  let g:airline_left_sep = ''
-  let g:airline_right_sep = ''
+  let g:airline_left_sep = ' '
+  let g:airline_right_sep = ' '
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_tabs = 1
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+  let g:airline#extensions#tabline#right_sep = ''
+  let g:airline#extensions#tabline#right_alt_sep = ''
   " Show just the filename
   let g:airline#extensions#tabline#fnamemod = ':t'
 " ---------------------------------------------------------------
@@ -180,8 +185,8 @@ endfunction
   autocmd FileType markdown set commentstring=>\ %s
   autocmd FileType yaml     set commentstring=#\ %s
 
-  nmap          \\\         gcc
-  vmap          \\          gc
+  nmap \\\ gcc
+  vmap \\ gc
 " ---------------------------------------------------------------
 
 
@@ -220,8 +225,6 @@ endfunction
 
 " ---------------------------------------------------------------
   " Buffer navigation
-  set hidden
-
   map  <C-h>  <ESC>:bprevious<CR>
   nmap <C-h>  <ESC>:bprevious<CR>
   map  <C-l>  <ESC>:bnext<CR>
