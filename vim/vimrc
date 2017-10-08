@@ -137,7 +137,7 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
-  let g:airline_theme = 'hybrid'
+  let g:airline_theme = 'dark'
   let g:airline_left_sep = ' '
   let g:airline_right_sep = ' '
   " Enable the list of buffers
