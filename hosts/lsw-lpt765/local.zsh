@@ -4,6 +4,7 @@ export GOPATH=~/go
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 alias dnsclear="sudo killall -HUP mDNSResponder"
+alias lswcli='python3 -m lswcli'
 
 ssh () {
 	/usr/bin/ssh $@
