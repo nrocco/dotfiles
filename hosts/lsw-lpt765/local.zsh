@@ -1,6 +1,7 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GOPATH=~/go
+export DOCKER_HIDE_LEGACY_COMMANDS=yes
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 alias dnsclear="sudo killall -HUP mDNSResponder"
