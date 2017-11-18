@@ -111,12 +111,15 @@
   set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 " ------------------------------------------------------------------------------------------------------------------------------
 
+  " Disable vim netrw plugin
+  let g:loaded_netrw       = 1
+  let g:loaded_netrwPlugin = 1
+
   let mapleader = ","                             " Set mapleader key to ,
   let g:mapleader = ","
 
   set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
   set wildignorecase
-  let g:netrw_list_hide = '.*\.pyc'
 
 
 " ---------------------------------------------------------------
