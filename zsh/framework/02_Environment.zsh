@@ -6,7 +6,7 @@ export VISUAL=vim
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Report timing statistics for commands that take more than this, in seconds
-export REPORTTIME=5
+export REPORTTIME=3
 export TIMEFMT="time: %U user %S system %P cpu %*E total  %J"
 
 if [[ -a "${ZSH_DOTDIR}/ls-colors/LS_COLORS" ]]; then

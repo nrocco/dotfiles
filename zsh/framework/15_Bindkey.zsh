@@ -1,19 +1,3 @@
-# Escape URLs automagically
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
-
-# Using $EDITOR to edit commandline
-autoload -U edit-command-line
-zle -N edit-command-line
-
-# Magic quotes for '', "", (), [], and {}
-magic-single-quotes()   { if [[ $LBUFFER[-1] == \' ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-single-quotes
-magic-double-quotes()   { if [[ $LBUFFER[-1] == \" ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-double-quotes
-magic-parentheses()     { if [[ $LBUFFER[-1] == \( ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-parentheses
-magic-square-brackets() { if [[ $LBUFFER[-1] == \[ ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-square-brackets
-magic-curly-brackets()  { if [[ $LBUFFER[-1] == \{ ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-curly-brackets
-magic-angle-brackets()  { if [[ $LBUFFER[-1] == \< ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-angle-brackets
-
 # Adds sudo to the line
 run-with-sudo() { [[ $BUFFER != sudo\ * ]] && LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
@@ -85,11 +69,11 @@ bindkey "${terminfo[kich1]}" quoted-insert
 bindkey ' ' magic-space
 
 # [Ctrl|Alt-RightArrow] - move forward one word
-bindkey '\C-[Oc' forward-word
+# bindkey '\C-[Oc' forward-word
 bindkey '\e\e[C' forward-word
 
 # [Ctrl|Alt-LeftArrow] - move backward one word
-bindkey '\C-[Od' backward-word
+# bindkey '\C-[Od' backward-word
 bindkey '\e\e[D' backward-word
 
 # [Shift-Tab] - move through the completion menu backwards
@@ -107,22 +91,11 @@ bindkey '\C-x\C-s' run-with-sudo
 # [Ctrl-X, Ctrl-X] Complete word from history with menu
 bindkey '\C-X\C-X' hist-complete
 
-# Edit the current command line in $EDITOR
-bindkey '\C-x\C-e' edit-command-line
-
 # Complete command with waiting-dots
 bindkey '^I' expand-or-complete-with-dots
 
 # File rename magick
 bindkey '^[m' copy-prev-shell-word
-
-# Move cursor between chars when typing '', "", (), [], and {}
-bindkey \' magic-single-quotes
-bindkey \" magic-double-quotes
-bindkey \) magic-parentheses
-bindkey \] magic-square-brackets
-bindkey \} magic-curly-brackets
-bindkey \> magic-angle-brackets
 
 # Disable flow control
 stty -ixon -ixoff
