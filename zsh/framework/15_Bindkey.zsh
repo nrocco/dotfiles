@@ -99,3 +99,7 @@ bindkey '^[m' copy-prev-shell-word
 
 # Disable flow control
 stty -ixon -ixoff
+
+# Needed inside tmux
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
