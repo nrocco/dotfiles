@@ -17,6 +17,8 @@
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
 
+    Plug 'janko-m/vim-test'
+
     " Syntax bundle
     Plug 'sheerun/vim-polyglot'
 
@@ -43,7 +45,7 @@
   set hidden
   set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
 " ------------------------------------------------------------------------------------------------------------------------------
-  syntax enable                                   " Enable syntaxt highlighting/coloring
+  syntax on                                   " Enable syntaxt highlighting/coloring
   set termguicolors
   set number                                      " Show line numbers
   set showmode                                    " Show in what mode we are in (paste/nopaste)
@@ -110,6 +112,8 @@
 " ------------------------------------------------------------------------------------------------------------------------------
   set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 " ------------------------------------------------------------------------------------------------------------------------------
+  let g:elite_mode=1                              " Enable Elite mode, No ARRRROWWS
+" ------------------------------------------------------------------------------------------------------------------------------
 
   " Disable vim netrw plugin
   let g:loaded_netrw       = 1
@@ -141,15 +145,12 @@ endfunction
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
   let g:airline_theme = 'dark'
-  let g:airline_left_sep = ' '
-  let g:airline_right_sep = ' '
+  let g:hybrid_custom_term_colors = 1
+  let g:hybrid_reduced_contrast = 1
+  let g:airline_powerline_fonts = 1
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_tabs = 1
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-  let g:airline#extensions#tabline#right_sep = ''
-  let g:airline#extensions#tabline#right_alt_sep = ''
   " Show just the filename
   let g:airline#extensions#tabline#fnamemod = ':t'
 " ---------------------------------------------------------------
@@ -159,6 +160,7 @@ endfunction
 " PLUGIN: fzf - A command-line fuzzy finder written in Go
 " ---------------------------------------------------------------
   nnoremap <leader>a :FZF<CR>
+  let g:fzf_layout = { 'down': '~50%' }
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
@@ -183,6 +185,13 @@ endfunction
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsListSnippets="<F5>"
+" ---------------------------------------------------------------
+
+" ---------------------------------------------------------------
+" PLUGIN: vim-test
+" ---------------------------------------------------------------
+  nmap <silent> <leader>t :TestNearest<CR>
+  nmap <silent> <leader>T :TestFile<CR>
 " ---------------------------------------------------------------
 
 

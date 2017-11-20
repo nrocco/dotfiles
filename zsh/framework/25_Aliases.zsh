@@ -22,9 +22,6 @@ alias lt='ll -rt'
 alias vihosts="sudo vim /etc/hosts"
 alias gen_pass='f() { LC_ALL=C tr -dc "[:alnum:]" < /dev/urandom | head -c${1:-20}; echo;}; f'
 
-# Remove 256color from ssh sessions
-ssh() { TERM=${TERM%-256color} /usr/bin/ssh $@ }
-
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias scpc='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
