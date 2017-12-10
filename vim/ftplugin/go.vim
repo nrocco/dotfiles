@@ -1,8 +1,5 @@
 " Configure indentation
 setlocal noexpandtab
-setlocal shiftwidth=4
-setlocal softtabstop=4
-setlocal tabstop=4
 
 " Code highlighting
 let g:go_highlight_build_constraints = 1

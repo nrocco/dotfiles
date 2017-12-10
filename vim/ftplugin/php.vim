@@ -1,6 +1,3 @@
-" Set tabs to 4 spaces
-  setlocal sw=4 sts=4 et
-
 " Some php options
   set omnifunc=phpcomplete#CompletePHP
   let php_sql_query=1                             " Highlight sql in php strings
