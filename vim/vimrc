@@ -99,9 +99,9 @@
   set noswapfile                                  " Turn backup off since most stuff is in git anyway
 " ------------------------------------------------------------------------------------------------------------------------------
   set expandtab                                   " Tab will be translated to spaces
-  set softtabstop=2                               " Use these amount of spaces when inserting a tab
-  set tabstop=2                                   " Use these amount of spaces when inserting a tab
-  set shiftwidth=2                                " Control how many columns text is indented with the reindent operations
+  set softtabstop=4                               " Use these amount of spaces when inserting a tab
+  set tabstop=4                                   " Use these amount of spaces when inserting a tab
+  set shiftwidth=4                                " Control how many columns text is indented with the reindent operations
 " ------------------------------------------------------------------------------------------------------------------------------
   set ruler                                       " Show line number and cursor position
   " if has('statusline')
