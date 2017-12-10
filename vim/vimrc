@@ -26,7 +26,6 @@
     Plug 'fatih/vim-go', { 'for': 'go' }
 
     " php stuff
-    Plug 'nrocco/vim-phpunit', { 'for': 'php' }
     Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
     Plug 'sumpygump/php-documentor-vim', { 'for': 'php' }
 
