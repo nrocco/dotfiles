@@ -81,6 +81,15 @@ endif
 	ln -sf "$(PWD)/$<" "$@"
 
 
+ifeq ($(wildcard hosts/$(host)/gpg/dirmngr.conf),)
+$(dest)/.gnupg/dirmngr.conf: gpg/dirmngr.conf
+else
+$(dest)/.gnupg/dirmngr.conf: hosts/$(host)/gpg/dirmngr.conf
+endif
+	mkdir -p "$(dest)/.gnupg"
+	ln -sf "$(PWD)/$<" "$@"
+
+
 ifeq ($(wildcard hosts/$(host)/git/gitignore),)
 $(dest)/.gitignore: git/gitignore
 else
@@ -126,7 +135,7 @@ remove:
 ctags: $(dest)/.ctags
 curl: $(dest)/.curlrc
 git: $(dest)/.gitignore $(dest)/.gitconfig
-gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf
+gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf $(dest)/.gnupg/dirmngr.conf
 tmux: $(dest)/.tmux.conf
 vim: $(dest)/.vimrc $(dest)/.vim
 zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zshrclocal $(dest)/.zshenv
