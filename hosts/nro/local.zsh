@@ -29,4 +29,7 @@ then
 
         exec tmux -u attach-session -t default
     fi
+
+    bindkey "\e[1~" beginning-of-line
+    bindkey "\e[4~" end-of-line
 fi
