@@ -1,6 +1,7 @@
 [user]
     name = Nico Di Rocco
     email = dirocco.nico@gmail.com
+	signingkey = 0x9EF503D42C2EB801
 [core]
     editor = vim
     excludesfile = ~/.gitignore
