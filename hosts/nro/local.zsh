@@ -7,6 +7,21 @@ path=(
     $path
 )
 
+function plgrep {
+    grep -R --exclude-dir=.git --exclude-dir=vendor --exclude-dir=logs --exclude-dir=cache "$@" \
+        ~/www/bmp-api \
+        ~/www/nse-api \
+        ~/www/dedicatedserver-api \
+        ~/www/deploy-api \
+        ~/bundles/lswauditbundle \
+        ~/bundles/lswprocesslayerbundle \
+        ~/bundles/lswrestapibundle \
+        ~/bundles/lswqueuebundle \
+        ~/bundles/lswauditbundle \
+        ~/bundles/lswservicedescriptionsbundle
+}
+compdef _grep plgrep=grep
+
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
