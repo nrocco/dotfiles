@@ -1,6 +1,8 @@
 export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+alias vault='docker exec -it vault vault'
+
 path=(
     "${HOME}/bin"
     "${HOME}/.composer/vendor/bin"
@@ -8,7 +10,7 @@ path=(
 )
 
 function plgrep {
-    grep -R --exclude-dir=.git --exclude-dir=vendor --exclude-dir=logs --exclude-dir=cache "$@" \
+    grep -R --exclude-dir=.git --exclude-dir=vendor --exclude-dir=logs --exclude-dir=build --exclude-dir=cache "$@" \
         ~/www/bmp-api \
         ~/www/nse-api \
         ~/www/dedicatedserver-api \
