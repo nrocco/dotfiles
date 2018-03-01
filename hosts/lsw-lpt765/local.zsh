@@ -21,3 +21,7 @@ function wireshark-remote-sudo {
     ssh "$@" "sudo tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -
 }
 compdef _ssh wireshark-remote-sudo=ssh
+
+function livereplica {
+    curl --insecure -H 'Host: api.leaseweb.com' -H 'Content-Type: application/json' -H "Authorization: Bearer ${TOKEN}" https://10.11.11.98$@ | jq
+}
