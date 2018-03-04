@@ -31,14 +31,10 @@
     padd = add -p
     pcheckout = checkout -p
     ide = !ide
+    make = !make
     warmup = !ide hook run post-checkout
     latest-tags = "!f() { git tag -l|sort -V|tail -n5; }; f"
 [push]
     default = current
 [pull]
     rebase = true
-[ide "ctrlp"]
-    warmup = true
-    ignore = .git .svn __pycache__
-[ide "ctags"]
-    warmup = true
