@@ -5,6 +5,7 @@
   call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'arcticicestudio/nord-vim'
 
     Plug 'jamessan/vim-gnupg'
     Plug 'benmills/vimux'
@@ -55,7 +56,7 @@
   set nopaste
   set background=dark
   set numberwidth=4                               " Make space to show line numbers up to 999
-  colorscheme base16-material-dark
+  colorscheme nord
 " ------------------------------------------------------------------------------------------------------------------------------
   set nowrap                                      " Disable wrapping of lines
   set linebreak                                   " If we enable wrapping. Make it at least sensible
@@ -147,7 +148,7 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: vim-airline
 " ---------------------------------------------------------------
-  let g:airline_theme = 'dark'
+  let g:airline_theme = 'nord'
   let g:hybrid_custom_term_colors = 1
   let g:hybrid_reduced_contrast = 1
   let g:airline_powerline_fonts = 1
