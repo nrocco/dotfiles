@@ -10,19 +10,9 @@ path=(
 )
 
 function plgrep {
-    grep -R --exclude-dir=.git --exclude-dir=vendor --exclude-dir=logs --exclude-dir=build --exclude-dir=cache "$@" \
-        ~/www/bmp-api \
-        ~/www/nse-api \
-        ~/www/dedicatedserver-api \
-        ~/www/deploy-api \
-        ~/bundles/lswauditbundle \
-        ~/bundles/lswprocesslayerbundle \
-        ~/bundles/lswrestapibundle \
-        ~/bundles/lswqueuebundle \
-        ~/bundles/lswauditbundle \
-        ~/bundles/lswservicedescriptionsbundle
+    rg "$@" ~/www ~/bundles
 }
-compdef _grep plgrep=grep
+compdef plgrep=rg
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then

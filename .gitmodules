@@ -10,3 +10,6 @@
 [submodule "zsh/ls-colors"]
 	path = zsh/ls-colors
 	url = https://github.com/trapd00r/LS_COLORS
+[submodule "zsh/nord-dircolors"]
+	path = zsh/nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors.git

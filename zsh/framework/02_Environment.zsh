@@ -9,8 +9,8 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export REPORTTIME=3
 export TIMEFMT="time: %U user %S system %P cpu %*E total  %J"
 
-if [[ -a "${ZSH_DOTDIR}/ls-colors/LS_COLORS" ]]; then
-    which dircolors > /dev/null && eval $(dircolors -b "${ZSH_DOTDIR}/ls-colors/LS_COLORS" 2>/dev/null)
+if [[ -a "${ZSH_DOTDIR}/nord-dircolors/src/dir_colors" ]]; then
+    which dircolors > /dev/null && eval $(dircolors -b "${ZSH_DOTDIR}/nord-dircolors/src/dir_colors" 2>/dev/null)
 else
     which dircolors > /dev/null && eval $(dircolors -b)
 fi
