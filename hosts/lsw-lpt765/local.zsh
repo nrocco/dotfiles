@@ -9,9 +9,9 @@ alias dnsclear="sudo killall -HUP mDNSResponder"
 alias lswcli='python3 -m lswcli'
 
 function chefgrep {
-    grep -R --exclude-dir=.git "$@" /Users/nrocco/Develop/chef-repo/cookbooks
+    rg --follow "$@" /Users/nrocco/Develop/chef-repo/cookbooks
 }
-compdef chefgrep=grep
+compdef chefgrep=rg
 
 function wireshark-remote {
     ssh "$@" "tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -
