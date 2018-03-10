@@ -1,6 +1,3 @@
-# A command-line fuzzy finder written in Go
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Add
 if which direnv > /dev/null
 then

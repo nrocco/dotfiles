@@ -5,6 +5,9 @@ export GOPATH=~/go
 export DOCKER_HIDE_LEGACY_COMMANDS=yes
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+source "/usr/local/Cellar/fzf/0.17.3/shell/completion.zsh"
+source "/usr/local/Cellar/fzf/0.17.3/shell/key-bindings.zsh"
+
 alias dnsclear="sudo killall -HUP mDNSResponder"
 alias lswcli='python3 -m lswcli'
 
