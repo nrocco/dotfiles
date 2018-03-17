@@ -1,7 +1,6 @@
 export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!build/coverage/*" --glob "!app/logs/*" --glob "!app/cache/*"'
 
-source "/usr/share/fzf/completion.zsh"
 source "/usr/share/fzf/key-bindings.zsh"
 
 alias vault='docker exec -it vault vault'
@@ -16,6 +15,8 @@ function plgrep {
     rg "$@" ~/www ~/bundles
 }
 compdef plgrep=rg
+
+compdef rgit=git
 
 if [ -S "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]
 then
