@@ -43,14 +43,6 @@ $(dest)/.zshrclocal: hosts/$(host)/local.zsh
 endif
 
 
-ifeq ($(wildcard hosts/$(host)/zshenv),)
-$(dest)/.zshenv:
-else
-$(dest)/.zshenv: hosts/$(host)/zshenv
-	ln -sf "$(PWD)/$<" "$@"
-endif
-
-
 ifeq ($(wildcard hosts/$(host)/vim/vimrc),)
 $(dest)/.vimrc: vim/vimrc
 else
@@ -138,6 +130,6 @@ git: $(dest)/.gitignore $(dest)/.gitconfig
 gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf $(dest)/.gnupg/dirmngr.conf
 tmux: $(dest)/.tmux.conf
 vim: $(dest)/.vimrc $(dest)/.vim
-zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zshrclocal $(dest)/.zshenv
+zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zshrclocal
 
 all: zsh ctags curl git vim

@@ -7,8 +7,8 @@ alias vault='docker exec -it vault vault'
 
 path=(
     "${HOME}/bin"
-    "${HOME}/.composer/vendor/bin"
     $path
+    "${HOME}/.composer/vendor/bin"
 )
 
 function plgrep {
