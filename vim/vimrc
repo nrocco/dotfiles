@@ -27,6 +27,9 @@
     " Syntax bundle
     Plug 'sheerun/vim-polyglot'
 
+    " powershell stuff
+    Plug 'PProvost/vim-ps1'
+
     " go stuff
     Plug 'fatih/vim-go', { 'for': 'go' }
 
