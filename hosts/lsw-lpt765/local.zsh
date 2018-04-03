@@ -32,10 +32,6 @@ function wireshark-remote-sudo {
 }
 compdef wireshark-remote-sudo=ssh
 
-function livereplica {
-    curl --insecure -H 'Host: api.leaseweb.com' -H 'Content-Type: application/json' -H "Authorization: Bearer ${TOKEN}" https://10.11.11.98$@ | jq
-}
-
 alias appearin='open -n -a Chromium --args --no-default-browser-check --disable-sync http://appear.in/bare-mentals'
 alias vlan11='open -n -a Chromium --args --user-data-dir="/Users/nrocco/Library/Application Support/ChromiumVlan11" --no-default-browser-check --disable-sync --proxy-server="socks://10.11.11.3:1080"'
 alias vlan33='open -n -a Chromium --args --user-data-dir="/Users/nrocco/Library/Application Support/ChromiumVlan33" --no-default-browser-check --disable-sync --proxy-server="socks://10.11.33.3:1080"'
