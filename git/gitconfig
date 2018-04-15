@@ -33,7 +33,8 @@
     ide = !ide
     make = !make
     warmup = !ide hook run post-checkout
-    latest-tags = "!f() { git tag -l|sort -V|tail -n5; }; f"
+    latest-tags = "!f() { git tag -l|sort -V|tail -n3; }; f"
+    report = "log --since='1 week ago' origin/master"
 [push]
     default = current
 [pull]
