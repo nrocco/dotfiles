@@ -12,7 +12,7 @@ path=(
 )
 
 function plgrep {
-    rg "$@" ~/www/bmp-api ~/www/dedicatedserver-api ~/www/emp-dashboard ~/www/nse-api ~/legacy/cis ~/bundles
+    rg "$@" ~/www/bmp-api/src ~/www/dedicatedserver-api/src ~/www/emp-dashboard/src ~/www/nse-api/src ~/legacy/cis ~/bundles/*/src
 }
 compdef plgrep=rg
 
