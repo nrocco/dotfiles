@@ -1,9 +1,10 @@
-export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
 export FZF_DEFAULT_COMMAND='rg --files --color never --no-ignore --hidden --follow --glob "!.git/*" --glob "!build/coverage/*" --glob "!app/logs/*" --glob "!app/cache/*"'
 
 source "/usr/share/fzf/key-bindings.zsh"
 
 alias vault='docker exec -it vault vault'
+
+alias tailall='tail -Fn0 app/logs/*.log /var/log/nginx/*.log'
 
 path=(
     "${HOME}/bin"
