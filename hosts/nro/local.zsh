@@ -1,5 +1,5 @@
 export GIT_AUTHOR_EMAIL=n.dirocco@global.leaseweb.com
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!build/coverage/*" --glob "!app/logs/*" --glob "!app/cache/*"'
+export FZF_DEFAULT_COMMAND='rg --files --color never --no-ignore --hidden --follow --glob "!.git/*" --glob "!build/coverage/*" --glob "!app/logs/*" --glob "!app/cache/*"'
 
 source "/usr/share/fzf/key-bindings.zsh"
 

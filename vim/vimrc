@@ -166,8 +166,7 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: fzf - A command-line fuzzy finder written in Go
 " ---------------------------------------------------------------
-  nnoremap <leader>a :FZF<CR>
-  let g:fzf_layout = { 'down': '~30%' }
+  nnoremap <leader>f :call fzf#run({'source': 'fd --type f --no-ignore --follow --color never', 'sink': 'e', 'down': '40%'})<CR>
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
@@ -263,7 +262,6 @@ endfunction
 
   nmap <leader>q :bprevious <BAR> bdelete #<CR>
   nmap <leader>n :enew<CR>
-  nmap <leader>f :edit 
 
   " Remove the current buffer file from disk
   command Rm call delete(expand('%')) | bdelete!
