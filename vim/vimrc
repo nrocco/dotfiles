@@ -47,6 +47,13 @@
   call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
 
+" This is a temporary work around for the 'DeprecationWarning: the imp module
+" is deprecated in favour of importlib; see the module's documentation for
+" alternative uses' error. See
+" https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 1
+endif
 
 " ------------------------------------------------------------------------------------------------------------------------------
   set hidden
