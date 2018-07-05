@@ -1,6 +1,6 @@
 [user]
     name = Nico Di Rocco
-    email = dirocco.nico@gmail.com
+    email = n.dirocco@global.leaseweb.com
     signingkey = 0x9EF503D42C2EB801
 [core]
     editor = vim
