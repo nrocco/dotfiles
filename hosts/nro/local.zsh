@@ -6,6 +6,8 @@ alias vault='docker exec -it vault vault'
 
 alias tailall='tail -Fn0 app/logs/*.log /var/log/nginx/*.log'
 
+alias cloudctl='sudo cloudctl'
+
 path=(
     "${HOME}/bin"
     $path
