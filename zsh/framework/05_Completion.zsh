@@ -59,13 +59,6 @@ zstyle ':completion:*' verbose yes
 # Completion of .. directories
 zstyle ':completion:*' special-dirs true
 
-# Fault tolerance
-# (1 error on 3 characters)
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-
-# Case insensitivity
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
-
 # Attempt to complete many parts at once
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 

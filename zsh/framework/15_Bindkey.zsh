@@ -6,14 +6,6 @@ zle -N run-with-sudo
 zle -C hist-complete complete-word _generic
 zstyle ':completion:hist-complete:*' completer _history
 
-# Show "waiting dots" while something tab-completes
-expand-or-complete-with-dots() {
-	echo -n "\e[31m...\e[0m"
-	zle expand-or-complete
-	zle redisplay
-}
-zle -N expand-or-complete-with-dots
-
 # Load terminfo
 zmodload zsh/terminfo
 
@@ -90,9 +82,6 @@ bindkey '\C-x\C-s' run-with-sudo
 
 # [Ctrl-X, Ctrl-X] Complete word from history with menu
 bindkey '\C-X\C-X' hist-complete
-
-# Complete command with waiting-dots
-bindkey '^I' expand-or-complete-with-dots
 
 # File rename magick
 bindkey '^[m' copy-prev-shell-word
