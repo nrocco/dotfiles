@@ -1,7 +1,8 @@
 source "/usr/share/fzf/key-bindings.zsh"
 
-alias vault='docker exec -it vault vault'
-alias tailall='tail -Fn0 app/logs/*.log /var/log/nginx/*.log'
+alias bma='docker-compose --file /home/nrocco/nro/docker-compose.yml'
+alias redis-cli='docker container exec -i -t nro_redis_1 redis-cli'
+alias vault='docker container exec -i -t nro_vault_1 vault'
 alias cloudctl='sudo cloudctl'
 
 path=(
