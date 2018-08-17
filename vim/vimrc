@@ -13,6 +13,7 @@
 
     Plug 'SirVer/ultisnips'
     Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -173,10 +174,25 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: fzf - A command-line fuzzy finder written in Go
 " ---------------------------------------------------------------
-  nnoremap <leader>f :call fzf#run({'source': 'fd --type f --no-ignore --follow --color never', 'sink': 'e', 'down': '40%'})<CR>
+  let g:fzf_layout = { 'down': '~40%' }
+  let g:fzf_history_dir = '~/.cache/fzf-history'
+
+  nnoremap <leader>fh :Helptags<CR>
+  nnoremap <leader>fc :BCommits<CR>
+  nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fa :Rg<space>
+  nnoremap <leader>fA :exec "Rg ".expand("<cword>")<cr>
+
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+  autocmd VimEnter * command! -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
