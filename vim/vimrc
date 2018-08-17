@@ -9,7 +9,7 @@
 
     Plug 'jamessan/vim-gnupg'
     Plug 'benmills/vimux'
-    Plug 'janko-m/vim-test'
+    Plug 'mhinz/vim-signify'
 
     Plug 'SirVer/ultisnips'
     Plug 'junegunn/fzf'
@@ -236,6 +236,13 @@ endfunction
   nmap <F8> :TagbarToggle<CR>
 " ---------------------------------------------------------------
 
+" ---------------------------------------------------------------
+" PLUGIN: mhinz/vim-signify
+" ---------------------------------------------------------------
+  set signcolumn=yes
+  let g:signify_vcs_list = [ 'git' ]
+  let g:signify_realtime = 1
+" ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
 " Keyboard shortcuts
