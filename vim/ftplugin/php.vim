@@ -1,7 +1,5 @@
 " Some php options
   set omnifunc=phpcomplete#CompletePHP
-  let php_sql_query=1                             " Highlight sql in php strings
-  let php_htmlInStrings=1                         " Highlight HTML in php strings
   let php_noShortTags=1                           " Disable PHP Short Tags
   let g:PHP_vintage_case_default_indent=1         " Fix case/break indentation
 
@@ -11,9 +9,6 @@
   inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
   noremap  <Leader>e :call PhpExpandClass()<CR>
 
-" PLUGIN: vim-phpdoc plugin
-  nnoremap <buffer> <leader>d :call PhpDoc()<CR>
-  let g:pdv_cfg_ClassTags = ["author"]
-
 " Sort all the use statements in the current file
-  noremap <leader>g :0;/^use /;/^$/-1 sort u<CR>
+  inoremap <Leader>g <Esc>:call PhpSortUse()<CR>
+  noremap <Leader>g :call PhpSortUse()<CR>

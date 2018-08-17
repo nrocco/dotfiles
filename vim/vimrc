@@ -35,7 +35,7 @@
 
     " php stuff
     Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-    Plug 'sumpygump/php-documentor-vim', { 'for': 'php' }
+    Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
 
     " chef stuff
     Plug 'gregf/ultisnips-chef'
@@ -234,6 +234,12 @@ endfunction
 " PLUGIN: tagbar
 " ---------------------------------------------------------------
   nmap <F8> :TagbarToggle<CR>
+" ---------------------------------------------------------------
+
+" ---------------------------------------------------------------
+" PLUGIN: arnaud-lb/vim-php-namespace
+" ---------------------------------------------------------------
+  let g:php_namespace_sort_after_insert = 1
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------

@@ -1,4 +1,5 @@
 --recurse
+--php-kinds=cfit
 --totals=yes
 --exclude=.git
 --exclude=.svn
