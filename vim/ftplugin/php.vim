@@ -12,3 +12,6 @@
 " Sort all the use statements in the current file
   inoremap <Leader>g <Esc>:call PhpSortUse()<CR>
   noremap <Leader>g :call PhpSortUse()<CR>
+
+" Run php -l
+  noremap <leader>l :Phplint<CR>

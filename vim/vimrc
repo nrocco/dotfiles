@@ -37,6 +37,7 @@
     " php stuff
     Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
     Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
+    Plug 'nrocco/vim-phplint', { 'for': 'php' }
 
     " chef stuff
     Plug 'gregf/ultisnips-chef'
