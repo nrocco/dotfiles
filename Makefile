@@ -5,11 +5,6 @@ host := $(shell hostname -s | tr '[A-Z]' '[a-z]')
 update:
 	git fetch --all --prune
 	git pull origin master
-	git submodule init
-	git submodule sync --recursive
-	git submodule update
-	git submodule foreach --recursive git checkout master
-	git submodule foreach --recursive git pull origin master
 	wget -O zsh/custom-completions/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 	git gc
 	git status

@@ -41,11 +41,9 @@ bindkey "${terminfo[kcuu1]}" up-line-or-history
 bindkey "${terminfo[kcud1]}" down-line-or-history
 
 # start typing + [PageUp] - fuzzy find history forward
-#bindkey "${terminfo[kpp]}" up-line-or-search
 bindkey "${terminfo[kpp]}" history-beginning-search-backward
 
 # start typing + [PageDown] - fuzzy find history backward
-#bindkey "${terminfo[knp]}" down-line-or-search
 bindkey "${terminfo[knp]}" history-beginning-search-forward
 
 # [Home] - Go to beginning of line

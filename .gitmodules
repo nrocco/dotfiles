@@ -4,12 +4,3 @@
 [submodule "zsh/completions"]
 	path = zsh/completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "zsh/syntax-highlighting"]
-	path = zsh/syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "zsh/ls-colors"]
-	path = zsh/ls-colors
-	url = https://github.com/trapd00r/LS_COLORS
-[submodule "zsh/nord-dircolors"]
-	path = zsh/nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors.git

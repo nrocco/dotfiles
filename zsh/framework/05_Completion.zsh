@@ -124,9 +124,6 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZSH_CACHE}/zcompcache"
 
-# Load 3rd party zsh-completions
-source "${HOME}/.zsh/completions/zsh-completions.plugin.zsh"
-
 # Load custom local zsh-completions
 fpath=("${HOME}/.zsh/custom-completions" $fpath)
 

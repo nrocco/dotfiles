@@ -1,7 +1,4 @@
-if [ -d "${ZSH_DOTDIR}/syntax-highlighting" ]; then
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-	source "${ZSH_DOTDIR}/syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 ZSH_HIGHLIGHT_STYLES[cursor]='none'
 ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='bg=blue'
