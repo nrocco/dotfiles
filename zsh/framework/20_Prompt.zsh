@@ -1,5 +1,10 @@
 autoload add-zsh-hook
 
+if [ -f "${0:h}/../zsh-git-prompt/zshrc.sh" ]
+then
+    source "${0:h}/../zsh-git-prompt/zshrc.sh"
+fi
+
 export ZSH_THEME_GIT_PROMPT_CACHE
 
 function promptSetup () {

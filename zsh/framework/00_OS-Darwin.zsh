@@ -4,21 +4,29 @@ fi
 
 if which brew > /dev/null
 then
-    export PATH="/usr/local/sbin:${PATH}"
+    BREW_PREFIX=$(brew --prefix)
+
+    if [ -d "${BREW_PREFIX}/sbin" ]
+    then
+        path=("${BREW_PREFIX}/sbin" $path)
+    fi
+
     if [ ! -f "${ZSH_CACHE}/coreutils_path" ]
     then
         brew --prefix coreutils > "${ZSH_CACHE}/coreutils_path"
     fi
+
     BREW_COREUTILS=$(cat "${ZSH_CACHE}/coreutils_path")
+
+    if [ -d "${BREW_COREUTILS}" ]
+    then
+        # let GNU coreutils installed by brew take preecedence on Mac systems
+        path=("${BREW_COREUTILS}/libexec/gnubin" $path)
+        manpath=("${BREW_COREUTILS}/libexec/gnuman" $manpath)
+    else
+        # the OSX way for ls colors.
+        export CLICOLOR=1
+    fi
 fi
 
-if [ -d "${BREW_COREUTILS}" ]; then
-    # let GNU coreutils installed by brew take preecedence on Mac systems
-    export PATH="${BREW_COREUTILS}/libexec/gnubin:${PATH}"
-    export MANPATH="${BREW_COREUTILS}/libexec/gnuman:${MANPATH}"
-else
-    # the OSX way for ls colors.
-    export CLICOLOR=1
-fi
-
-unset BREW_COREUTILS
+unset BREW_PREFIX BREW_COREUTILS

@@ -9,4 +9,10 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export REPORTTIME=3
 export TIMEFMT="time: %U user %S system %P cpu %*E total  %J"
 
-eval $(dircolors -b "${ZPLUG_REPOS}/arcticicestudio/nord-dircolors/src/dir_colors")
+if which dircolors > /dev/null
+then
+    if [ -f "${0:h}/../nord-dircolors/src/dir_colors" ]
+    then
+        eval $(dircolors -b "${0:h}/../nord-dircolors/src/dir_colors")
+    fi
+fi

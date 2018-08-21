@@ -124,8 +124,8 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZSH_CACHE}/zcompcache"
 
-# Load custom local zsh-completions
-fpath=("${HOME}/.zsh/custom-completions" $fpath)
+fpath+="${0:h}/../zsh-completions/src"
+fpath+="${0:h}/custom-completions"
 
 compinit -i -d "${ZSH_CACHE}/zcompdump"
 
@@ -136,6 +136,7 @@ compdef _ssh sshc=ssh
 compdef _scp scpc=scp
 
 # Compile the completion dump, to increase startup speed.
-if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]; then
+if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]
+then
     zcompile "${ZSH_CACHE}/zcompdump"
 fi

@@ -1,29 +1,6 @@
-#!/bin/zsh
-
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "olivierverdier/zsh-git-prompt", use:"zshrc.sh"
-zplug "arcticicestudio/nord-dircolors"
-
-if ! zplug check; then
-    zplug install
-fi
-
-zplug load
-
-export ZSH_CACHE="${HOME}/.cache/zsh"
-
-if [ ! -d "${ZSH_CACHE}" ]; then
-    mkdir -p "${ZSH_CACHE}"
-fi
-
-# Load all of the config files that end in .zsh
-for ZSH_CONF in "${HOME}"/.zsh/framework/<00-99>_*.zsh(N); do
+ZSH_CACHE="${HOME}/.cache/zsh"
+for ZSH_CONF in ${HOME}/.zsh/framework/<00-99>_*.zsh(N)
+do
     source "${ZSH_CONF}"
 done
-
 unset ZSH_CACHE ZSH_CONF
