@@ -1,6 +1,5 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export GOPATH=/usr/local/go
 
 source "/usr/local/Cellar/fzf/0.17.4/shell/completion.zsh"
 source "/usr/local/Cellar/fzf/0.17.4/shell/key-bindings.zsh"
@@ -10,11 +9,7 @@ alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
 
-path=(
-    "${HOME}/bin"
-    $path
-    "${HOME}/.composer/vendor/bin"
-)
+path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin")
 
 function chefgrep {
     rg --follow "$@" /Users/nrocco/Develop/chef-repo/cookbooks

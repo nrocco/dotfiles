@@ -1,7 +1,3 @@
-dest := ~
-host := $(shell hostname -s | tr '[A-Z]' '[a-z]')
-
-
 update:
 	git fetch --all --prune
 	git pull origin master
@@ -15,121 +11,73 @@ update:
 	git status
 
 
-ifeq ($(wildcard hosts/$(host)/curl/curlrc),)
-$(dest)/.curlrc: curl/curlrc
-else
-$(dest)/.curlrc: hosts/$(host)/curl/curlrc
-endif
+~/.curlrc: curl/curlrc
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/zsh/zshrc),)
-$(dest)/.zshrc: zsh/zshrc
-else
-$(dest)/.zshrc: hosts/$(host)/zsh/zshrc
-endif
+~/.zshrc: zsh/zshrc
 	ln -sf "$(PWD)/$<" "$@"
 
 
-$(dest)/.zsh: zsh/
+~/.zsh: zsh
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/local.zsh),)
-$(dest)/.zshrclocal:
-else
-$(dest)/.zshrclocal: hosts/$(host)/local.zsh
-	ln -sf "$(PWD)/$<" "$@"
-endif
-
-
-ifeq ($(wildcard hosts/$(host)/vim/vimrc),)
-$(dest)/.vimrc: vim/vimrc
-else
-$(dest)/.vimrc: hosts/$(host)/vim/vimrc
-endif
+~/.vimrc: vim/vimrc
 	ln -sf "$(PWD)/$<" "$@"
 
 
-$(dest)/.vim: vim/
+~/.vim: vim
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/gpg/gpg.conf),)
-$(dest)/.gnupg/gpg.conf: gpg/gpg.conf
-else
-$(dest)/.gnupg/gpg.conf: hosts/$(host)/gpg/gpg.conf
-endif
-	mkdir -p "$(dest)/.gnupg"
+~/.gnupg/gpg.conf: gpg/gpg.conf
+	mkdir -p "~/.gnupg"
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/gpg/gpg-agent.conf),)
-$(dest)/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
-else
-$(dest)/.gnupg/gpg-agent.conf: hosts/$(host)/gpg/gpg-agent.conf
-endif
-	mkdir -p "$(dest)/.gnupg"
+~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+	mkdir -p "~/.gnupg"
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/gpg/dirmngr.conf),)
-$(dest)/.gnupg/dirmngr.conf: gpg/dirmngr.conf
-else
-$(dest)/.gnupg/dirmngr.conf: hosts/$(host)/gpg/dirmngr.conf
-endif
-	mkdir -p "$(dest)/.gnupg"
+~/.gnupg/dirmngr.conf: gpg/dirmngr.conf
+	mkdir -p "~/.gnupg"
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/git/gitignore),)
-$(dest)/.gitignore: git/gitignore
-else
-$(dest)/.gitignore: hosts/$(host)/git/gitignore
-endif
+~/.gitignore: git/gitignore
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/git/gitconfig),)
-$(dest)/.gitconfig: git/gitconfig
-else
-$(dest)/.gitconfig: hosts/$(host)/git/gitconfig
-endif
+~/.gitconfig: git/gitconfig
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/tmux/tmux.conf),)
-$(dest)/.tmux.conf: tmux/tmux.conf
-else
-$(dest)/.tmux.conf: hosts/$(host)/tmux/tmux.conf
-endif
+~/.tmux.conf: tmux/tmux.conf
 	ln -sf "$(PWD)/$<" "$@"
 
 
-ifeq ($(wildcard hosts/$(host)/ctags/ctags),)
-$(dest)/.ctags: ctags/ctags
-else
-$(dest)/.ctags: hosts/$(host)/ctags/ctags
-endif
+~/.ctags: ctags/ctags
 	ln -sf "$(PWD)/$<" "$@"
 
 
 remove:
-	@$(call __remove,$(dest)/.ctags)
-	@$(call __remove,$(dest)/.curlrc)
-	@$(call __remove,$(dest)/.gitconfig)
-	@$(call __remove,$(dest)/.gitignore)
-	@$(call __remove,$(dest)/.tmux.conf)
-	@$(call __remove,$(dest)/.vim)
-	@$(call __remove,$(dest)/.vimrc)
+	@$(call __remove,~/.ctags)
+	@$(call __remove,~/.curlrc)
+	@$(call __remove,~/.gitconfig)
+	@$(call __remove,~/.gitignore)
+	@$(call __remove,~/.tmux.conf)
+	@$(call __remove,~/.vim)
+	@$(call __remove,~/.vimrc)
 
 
-ctags: $(dest)/.ctags
-curl: $(dest)/.curlrc
-git: $(dest)/.gitignore $(dest)/.gitconfig
-gpg: $(dest)/.gnupg/gpg.conf $(dest)/.gnupg/gpg-agent.conf $(dest)/.gnupg/dirmngr.conf
-tmux: $(dest)/.tmux.conf
-vim: $(dest)/.vimrc $(dest)/.vim
-zsh: $(dest)/.zshrc $(dest)/.zsh $(dest)/.zshrclocal
+ctags: ~/.ctags
+curl: ~/.curlrc
+git: ~/.gitignore ~/.gitconfig
+gpg: ~/.gnupg/gpg.conf ~/.gnupg/gpg-agent.conf ~/.gnupg/dirmngr.conf
+tmux: ~/.tmux.conf
+vim: ~/.vimrc ~/.vim
+zsh: ~/.zshrc ~/.zsh
 
 all: zsh ctags curl git vim

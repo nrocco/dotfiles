@@ -5,11 +5,7 @@ alias redis-cli='docker container exec -i -t nro_redis_1 redis-cli'
 alias vault='docker container exec -i -t nro_vault_1 vault'
 alias cloudctl='sudo cloudctl'
 
-path=(
-    "${HOME}/bin"
-    $path
-    "${HOME}/.composer/vendor/bin"
-)
+path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin")
 
 function plgrep {
     rg "$@" ~/www/bmp-api/src ~/www/dedicatedserver-api/src ~/www/emp-dashboard/src ~/www/nse-api/src ~/legacy/cis ~/bundles/*/src

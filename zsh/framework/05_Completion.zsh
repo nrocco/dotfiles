@@ -59,6 +59,12 @@ zstyle ':completion:*' verbose yes
 # Completion of .. directories
 zstyle ':completion:*' special-dirs true
 
+# Fault tolerance (1 error on 3 characters)
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+
+# Case insensitivity
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
+
 # Attempt to complete many parts at once
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
@@ -125,15 +131,20 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZSH_CACHE}/zcompcache"
 
 fpath+="${0:h}/../zsh-completions/src"
-fpath+="${0:h}/custom-completions"
+fpath+="${0:h}/../custom-completions"
 
 compinit -i -d "${ZSH_CACHE}/zcompdump"
+
+source "${0:h}/../zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Complete them as ssh
 compdef _ssh sshc=ssh
 
 # Complete them as scp
 compdef _scp scpc=scp
+
+# Complete them as git
+compdef _git rgit=git
 
 # Compile the completion dump, to increase startup speed.
 if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]

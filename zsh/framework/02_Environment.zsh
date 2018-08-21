@@ -14,5 +14,7 @@ then
     if [ -f "${0:h}/../nord-dircolors/src/dir_colors" ]
     then
         eval $(dircolors -b "${0:h}/../nord-dircolors/src/dir_colors")
+    else
+        eval $(dircolors -b)
     fi
 fi
