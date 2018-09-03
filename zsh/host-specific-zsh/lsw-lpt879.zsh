@@ -1,6 +1,8 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export GOPATH=/usr/local/go
+
 source "/usr/local/Cellar/fzf/0.17.4/shell/completion.zsh"
 source "/usr/local/Cellar/fzf/0.17.4/shell/key-bindings.zsh"
 
