@@ -27,5 +27,3 @@ function wireshark-remote-sudo {
     ssh "$@" "sudo tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -
 }
 compdef wireshark-remote-sudo=ssh
-
-alias vpn='gpg --decrypt ~/.openconnect-password | sudo openconnect --config ~/.openconnect.conf connect.ocom.com'
