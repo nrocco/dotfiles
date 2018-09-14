@@ -135,8 +135,6 @@ fpath+="${0:h}/../custom-completions"
 
 compinit -i -d "${ZSH_CACHE}/zcompdump"
 
-source "${0:h}/../zsh-autosuggestions/zsh-autosuggestions.zsh"
-
 # Complete them as ssh
 compdef _ssh sshc=ssh
 
