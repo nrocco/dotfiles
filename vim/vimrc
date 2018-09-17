@@ -9,7 +9,6 @@
 
     Plug 'jamessan/vim-gnupg'
     Plug 'benmills/vimux'
-    Plug 'mhinz/vim-signify'
 
     Plug 'SirVer/ultisnips'
     Plug 'junegunn/fzf'
@@ -19,17 +18,11 @@
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-unimpaired'
-
-    Plug 'janko-m/vim-test'
-    Plug 'majutsushi/tagbar'
     Plug 'tpope/vim-sensible'
 
     " Syntax bundle
+    Plug 'janko-m/vim-test'
     Plug 'sheerun/vim-polyglot'
-
-    " powershell stuff
-    Plug 'PProvost/vim-ps1'
 
     " go stuff
     Plug 'fatih/vim-go', { 'for': 'go' }
@@ -41,21 +34,9 @@
 
     " chef stuff
     Plug 'gregf/ultisnips-chef'
-    Plug 'ngmy/vim-rubocop'
     Plug 'dougireton/vim-chef'
-
-    " python stuff
-    Plug 'vim-scripts/indentpython.vim'
   call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
-
-" This is a temporary work around for the 'DeprecationWarning: the imp module
-" is deprecated in favour of importlib; see the module's documentation for
-" alternative uses' error. See
-" https://github.com/vim/vim/issues/3117
-if has('python3')
-  silent! python3 1
-endif
 
 " ------------------------------------------------------------------------------------------------------------------------------
   set hidden
@@ -257,14 +238,6 @@ endfunction
 " PLUGIN: arnaud-lb/vim-php-namespace
 " ---------------------------------------------------------------
   let g:php_namespace_sort_after_insert = 1
-" ---------------------------------------------------------------
-
-" ---------------------------------------------------------------
-" PLUGIN: mhinz/vim-signify
-" ---------------------------------------------------------------
-  set signcolumn=yes
-  let g:signify_vcs_list = [ 'git' ]
-  let g:signify_realtime = 1
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
