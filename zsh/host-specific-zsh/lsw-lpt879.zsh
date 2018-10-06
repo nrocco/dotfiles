@@ -6,7 +6,7 @@ export GOPATH=/usr/local/go
 source "/usr/local/Cellar/fzf/0.17.4/shell/completion.zsh"
 source "/usr/local/Cellar/fzf/0.17.4/shell/key-bindings.zsh"
 
-alias lswcli='python3 -m lswcli'
+alias nmap='sudo /usr/local/bin/nmap'
 alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
