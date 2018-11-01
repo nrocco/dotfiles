@@ -11,7 +11,7 @@ alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
 
-path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin")
+path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin" "${GOPATH}/bin")
 
 function chefgrep {
     rg --follow "$@" /Users/nrocco/Develop/chef-repo/cookbooks
