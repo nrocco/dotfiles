@@ -19,11 +19,30 @@ function chefgrep {
 compdef chefgrep=rg
 
 function wireshark-remote {
-    ssh "$@" "tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -
+    local ARGS_FOR=ssh
+    local SSH_ARGS=()
+    local TCPDUMP_ARGS=("-s0" "-U" "-n" "-w -")
+
+    for ARG in "$@"
+    do
+        if [[ "${ARG}" == "--" ]]
+        then
+            ARGS_FOR=tcpdump
+            continue
+        fi
+
+        if [[ "${ARGS_FOR}" == "ssh" ]]
+        then
+            SSH_ARGS+=("${ARG}")
+        elif [[ "${ARGS_FOR}" == "tcpdump" ]]
+        then
+            TCPDUMP_ARGS+=("${ARG}")
+        fi
+    done
+
+    echo "Ssh args: ${SSH_ARGS[@]}"
+    echo "Tcpdump args: ${TCPDUMP_ARGS[@]}"
+
+    ssh ${SSH_ARGS[@]} tcpdump ${TCPDUMP_ARGS[@]} 'not tcp port 22' | wireshark -k -i -
 }
 compdef wireshark-remote=ssh
-
-function wireshark-remote-sudo {
-    ssh "$@" "sudo tcpdump -s0 -U -n -w - 'not port 22'" | wireshark -k -i -
-}
-compdef wireshark-remote-sudo=ssh
