@@ -206,7 +206,6 @@ endfunction
 " PLUGIN: vim-test
 " ---------------------------------------------------------------
   let test#strategy = "vimux"
-  let test#php#phpunit#options = '--configuration app'
 
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
