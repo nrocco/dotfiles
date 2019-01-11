@@ -3,7 +3,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # Allows to kill backward word path by path using ctrl+w
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?_-[]~&;!#$%^(){}<>'
 
 if which dircolors > /dev/null
 then
