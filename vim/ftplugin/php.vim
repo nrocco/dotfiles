@@ -13,5 +13,7 @@
   inoremap <Leader>g <Esc>:call PhpSortUse()<CR>
   noremap <Leader>g :call PhpSortUse()<CR>
 
+  let g:php_namespace_sort_after_insert = 1
+
 " Run php -l
   noremap <leader>l :Phplint<CR>

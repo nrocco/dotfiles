@@ -157,13 +157,15 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: fzf - A command-line fuzzy finder written in Go
 " ---------------------------------------------------------------
-  let g:fzf_layout = { 'down': '~40%' }
+  let g:fzf_buffers_jump = 1
+  let g:fzf_layout = { 'down': '~30%' }
   let g:fzf_history_dir = '~/.cache/fzf-history'
 
   nnoremap <leader>fh :Helptags<CR>
   nnoremap <leader>fc :BCommits<CR>
   nnoremap <leader>ff :Files<CR>
-  nnoremap <leader>fa :Rg<space>
+  nnoremap <leader>ft :Tags<CR>
+  nnoremap <leader>fa :Rg<CR>
   nnoremap <leader>fA :exec "Rg ".expand("<cword>")<cr>
 
   autocmd! FileType fzf
