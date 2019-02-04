@@ -5,7 +5,8 @@ then
     source "${0:h}/../zsh-git-prompt/zshrc.sh"
 fi
 
-export ZSH_THEME_GIT_PROMPT_CACHE
+export ZSH_THEME_GIT_PROMPT_CACHE=1
+export ZSH_GIT_PROMPT_SHOW_UPSTREAM=1
 
 function promptSetup () {
     setopt prompt_subst
