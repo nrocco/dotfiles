@@ -17,3 +17,6 @@
 
 " Run php -l
   noremap <leader>l :Phplint<CR>
+
+" PLUGIN: arnaud-lb/vim-php-namespace
+  let g:php_namespace_sort_after_insert = 1
