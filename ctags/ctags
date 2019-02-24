@@ -1,5 +1,8 @@
 --recurse
---php-kinds=cfit
+--fields=+aimlS
+--PHP-kinds=+cdfint-av
+--tag-relative=yes
 --totals=yes
---exclude=.git
---exclude=.svn
+--exclude=*\.phar
+--exclude=*Test.php
+--exclude=*phpunit*

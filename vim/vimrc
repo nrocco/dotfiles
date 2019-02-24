@@ -50,7 +50,7 @@
   set showmode                                    " Show in what mode we are in (paste/nopaste)
   set nopaste
   set background=dark
-  set numberwidth=4                               " Make space to show line numbers up to 999
+  set numberwidth=5                               " Make space to show line numbers up to 999
   colorscheme gruvbox
 " ------------------------------------------------------------------------------------------------------------------------------
   set nowrap                                      " Disable wrapping of lines
@@ -66,8 +66,8 @@
   set nofoldenable                                " Disable Folding
   set foldcolumn=1                                " Add a bit extra margin to the left
 " ------------------------------------------------------------------------------------------------------------------------------
-  set backspace=eol,start,indent                  " Configure backspace so it acts as it should act
-  set whichwrap+=<,>,h,l                          " Configure backspace so it acts as it should act
+  set backspace=start,indent                      " Do not allow backspace to remove a line
+  set whichwrap=b,s                               " You cannot use arrow keys to go prev or next lines
 " ------------------------------------------------------------------------------------------------------------------------------
   set incsearch                                   " Searching starts after you enter the string
   set ignorecase                                  " Searching is not case sensitive
@@ -87,7 +87,7 @@
   set autoread                                    " Set to auto read when a file is changed from the outside
   set wildmenu                                    " Enables a menu at the bottom of the vim/gvim window.
   set wildmode=list:longest,full                  " Completion on the command line
-  set completeopt=longest,menuone                 " Completion popup doesn’t select first item and typing new letters updates the completion list
+  set completeopt=menu,menuone,noselect,noinsert  " Completion popup doesn’t select first item and typing new letters updates the completion list
   set showmatch                                   " Show/highlight matching braches
   set mat=2                                       " How many tenths of a second to blink when matching brackets
   set nosmartindent                               " Automatically indent braces (overrides autoindent)
@@ -104,16 +104,10 @@
   set shiftwidth=4                                " Control how many columns text is indented with the reindent operations
 " ------------------------------------------------------------------------------------------------------------------------------
   set ruler                                       " Show line number and cursor position
-  " if has('statusline')
-  "   set laststatus=2                              " Always show the status line
-  " endif
+  set laststatus=2                                " Always show the status line
   set cmdheight=2                                 " Height of the command bar
 " ------------------------------------------------------------------------------------------------------------------------------
   set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
-" ------------------------------------------------------------------------------------------------------------------------------
-  let g:elite_mode=1                              " Enable Elite mode, No ARRRROWWS
-" ------------------------------------------------------------------------------------------------------------------------------
-  set tags+=.git/tags
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
