@@ -43,6 +43,7 @@
 " ------------------------------------------------------------------------------------------------------------------------------
   set hidden
   set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
+  set noshowmode                                  " lightline takes care of showing the mode
 " ------------------------------------------------------------------------------------------------------------------------------
   syntax on                                       " Enable syntaxt highlighting/coloring
   set termguicolors
