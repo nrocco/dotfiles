@@ -162,9 +162,12 @@ endfunction
   nnoremap <leader>fh :Helptags<CR>
   nnoremap <leader>fc :BCommits<CR>
   nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fg :GFiles<CR>
   nnoremap <leader>ft :Tags<CR>
+  nnoremap <leader>fT :exec "Tags ".expand("<cword>")<CR>
+  nnoremap <leader>fs :History/<CR>
   nnoremap <leader>fa :Rg<CR>
-  nnoremap <leader>fA :exec "Rg ".expand("<cword>")<cr>
+  nnoremap <leader>fA :exec "Rg ".expand("<cword>")<CR>
 
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
