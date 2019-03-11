@@ -21,7 +21,6 @@
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-sensible'
-    Plug 'tpope/vim-vinegar'
 
     " go stuff
     Plug 'fatih/vim-go', { 'for': 'go' }
@@ -118,6 +117,7 @@
   set wildignorecase
 " ------------------------------------------------------------------------------------------------------------------------------
 
+
 " ------------------------------------------------------------------------------------------------------------------------------
 " https://sanctum.geek.nz/arabesque/vim-anti-patterns/
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -128,17 +128,12 @@
   inoremap jj <Esc>
 " ------------------------------------------------------------------------------------------------------------------------------
 
+
 " ---------------------------------------------------------------
 " PLUGIN: vim netrw
 " ---------------------------------------------------------------
   let g:netrw_banner = 0            " suppress the banner
-  let g:netrw_liststyle = 3         " tree style listing
-  let g:netrw_browse_split = 4      " act like P (ie. open previous window)
-  let g:netrw_altv = 1              " change from left splitting to right splitting
-  let g:netrw_winsize = 25          " initial size of new windows
   let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-  autocmd FileType netrw set nolist
-  autocmd FileType netrw nnoremap <buffer> g~ :Gedit :/<CR>
 " ---------------------------------------------------------------
 
 
@@ -251,7 +246,7 @@ endfunction
 " PLUGIN: tagbar
 " ---------------------------------------------------------------
   let g:tagbar_width = 50
-  nmap <F8> :TagbarToggle<CR>
+  nmap <leader>m :TagbarToggle<CR>
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
