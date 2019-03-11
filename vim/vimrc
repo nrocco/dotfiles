@@ -21,7 +21,7 @@
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-sensible'
-    PLUG 'tpope/vim-vinegar'
+    Plug 'tpope/vim-vinegar'
 
     " go stuff
     Plug 'fatih/vim-go', { 'for': 'go' }
