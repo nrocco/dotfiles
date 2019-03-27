@@ -286,6 +286,9 @@ endfunction
   command Rm call delete(expand('%')) | bdelete!
 " ---------------------------------------------------------------
 
+  :nmap coh :noh<CR>
+  :nmap con :set invnumber<CR>
+  :nmap col :set list!<CR>
 
 " ---------------------------------------------------------------
 " Fix Home/End keys in vim
