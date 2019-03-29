@@ -1,4 +1,5 @@
 export FZF_DEFAULT_COMMAND='fd --color never --hidden --follow --type file --exclude ".git/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export DOCKER_HIDE_LEGACY_COMMANDS=yes
 
 if which direnv > /dev/null

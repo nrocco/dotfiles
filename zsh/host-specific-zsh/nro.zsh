@@ -3,9 +3,12 @@ source "/usr/share/doc/fzf/examples/key-bindings.zsh"
 alias bma='docker-compose --file /home/nrocco/nro/docker-compose.yml --file /home/nrocco/nro/docker-compose.override.yml'
 alias redis-cli='bma exec redis redis-cli'
 alias vault='bma exec vault vault'
-alias cloudctl='sudo cloudctl'
 
 path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin")
+
+alias vimdiff='vim -d'
+
+compdef vimdiff=vim
 
 function plgrep {
     rg "$@" ~/www/bmp-api/src ~/www/dedicatedserver-api/src ~/www/emp-dashboard/src ~/www/nse-api/src ~/legacy/cis ~/bundles/*/src
