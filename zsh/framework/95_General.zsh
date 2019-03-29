@@ -1,4 +1,4 @@
-export FZF_DEFAULT_COMMAND='rg --files --color never --no-ignore --hidden --follow --glob "!.git/*" --glob "!build/coverage/*" --glob "!app/logs/*" --glob "!app/cache/*" --glob "!var/*"'
+export FZF_DEFAULT_COMMAND='fd --color never --hidden --follow --type file --exclude ".git/*"'
 export DOCKER_HIDE_LEGACY_COMMANDS=yes
 
 if which direnv > /dev/null
