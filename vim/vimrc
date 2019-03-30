@@ -8,13 +8,11 @@
     Plug 'morhetz/gruvbox'
 
     Plug 'jamessan/vim-gnupg'
-    Plug 'benmills/vimux'
 
     Plug 'SirVer/ultisnips'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'will133/vim-dirdiff'
 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -217,26 +215,10 @@ endfunction
 " ---------------------------------------------------------------
 " PLUGIN: vim-test
 " ---------------------------------------------------------------
-  let test#strategy = "vimux"
+  let test#strategy = "vimterminal"
 
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
-" ---------------------------------------------------------------
-
-" ---------------------------------------------------------------
-" PLUGIN: vimux
-" ---------------------------------------------------------------
-  " Close vim tmux runner opened by VimuxRunCommand
-  map <Leader>vq :VimuxCloseRunner<CR>
-
-  " Zoom the tmux runner page
-  map <Leader>vz :VimuxZoomRunner<CR>
-
-  " Prompt for a command to run
-  map <Leader>vp :VimuxPromptCommand<CR>
-
-  " Run last command executed by VimuxRunCommand
-  map <Leader>vl :VimuxRunLastCommand<CR>
 " ---------------------------------------------------------------
 
 " ---------------------------------------------------------------
