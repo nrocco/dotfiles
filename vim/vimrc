@@ -21,6 +21,7 @@
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-sensible'
+    Plug 'junegunn/vim-slash'
 
     " go stuff
     Plug 'fatih/vim-go', { 'for': 'go' }
