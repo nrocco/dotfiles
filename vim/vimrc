@@ -34,7 +34,6 @@
     Plug 'nrocco/vim-phplint', { 'for': 'php' }
 
     " chef stuff
-    Plug 'gregf/ultisnips-chef'
     Plug 'dougireton/vim-chef'
   call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
