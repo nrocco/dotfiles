@@ -1,4 +1,4 @@
-source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+source "/usr/share/fzf/key-bindings.zsh"
 
 alias bma='docker-compose --file /home/nrocco/nro/docker-compose.yml --file /home/nrocco/nro/docker-compose.override.yml'
 alias redis-cli='bma exec redis redis-cli'
