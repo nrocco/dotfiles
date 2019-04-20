@@ -19,6 +19,7 @@
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-eunuch'
     Plug 'junegunn/vim-slash'
 
     " go stuff
