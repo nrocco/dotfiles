@@ -1,4 +1,5 @@
 --recurse
+--sort=yes
 --fields=+aimlS
 --PHP-kinds=+cdfint-av
 --tag-relative=yes
