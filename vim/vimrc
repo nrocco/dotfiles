@@ -1,283 +1,264 @@
 " ------------------------------------------------------------------------------------------------------------------------------
-  set nocompatible
-  filetype off
+call plug#begin('~/.vim/plugged')
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'morhetz/gruvbox'
 
-  call plug#begin('~/.vim/plugged')
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'morhetz/gruvbox'
+  Plug 'jamessan/vim-gnupg'
 
-    Plug 'jamessan/vim-gnupg'
+  Plug 'SirVer/ultisnips'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
 
-    Plug 'SirVer/ultisnips'
-    Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'
-    Plug 'majutsushi/tagbar'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-ragtag'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-eunuch'
+  Plug 'junegunn/vim-slash'
 
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-ragtag'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-sensible'
-    Plug 'tpope/vim-eunuch'
-    Plug 'junegunn/vim-slash'
+  " go stuff
+  Plug 'fatih/vim-go', { 'for': 'go' }
 
-    " go stuff
-    Plug 'fatih/vim-go', { 'for': 'go' }
+  " Syntax bundle
+  Plug 'janko-m/vim-test'
+  Plug 'sheerun/vim-polyglot'
 
-    " Syntax bundle
-    Plug 'janko-m/vim-test'
-    Plug 'sheerun/vim-polyglot'
+  " php stuff
+  Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+  Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
+  Plug 'nrocco/vim-phplint', { 'for': 'php' }
 
-    " php stuff
-    Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-    Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
-    Plug 'nrocco/vim-phplint', { 'for': 'php' }
-
-    " chef stuff
-    Plug 'dougireton/vim-chef'
-  call plug#end()
+  " chef stuff
+  Plug 'dougireton/vim-chef'
+call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
 
 " ------------------------------------------------------------------------------------------------------------------------------
-  set hidden
-  set nomodeline                                  " Disable modeline for security reasons (FreeBSD tip)
-  set noshowmode                                  " lightline takes care of showing the mode
+set nocompatible                                " Make Vim behave in a more useful way.
+set hidden                                      " A buffer becomes hidden when it is abandoned.
+set nomodeline                                  " Disble modelines to avoid arbitrary code execution
+set noshowmode                                  " Vim Airline takes care of showing the mode
 " ------------------------------------------------------------------------------------------------------------------------------
-  syntax on                                       " Enable syntaxt highlighting/coloring
-  set termguicolors
-  set number                                      " Show line numbers
-  set showmode                                    " Show in what mode we are in (paste/nopaste)
-  set nopaste
-  set background=dark
-  set numberwidth=5                               " Make space to show line numbers up to 999
-  colorscheme gruvbox
+syntax on                                       " Enable Syntax highlighting
+set termguicolors                               " Use highlight-guifg and highlight-guibg attributes (thus using 24-bit color).
+set number                                      " Enable line numbers
+set paste                                       " When pasting text, paste as-is
+set background=dark                             " Tell vim to improve it's ui far dark colors
+set numberwidth=5                               " Enough room for files with 9999 lines :)
+colorscheme gruvbox                             " Enable a specific color scheme
 " ------------------------------------------------------------------------------------------------------------------------------
-  set nowrap                                      " Disable wrapping of lines
-  set linebreak                                   " If we enable wrapping. Make it at least sensible
-  set nolist                                      " List disables linebreak
-  set textwidth=0                                 " Prevent Vim from automatically inserting line breaks
-  set wrapmargin=0                                " Prevent Vim from automatically inserting line breaks
+set nowrap                                      " Disable line wrapping
+set nolinebreak                                 " Disable line breaks
+set nolist                                      " Do not visually show tabs, eol and trailing blanks
+set textwidth=0                                 " Disable line breaking
+set wrapmargin=0                                " Disable any margins as wrapping is disabled
 " ------------------------------------------------------------------------------------------------------------------------------
-  set scrolloff=1                                 " Always have at least 3 lines before the window's bottom
-  set lazyredraw                                  " Don't update while in macro
-  set ttyfast                                     " Improves redrawing
-  set ttyscroll=3
-  set nofoldenable                                " Disable Folding
-  set foldcolumn=1                                " Add a bit extra margin to the left
+set scrolloff=3                                 " Minimal number of screen lines to keep above and below the cursor.
+set lazyredraw                                  " The screen will not be redrawn while executing macros, registers, etc.
+set ttyfast                                     " Indicates a fast terminal connection.
+set ttyscroll=3                                 " Maximum number of lines to scroll the screen.
+set nofoldenable                                " When off, all folds are open.
+set foldcolumn=0                                " The amount of space to show fold markers
 " ------------------------------------------------------------------------------------------------------------------------------
-  set backspace=start,indent                      " Do not allow backspace to remove a line
-  set whichwrap=b,s                               " You cannot use arrow keys to go prev or next lines
+set backspace=start,indent                      " Do not allow backspace to remove a line
+set whichwrap=b,s                               " You cannot use arrow keys to go prev or next lines
 " ------------------------------------------------------------------------------------------------------------------------------
-  set incsearch                                   " Searching starts after you enter the string
-  set ignorecase                                  " Searching is not case sensitive
-  set smartcase                                   " If a pattern contains an uppercase letter, it is case sensitive, otherwise not
-  set hlsearch                                    " Highlight searches
-  set gdefault                                    " Assume the /g flag on :s substitutions to replace all matches in a line:
-  set wrapscan                                    " Set the search scan to wrap around the file
-  set encoding=utf8                               " UTF-8 Default encoding
+set incsearch                                   " Searching starts after you enter the string
+set ignorecase                                  " Searching is not case sensitive
+set smartcase                                   " If a pattern contains an uppercase letter, it is case sensitive, otherwise not
+set hlsearch                                    " Highlight searches
+set gdefault                                    " Assume the /g flag on :s substitutions to replace all matches in a line:
+set wrapscan                                    " Set the search scan to wrap around the file
+set encoding=utf8                               " UTF-8 Default encoding
 " ------------------------------------------------------------------------------------------------------------------------------
-  filetype plugin indent on                       " Enable plugins on a file type basis
+filetype plugin indent on                       " Enable plugins on a file type basis
 " ------------------------------------------------------------------------------------------------------------------------------
-  set noerrorbells                                " No audio bell
-  set novisualbell                                " No visual bell
-  set t_vb=
-  set tm=500
+set noerrorbells                                " No audio bell
+set novisualbell                                " No visual bell
+set t_vb=                                       " No visual bell
+set tm=500
 " ------------------------------------------------------------------------------------------------------------------------------
-  set autoread                                    " Set to auto read when a file is changed from the outside
-  set wildmenu                                    " Enables a menu at the bottom of the vim/gvim window.
-  set wildmode=list:longest,full                  " Completion on the command line
-  set completeopt=menu,menuone,noselect,noinsert  " Completion popup doesn’t select first item and typing new letters updates the completion list
-  set showmatch                                   " Show/highlight matching braches
-  set mat=2                                       " How many tenths of a second to blink when matching brackets
-  set nosmartindent                               " Automatically indent braces (overrides autoindent)
-  set report=0                                    " Tell us when anything is changed via :...
+set autoread                                    " Set to auto read when a file is changed from the outside
+set wildmenu                                    " Enables a menu at the bottom of the vim/gvim window.
+set wildmode=list:longest,full                  " Completion on the command line
+set completeopt=menu,menuone,noselect,noinsert  " Completion popup doesn’t select first item and typing new letters updates the completion list
+set showmatch                                   " Show/highlight matching braches
+set mat=2                                       " How many tenths of a second to blink when matching brackets
+set nosmartindent                               " Automatically indent braces (overrides autoindent)
+set report=0                                    " Tell us when anything is changed via :...
 " ------------------------------------------------------------------------------------------------------------------------------
-  set directory=~/.cache/vim                      " Directory to place swap files in
-  set nobackup                                    " Turn backup off since most stuff is in git anyway
-  set nowb                                        " Turn backup off since most stuff is in git anyway
-  set noswapfile                                  " Turn backup off since most stuff is in git anyway
+set directory=~/.cache/vim                      " Directory to place swap files in
+set nobackup                                    " Turn backup off since most stuff is in git anyway
+set nowb                                        " Turn backup off since most stuff is in git anyway
+set noswapfile                                  " Turn backup off since most stuff is in git anyway
 " ------------------------------------------------------------------------------------------------------------------------------
-  set expandtab                                   " Tab will be translated to spaces
-  set softtabstop=4                               " Use these amount of spaces when inserting a tab
-  set tabstop=4                                   " Use these amount of spaces when inserting a tab
-  set shiftwidth=4                                " Control how many columns text is indented with the reindent operations
+set expandtab                                   " Tab will be translated to spaces
+set softtabstop=4                               " Use these amount of spaces when inserting a tab
+set tabstop=4                                   " Use these amount of spaces when inserting a tab
+set shiftwidth=4                                " Control how many columns text is indented with the reindent operations
 " ------------------------------------------------------------------------------------------------------------------------------
-  set ruler                                       " Show line number and cursor position
-  set laststatus=2                                " Always show the status line
-  set cmdheight=2                                 " Height of the command bar
+set ruler                                       " Show line number and cursor position
+set laststatus=2                                " Always show the status line
+set cmdheight=2                                 " Height of the command bar
 " ------------------------------------------------------------------------------------------------------------------------------
-  set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
+set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 " ------------------------------------------------------------------------------------------------------------------------------
-  let mapleader = ","                             " Set mapleader key to ,
-  let g:mapleader = ","
+let mapleader = ","                             " Set mapleader key to ,
+let g:mapleader = ","                           " Set mapleader key to ,
 
-  set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
-  set wildignorecase
+set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
+set wildignorecase                              " Case is ignored when completing file names and directories.
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" https://sanctum.geek.nz/arabesque/vim-anti-patterns/
-" ------------------------------------------------------------------------------------------------------------------------------
-  inoremap jj <Esc>
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ---------------------------------------------------------------
 " PLUGIN: vim netrw
-" ---------------------------------------------------------------
-  let g:netrw_banner = 0            " suppress the banner
-  let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:netrw_banner = 0            " suppress the banner
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: Clean Trailing Whitespaces from file
-" ---------------------------------------------------------------
-nnoremap <leader>c :call <SID>CleanTrailingWhiteSpaces()<CR>
-function! <SID>CleanTrailingWhiteSpaces()
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+" ------------------------------------------------------------------------------------------------------------------------------
+nnoremap <leader>c :call StripTrailingWhitespace()<CR>
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
     %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
+    normal 'yz<CR>
+    normal `z
+  endif
 endfunction
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-airline
-" ---------------------------------------------------------------
-  let g:airline_theme = 'gruvbox'
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#show_tabs = 1
-  let g:airline#extensions#tabline#fnamemod = ':t'
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: fzf - A command-line fuzzy finder written in Go
-" ---------------------------------------------------------------
-  let g:fzf_buffers_jump = 1
-  let g:fzf_layout = { 'down': '~30%' }
-  let g:fzf_history_dir = '~/.cache/fzf-history'
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_history_dir = '~/.cache/fzf-history'
 
-  nnoremap <leader>fh :Helptags<CR>
-  nnoremap <leader>fc :BCommits<CR>
-  nnoremap <leader>ff :Files<CR>
-  nnoremap <leader>fg :GFiles<CR>
-  nnoremap <leader>ft :Tags<CR>
-  nnoremap <leader>fT :exec "Tags ".expand("<cword>")<CR>
-  nnoremap <leader>fs :History/<CR>
-  nnoremap <leader>fa :Rg<CR>
-  nnoremap <leader>fA :exec "Rg ".expand("<cword>")<CR>
+nnoremap <leader>fh :Helptags<CR>
+nnoremap <leader>fc :BCommits<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fT :exec "Tags ".expand("<cword>")<CR>
+nnoremap <leader>fs :History/<CR>
+nnoremap <leader>fa :Rg<CR>
+nnoremap <leader>fA :exec "Rg ".expand("<cword>")<CR>
 
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-  autocmd VimEnter * command! -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview('up:60%')
-    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \   <bang>0)
-" ---------------------------------------------------------------
-
-" ---------------------------------------------------------------
-" PLUGIN: commentary.vim
-" Set default comment prefixes for different file types.
-" ---------------------------------------------------------------
-  autocmd FileType apache   set commentstring=#\ %s
-  autocmd FileType nginx    set commentstring=#\ %s
-  autocmd FileType php      set commentstring=//\ %s
-  autocmd FileType markdown set commentstring=>\ %s
-  autocmd FileType yaml     set commentstring=#\ %s
-
-  nmap \\\ gcc
-  vmap \\ gc
-" ---------------------------------------------------------------
+autocmd VimEnter * command! -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
+" PLUGIN: commentary.vim, set default comment prefixes for different file types.
+" ------------------------------------------------------------------------------------------------------------------------------
+autocmd FileType apache   set commentstring=#\ %s
+autocmd FileType nginx    set commentstring=#\ %s
+autocmd FileType php      set commentstring=//\ %s
+autocmd FileType markdown set commentstring=>\ %s
+autocmd FileType yaml     set commentstring=#\ %s
+
+nmap \\\ gcc
+vmap \\ gc
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: UltiSnips
-" ---------------------------------------------------------------
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsListSnippets="<F5>"
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<F5>"
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-test
-" ---------------------------------------------------------------
-  let test#strategy = "vimterminal"
+" ------------------------------------------------------------------------------------------------------------------------------
+let test#strategy = "vimterminal"
 
-  nmap <silent> <leader>t :TestNearest<CR>
-  nmap <silent> <leader>T :TestFile<CR>
-" ---------------------------------------------------------------
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+" ------------------------------------------------------------------------------------------------------------------------------
 
-" ---------------------------------------------------------------
-" PLUGIN: tagbar
-" ---------------------------------------------------------------
-  let g:tagbar_width = 50
-  nmap <leader>m :TagbarToggle<CR>
-" ---------------------------------------------------------------
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " Keyboard shortcuts
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 
 " Shortcut to start command mode with the spacebar
-  nmap <space> :
+nmap <space> :
 
 " Keep selection in visual mode after indenting lines
-  vnoremap < <gv
-  vnoremap > >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
-  nnoremap j gj
-  nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " Fix indentiation in whole file
-  nnoremap <leader>i mzgg=G`z<CR>
+nnoremap <leader>i mzgg=G`z<CR>
 
 " Keyboard shortcut for find-and-replace
-  nnoremap <leader>s :%s/
-  vmap <leader>s :s/
+nnoremap <leader>s :%s/
+vmap <leader>s :s/
 
-" ---------------------------------------------------------------
-  " Buffer navigation
-  map  <C-h>  <ESC>:bprevious<CR>
-  nmap <C-h>  <ESC>:bprevious<CR>
-  map  <C-l>  <ESC>:bnext<CR>
-  nmap <C-l>  <ESC>:bnext<CR>
+" ------------------------------------------------------------------------------------------------------------------------------
+" Buffer navigation
+map  <C-h>  <ESC>:bprevious<CR>
+nmap <C-h>  <ESC>:bprevious<CR>
+map  <C-l>  <ESC>:bnext<CR>
+nmap <C-l>  <ESC>:bnext<CR>
 
-  nmap <leader>q :bprevious <BAR> bdelete #<CR>
-  nmap <leader>n :enew<CR>
+nmap <leader>q :bprevious <BAR> bdelete #<CR>
+nmap <leader>n :enew<CR>
+" ------------------------------------------------------------------------------------------------------------------------------
 
-  " Remove the current buffer file from disk
-  command Rm call delete(expand('%')) | bdelete!
-" ---------------------------------------------------------------
+:nmap coh :noh<CR>
+:nmap con :set invnumber<CR>
+:nmap col :set list!<CR>
 
-  :nmap coh :noh<CR>
-  :nmap con :set invnumber<CR>
-  :nmap col :set list!<CR>
-
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " Fix Home/End keys in vim
-  :map  <ESC>[H <Home>
-  :map  <ESC>[F <End>
-  :imap <ESC>[H <C-O><Home>
-  :imap <ESC>[F <C-O><End>
-  :cmap <ESC>[H <Home>
-  :cmap <ESC>[F <End>
-" ---------------------------------------------------------------
+:map  <ESC>[H <Home>
+:map  <ESC>[F <End>
+:imap <ESC>[H <C-O><Home>
+:imap <ESC>[F <C-O><End>
+:cmap <ESC>[H <Home>
+:cmap <ESC>[F <End>
+" ------------------------------------------------------------------------------------------------------------------------------
 
 " Automatically save non-existent directories on save
 autocmd BufWritePre * :silent !mkdir -p %:p:h
@@ -285,7 +266,8 @@ autocmd BufWritePre * :silent !mkdir -p %:p:h
 " Use q to close vim help
 autocmd FileType help noremap <buffer> q :helpclose<CR>
 
-" ---------------------------------------------------------------
+
+" ------------------------------------------------------------------------------------------------------------------------------
 " Map :q to close the buffer, and if it is the last buffer, close vim
 fun! s:quitiflast()
     let bufcnt = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
@@ -298,12 +280,12 @@ endfun
 command! Bd :call s:quitiflast()
 
 cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'Bd' : 'q'
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 
 
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " Restore cursor position when switching buffers and back
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------------------------------------------------------
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
     if !exists("w:SavedBufView")
@@ -326,12 +308,14 @@ function! AutoRestoreWinView()
 endfunction
 
 " When switching buffers, preserve window view.
-if v:version >= 700
-    autocmd BufLeave * call AutoSaveWinView()
-    autocmd BufEnter * call AutoRestoreWinView()
-endif
-" ---------------------------------------------------------------
+autocmd BufLeave * call AutoSaveWinView()
+autocmd BufEnter * call AutoRestoreWinView()
+" ------------------------------------------------------------------------------------------------------------------------------
 
+
+" ------------------------------------------------------------------------------------------------------------------------------
+" Integrate ranger with vim
+" ------------------------------------------------------------------------------------------------------------------------------
 function RangerExplorer()
     exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
     if filereadable('/tmp/vim_ranger_current_file')
@@ -341,3 +325,4 @@ function RangerExplorer()
     redraw!
 endfun
 map <Leader>x :call RangerExplorer()<CR>
+" ------------------------------------------------------------------------------------------------------------------------------
