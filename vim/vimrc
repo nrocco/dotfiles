@@ -37,14 +37,14 @@ call plug#end()
 
 " ------------------------------------------------------------------------------------------------------------------------------
 set nocompatible                                " Make Vim behave in a more useful way.
-set hidden                                      " A buffer becomes hidden when it is abandoned.
+set nohidden                                    " A buffer becomes unloaded when it is abandoned.
 set nomodeline                                  " Disble modelines to avoid arbitrary code execution
 set noshowmode                                  " Vim Airline takes care of showing the mode
 " ------------------------------------------------------------------------------------------------------------------------------
 syntax on                                       " Enable Syntax highlighting
 set termguicolors                               " Use highlight-guifg and highlight-guibg attributes (thus using 24-bit color).
 set number                                      " Enable line numbers
-set paste                                       " When pasting text, paste as-is
+set nopaste                                     " When pasting text, paste as-is
 set background=dark                             " Tell vim to improve it's ui far dark colors
 set numberwidth=5                               " Enough room for files with 9999 lines :)
 colorscheme gruvbox                             " Enable a specific color scheme
@@ -101,9 +101,10 @@ set shiftwidth=4                                " Control how many columns text 
 " ------------------------------------------------------------------------------------------------------------------------------
 set ruler                                       " Show line number and cursor position
 set laststatus=2                                " Always show the status line
-set cmdheight=2                                 " Height of the command bar
+set cmdheight=1                                 " Height of the command bar
 " ------------------------------------------------------------------------------------------------------------------------------
 set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
+set path=.,**
 " ------------------------------------------------------------------------------------------------------------------------------
 let mapleader = ","                             " Set mapleader key to ,
 let g:mapleader = ","                           " Set mapleader key to ,
@@ -112,6 +113,8 @@ set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
 set wildignorecase                              " Case is ignored when completing file names and directories.
 " ------------------------------------------------------------------------------------------------------------------------------
 
+" Toggle between paste and nopaste modes
+nnoremap <leader>p :set invpaste<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim netrw
@@ -149,7 +152,15 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: fzf - A command-line fuzzy finder written in Go
+" PLUGIN: junegunn/vim-slash - Enhancing in-buffer search experience
+" ------------------------------------------------------------------------------------------------------------------------------
+" Places the current match at the center of the window
+noremap <plug>(slash-after) zz
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
+" PLUGIN: junegunn/fzf.vim - A command-line fuzzy finder written in Go
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~30%' }
@@ -179,7 +190,7 @@ autocmd VimEnter * command! -nargs=* Rg
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: commentary.vim, set default comment prefixes for different file types.
+" PLUGIN: tpope/vim-commentary - Set default comment prefixes for different file types.
 " ------------------------------------------------------------------------------------------------------------------------------
 autocmd FileType apache   set commentstring=#\ %s
 autocmd FileType nginx    set commentstring=#\ %s
@@ -269,7 +280,7 @@ autocmd FileType help noremap <buffer> q :helpclose<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Map :q to close the buffer, and if it is the last buffer, close vim
-fun! s:quitiflast()
+function! s:quitiflast()
     let bufcnt = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
     bdelete
     if bufcnt < 2
