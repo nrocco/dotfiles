@@ -37,7 +37,7 @@ call plug#end()
 
 " ------------------------------------------------------------------------------------------------------------------------------
 set nocompatible                                " Make Vim behave in a more useful way.
-set nohidden                                    " A buffer becomes unloaded when it is abandoned.
+set hidden                                      " A buffer becomes hidden when it is abandoned. So we can move away from unwritten buffers
 set nomodeline                                  " Disble modelines to avoid arbitrary code execution
 set noshowmode                                  " Vim Airline takes care of showing the mode
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -253,7 +253,6 @@ nmap <C-h>  <ESC>:bprevious<CR>
 map  <C-l>  <ESC>:bnext<CR>
 nmap <C-l>  <ESC>:bnext<CR>
 
-nmap <leader>q :bprevious <BAR> bdelete #<CR>
 nmap <leader>n :enew<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
