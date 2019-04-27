@@ -102,6 +102,7 @@ set shiftwidth=4                                " Control how many columns text 
 set ruler                                       " Show line number and cursor position
 set laststatus=2                                " Always show the status line
 set cmdheight=1                                 " Height of the command bar
+set diffopt+=hiddenoff
 " ------------------------------------------------------------------------------------------------------------------------------
 set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 set path=.,**
