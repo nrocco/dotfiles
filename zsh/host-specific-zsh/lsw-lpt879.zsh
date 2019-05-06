@@ -13,11 +13,6 @@ alias traceroute='sudo /usr/sbin/traceroute'
 
 path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin" "${GOPATH}/bin")
 
-function chefgrep {
-    rg --follow "$@" /Users/nrocco/Develop/chef-repo/cookbooks
-}
-compdef chefgrep=rg
-
 function wireshark-remote {
     local ARGS_FOR=ssh
     local SSH_ARGS=()
@@ -46,3 +41,6 @@ function wireshark-remote {
     ssh ${SSH_ARGS[@]} tcpdump ${TCPDUMP_ARGS[@]} 'not tcp port 22' | wireshark -k -i -
 }
 compdef wireshark-remote=ssh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc
