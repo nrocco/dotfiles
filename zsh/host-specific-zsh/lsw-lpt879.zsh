@@ -13,33 +13,6 @@ alias traceroute='sudo /usr/sbin/traceroute'
 
 path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin" "${GOPATH}/bin")
 
-function wireshark-remote {
-    local ARGS_FOR=ssh
-    local SSH_ARGS=()
-    local TCPDUMP_ARGS=("-s0" "-U" "-n" "-w -")
-
-    for ARG in "$@"
-    do
-        if [[ "${ARG}" == "--" ]]
-        then
-            ARGS_FOR=tcpdump
-            continue
-        fi
-
-        if [[ "${ARGS_FOR}" == "ssh" ]]
-        then
-            SSH_ARGS+=("${ARG}")
-        elif [[ "${ARGS_FOR}" == "tcpdump" ]]
-        then
-            TCPDUMP_ARGS+=("${ARG}")
-        fi
-    done
-
-    echo "Ssh args: ${SSH_ARGS[@]}"
-    echo "Tcpdump args: ${TCPDUMP_ARGS[@]}"
-
-    ssh ${SSH_ARGS[@]} tcpdump ${TCPDUMP_ARGS[@]} 'not tcp port 22' | wireshark -k -i -
-}
 compdef wireshark-remote=ssh
 
 autoload -U +X bashcompinit && bashcompinit
