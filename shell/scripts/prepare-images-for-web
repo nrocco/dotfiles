@@ -1,2 +1,2 @@
 #!/bin/bash
-exec mogrify -auto-orient -resize '1280>' -interlace Plane -strip "$@"
+exec docker run -v "$PWD:$PWD" -w "$PWD" --rm nrocco/imagemagick mogrify -auto-orient -resize '1280>' -interlace Plane -strip "$@"
