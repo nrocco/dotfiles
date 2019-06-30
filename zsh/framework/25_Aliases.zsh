@@ -20,7 +20,6 @@ alias l='ls -lF'
 alias ll='ls -lh --time-style=long-iso'
 alias lt='ll -rt'
 alias vihosts="sudo vim /etc/hosts"
-alias gen_pass='f() { LC_ALL=C tr -dc "[:alnum:]" < /dev/urandom | head -c${1:-20}; echo;}; f'
 
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
