@@ -22,10 +22,6 @@ call plug#begin('~/.vim/plugged')
   " go stuff
   Plug 'fatih/vim-go', { 'for': 'go' }
 
-  " python stuff
-  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-  Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
   " Syntax bundle
   Plug 'janko-m/vim-test'
   Plug 'sheerun/vim-polyglot'
@@ -37,11 +33,6 @@ call plug#begin('~/.vim/plugged')
 
   " chef stuff
   Plug 'dougireton/vim-chef'
-
-  " javascript stuff
-  Plug 'jelera/vim-javascript-syntax'
-  Plug 'posva/vim-vue'
-  Plug 'leafOfTree/vim-vue-plugin'
 call plug#end()
 " ------------------------------------------------------------------------------------------------------------------------------
 
