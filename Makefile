@@ -8,7 +8,8 @@ update:
 	git submodule foreach --recursive git pull origin master
 	wget -O zsh/custom-completions/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 	wget -O zsh/custom-completions/_docker-compose https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
-	git gc
+	vim +PlugClean +PlugUpdate +qall
+        git gc
 	git status
 
 
