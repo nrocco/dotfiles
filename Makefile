@@ -9,7 +9,7 @@ update:
 	wget -O zsh/custom-completions/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 	wget -O zsh/custom-completions/_docker-compose https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
 	vim +PlugClean +PlugUpdate +qall
-        git gc
+	git gc
 	git status
 
 
