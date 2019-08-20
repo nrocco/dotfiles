@@ -19,6 +19,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-eunuch'
   Plug 'junegunn/vim-slash'
 
+  " frontend stuff
+  Plug 'posva/vim-vue'
+
   " go stuff
   Plug 'fatih/vim-go', { 'for': 'go' }
 
