@@ -11,6 +11,7 @@ set background=dark                             " Tell vim to improve it's ui fa
 set numberwidth=5                               " Enough room for files with 9999 lines :)
 colorscheme gruvbox                             " Enable a specific color scheme
 " ------------------------------------------------------------------------------------------------------------------------------
+set showtabline=2
 set nowrap                                      " Disable line wrapping
 set nolinebreak                                 " Disable line breaks
 set nolist                                      " Do not visually show tabs, eol and trailing blanks
@@ -106,18 +107,36 @@ endfunction
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
+" PLUGIN: vim-buftabline
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:buftabline_plug_max = 0
+let g:buftabline_indicators = 1
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: lightline
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+  \ 'enable': {
+  \   'statusline': 1,
+  \   'tabline': 0,
+  \ },
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'gitbranch', 'readonly', 'filename' ]
+  \   ],
+  \   'right': [
+  \     [ 'lineinfo', 'percent' ],
+  \     [ 'fileformat', 'fileencoding', 'filetype' ],
+  \   ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head'
+  \ }
+  \ }
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
