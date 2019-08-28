@@ -130,6 +130,7 @@ let g:fzf_history_dir = '~/.cache/fzf-history'
 
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>fc :BCommits<CR>
+nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>ft :Tags<CR>
