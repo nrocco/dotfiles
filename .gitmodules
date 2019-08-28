@@ -10,3 +10,51 @@
 [submodule "zsh/zsh-git-prompt"]
 	path = zsh/zsh-git-prompt
 	url = https://github.com/starcraftman/zsh-git-prompt.git
+[submodule "vim/pack/plugins/start/vim-fugitive"]
+	path = vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/pack/plugins/start/vim-buftabline"]
+	path = vim/pack/plugins/start/vim-buftabline
+	url = https://github.com/ap/vim-buftabline
+[submodule "vim/pack/plugins/start/vim-commentary"]
+	path = vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/pack/plugins/start/vim-ragtag"]
+	path = vim/pack/plugins/start/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag
+[submodule "vim/pack/plugins/start/vim-surround"]
+	path = vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/plugins/start/vim-sensible"]
+	path = vim/pack/plugins/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule "vim/pack/plugins/start/vim-eunuch"]
+	path = vim/pack/plugins/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "vim/pack/plugins/start/lightline-gruvbox.vim"]
+	path = vim/pack/plugins/start/lightline-gruvbox.vim
+	url = https://github.com/shinchu/lightline-gruvbox.vim
+[submodule "vim/pack/plugins/start/lightline.vim"]
+	path = vim/pack/plugins/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/pack/plugins/start/gruvbox"]
+	path = vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "vim/pack/plugins/start/vim-go"]
+	path = vim/pack/plugins/start/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "vim/pack/plugins/start/vim-polyglot"]
+	path = vim/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/pack/plugins/start/vim-vue"]
+	path = vim/pack/plugins/start/vim-vue
+	url = https://github.com/posva/vim-vue
+[submodule "vim/pack/plugins/start/vim-test"]
+	path = vim/pack/plugins/start/vim-test
+	url = https://github.com/janko-m/vim-test
+[submodule "vim/pack/plugins/start/vim-phpnamespace"]
+	path = vim/pack/plugins/start/vim-phpnamespace
+	url = https://github.com/dantleech/vim-phpnamespace
+[submodule "vim/pack/plugins/start/tagbar"]
+	path = vim/pack/plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar

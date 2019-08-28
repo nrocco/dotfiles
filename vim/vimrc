@@ -1,45 +1,3 @@
-" ------------------------------------------------------------------------------------------------------------------------------
-call plug#begin('~/.vim/plugged')
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'morhetz/gruvbox'
-
-  Plug 'jamessan/vim-gnupg'
-
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
-
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-ragtag'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-eunuch'
-  Plug 'junegunn/vim-slash'
-
-  " frontend stuff
-  Plug 'posva/vim-vue'
-
-  " go stuff
-  Plug 'fatih/vim-go', { 'for': 'go' }
-
-  " Syntax bundle
-  Plug 'janko-m/vim-test'
-  Plug 'sheerun/vim-polyglot'
-
-  " php stuff
-  Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-  Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
-  Plug 'nrocco/vim-phplint', { 'for': 'php' }
-
-  " chef stuff
-  Plug 'dougireton/vim-chef'
-call plug#end()
-" ------------------------------------------------------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------------------------------------------------------
 set nocompatible                                " Make Vim behave in a more useful way.
 set hidden                                      " A buffer becomes hidden when it is abandoned. So we can move away from unwritten buffers
 set nomodeline                                  " Disble modelines to avoid arbitrary code execution
@@ -104,6 +62,7 @@ set tabstop=4                                   " Use these amount of spaces whe
 set shiftwidth=4                                " Control how many columns text is indented with the reindent operations
 " ------------------------------------------------------------------------------------------------------------------------------
 set ruler                                       " Show line number and cursor position
+set updatetime=100
 set laststatus=2                                " Always show the status line
 set cmdheight=1                                 " Height of the command bar
 set diffopt+=hiddenoff
@@ -125,6 +84,7 @@ nnoremap <leader>p :set invpaste<CR>
 " PLUGIN: vim netrw
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:netrw_banner = 0            " suppress the banner
+let g:netrw_fastbrowse = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -146,21 +106,18 @@ endfunction
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: vim-airline
+" PLUGIN: lightline
 " ------------------------------------------------------------------------------------------------------------------------------
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: junegunn/vim-slash - Enhancing in-buffer search experience
-" ------------------------------------------------------------------------------------------------------------------------------
-" Places the current match at the center of the window
-noremap <plug>(slash-after) zz
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -251,13 +208,11 @@ nnoremap <leader>i mzgg=G`z<CR>
 nnoremap <leader>s :%s/
 vmap <leader>s :s/
 
+
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
-map  <C-h>  <ESC>:bprevious<CR>
-nmap <C-h>  <ESC>:bprevious<CR>
-map  <C-l>  <ESC>:bnext<CR>
-nmap <C-l>  <ESC>:bnext<CR>
-
+map <C-h> :bprevious!<CR>
+map <C-l> :bnext!<CR>
 nmap <leader>n :enew<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -277,52 +232,3 @@ nmap <leader>n :enew<CR>
 
 " Automatically save non-existent directories on save
 autocmd BufWritePre * :silent !mkdir -p %:p:h
-
-" Use q to close vim help
-autocmd FileType help noremap <buffer> q :helpclose<CR>
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" Map :q to close the buffer, and if it is the last buffer, close vim
-function! s:quitiflast()
-    let bufcnt = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-    bdelete
-    if bufcnt < 2
-        quit
-    endif
-endfun
-
-command! Bd :call s:quitiflast()
-
-cnoreabbrev <expr> q getcmdtype() == ":" && getcmdline() == 'q' ? 'Bd' : 'q'
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" Restore cursor position when switching buffers and back
-" ------------------------------------------------------------------------------------------------------------------------------
-" Save current view settings on a per-window, per-buffer basis.
-function! AutoSaveWinView()
-    if !exists("w:SavedBufView")
-        let w:SavedBufView = {}
-    endif
-    let w:SavedBufView[bufnr("%")] = winsaveview()
-endfunction
-
-" Restore current view settings.
-function! AutoRestoreWinView()
-    let buf = bufnr("%")
-    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
-        let v = winsaveview()
-        let atStartOfFile = v.lnum == 1 && v.col == 0
-        if atStartOfFile && !&diff
-            call winrestview(w:SavedBufView[buf])
-        endif
-        unlet w:SavedBufView[buf]
-    endif
-endfunction
-
-" When switching buffers, preserve window view.
-autocmd BufLeave * call AutoSaveWinView()
-autocmd BufEnter * call AutoRestoreWinView()
-" ------------------------------------------------------------------------------------------------------------------------------
