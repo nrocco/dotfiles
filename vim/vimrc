@@ -122,11 +122,10 @@ let g:lightline = {
   \   'statusline': 1,
   \   'tabline': 0,
   \ },
-  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [
   \     [ 'mode', 'paste' ],
-  \     [ 'gitbranch', 'readonly', 'filename' ]
+  \     [ 'gitbranch', 'readonly', 'relativepath' ]
   \   ],
   \   'right': [
   \     [ 'lineinfo', 'percent' ],

@@ -31,9 +31,6 @@
 [submodule "vim/pack/plugins/start/vim-eunuch"]
 	path = vim/pack/plugins/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
-[submodule "vim/pack/plugins/start/lightline-gruvbox.vim"]
-	path = vim/pack/plugins/start/lightline-gruvbox.vim
-	url = https://github.com/shinchu/lightline-gruvbox.vim
 [submodule "vim/pack/plugins/start/lightline.vim"]
 	path = vim/pack/plugins/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
