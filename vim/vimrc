@@ -91,22 +91,6 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: Clean Trailing Whitespaces from file
-" ------------------------------------------------------------------------------------------------------------------------------
-nnoremap <leader>c :call StripTrailingWhitespace()<CR>
-function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
-    %s/\s\+$//e
-    normal 'yz<CR>
-    normal `z
-  endif
-endfunction
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-buftabline
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:buftabline_plug_max = 0
@@ -128,12 +112,25 @@ let g:lightline = {
   \     [ 'gitbranch', 'readonly', 'relativepath' ]
   \   ],
   \   'right': [
+  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
   \     [ 'lineinfo', 'percent' ],
   \     [ 'fileformat', 'fileencoding', 'filetype' ],
   \   ]
   \ },
   \ 'component_function': {
   \   'gitbranch': 'fugitive#head'
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_ok': 'lightline#ale#ok',
+  \ },
+  \ 'component_type': {
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'left',
   \ }
   \ }
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -191,6 +188,32 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<F5>"
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
+" PLUGIN: vim-ale
+" ------------------------------------------------------------------------------------------------------------------------------
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_disable_lsp = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_set_signs = 0
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_list_window_size = 5
+let g:ale_warn_about_trailing_blank_lines = 1
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+map <leader>l :ALELint<CR>
+map <leader>L :ALEFix<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -13,6 +13,3 @@ let g:go_highlight_types = 1
 
 " " Auto import dependencies
 let g:go_fmt_command = "goimports"
-
-" Run GoMetaLinters
-  noremap <leader>l :GoMetaLinter! expand('%')<CR>
