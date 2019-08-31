@@ -256,11 +256,15 @@ vmap <leader>s :s/
 map <C-h> :bprevious!<CR>
 map <C-l> :bnext!<CR>
 nmap <leader>n :enew<CR>
+nmap <leader>q :bdelete<CR>
+nmap <leader>Q :bdelete!<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
+
 
 :nmap coh :noh<CR>
 :nmap con :set invnumber<CR>
 :nmap col :set list!<CR>
+nmap <leader>c :ToggleQuickfix<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Fix Home/End keys in vim
