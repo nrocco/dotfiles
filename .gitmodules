@@ -38,19 +38,16 @@
 	path = vim/pack/plugins/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
 [submodule "vim/pack/plugins/start/vim-go"]
-	path = vim/pack/plugins/start/vim-go
+	path = vim/pack/languages/start/vim-go
 	url = https://github.com/fatih/vim-go
-[submodule "vim/pack/plugins/start/vim-polyglot"]
-	path = vim/pack/plugins/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot
 [submodule "vim/pack/plugins/start/vim-vue"]
-	path = vim/pack/plugins/start/vim-vue
+	path = vim/pack/languages/start/vim-vue
 	url = https://github.com/posva/vim-vue
 [submodule "vim/pack/plugins/start/vim-test"]
 	path = vim/pack/plugins/start/vim-test
 	url = https://github.com/janko-m/vim-test
 [submodule "vim/pack/plugins/start/vim-phpnamespace"]
-	path = vim/pack/plugins/start/vim-phpnamespace
+	path = vim/pack/languages/start/vim-phpnamespace
 	url = https://github.com/dantleech/vim-phpnamespace
 [submodule "vim/pack/plugins/start/tagbar"]
 	path = vim/pack/plugins/start/tagbar
@@ -80,5 +77,5 @@
 	path = vim/pack/plugins/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "vim/pack/plugins/start/vim-chef"]
-	path = vim/pack/plugins/start/vim-chef
+	path = vim/pack/languages/start/vim-chef
 	url = https://github.com/dougireton/vim-chef.git
