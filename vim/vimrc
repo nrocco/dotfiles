@@ -256,11 +256,33 @@ vmap <leader>s :s/
 map <C-h> :bprevious!<CR>
 map <C-l> :bnext!<CR>
 nmap <leader>n :enew<CR>
-nmap <leader>e :edit<CR>
-nmap <leader>wq :wq<CR>
+nmap <leader>e :edit<SPACE>
 nmap <leader>w :w<CR>
-nmap <leader>q :bdelete<CR>
-nmap <leader>Q :bdelete!<CR>
+function! BufferByeAndWrite()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :wq
+    else
+        :write
+        :bdelete
+    endif
+endfunction
+nmap <leader>wq :call BufferByeAndWrite()<CR>
+function! BufferBye()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :q
+    else
+        :bdelete
+    endif
+endfunction
+nmap <leader>q :call BufferBye()<CR>
+function! BufferByeForce()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :q!
+    else
+        :bdelete!
+    endif
+endfunction
+nmap <leader>Q :call BufferByeForce()!<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
