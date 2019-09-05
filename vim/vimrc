@@ -70,6 +70,7 @@ set diffopt+=hiddenoff
 " ------------------------------------------------------------------------------------------------------------------------------
 set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 set path=.,**
+set tags^=./.git/tags
 " ------------------------------------------------------------------------------------------------------------------------------
 let mapleader = ","                             " Set mapleader key to ,
 let g:mapleader = ","                           " Set mapleader key to ,
