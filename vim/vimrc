@@ -256,6 +256,9 @@ vmap <leader>s :s/
 map <C-h> :bprevious!<CR>
 map <C-l> :bnext!<CR>
 nmap <leader>n :enew<CR>
+nmap <leader>e :edit<CR>
+nmap <leader>wq :wq<CR>
+nmap <leader>w :w<CR>
 nmap <leader>q :bdelete<CR>
 nmap <leader>Q :bdelete!<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
