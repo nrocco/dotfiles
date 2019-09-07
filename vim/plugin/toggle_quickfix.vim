@@ -1,8 +1,9 @@
 " https://gist.github.com/suewonjp/c9bc75605d4ead232261b1cdc0ef4fb6
 
-if exists("b:did_plugin_toggle_quickfix")
+if exists("g:did_plugin_toggle_quickfix")
   finish
-endif   
+endif
+let g:did_plugin_toggle_quickfix = 1
 
 function! s:ToggleQuickfix()
   let l:nr =  winnr("$")
@@ -15,4 +16,13 @@ endfunction
 
 command! ToggleQuickfix call s:ToggleQuickfix()
 
-let b:did_plugin_toggle_quickfix = 1
+function! s:ToggleLocList()
+  let l:nr =  winnr("$")
+  if l:nr == 1
+      lopen
+  else
+      lclose
+  endif
+endfunction
+
+command! ToggleLocList call s:ToggleLocList()
