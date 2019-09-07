@@ -61,6 +61,7 @@
 [submodule "vim/pack/plugins/start/vim-gnupg"]
 	path = vim/pack/languages/start/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg
+	ignore = dirty
 [submodule "vim/pack/plugins/start/vim-snippets"]
 	path = vim/pack/plugins/start/vim-snippets
 	url = https://github.com/honza/vim-snippets
@@ -76,6 +77,7 @@
 [submodule "vim/pack/plugins/start/vim-chef"]
 	path = vim/pack/languages/start/vim-chef
 	url = https://github.com/dougireton/vim-chef.git
+	ignore = dirty
 [submodule "vim/pack/languages/start/vim-vue"]
 	path = vim/pack/languages/start/vim-vue
 	url = https://github.com/storyn26383/vim-vue
@@ -103,6 +105,7 @@
 [submodule "vim/pack/languages/start/python-syntax"]
 	path = vim/pack/languages/start/python-syntax
 	url = https://github.com/vim-python/python-syntax
+	ignore = dirty
 [submodule "vim/pack/languages/start/vim-python-pep8-indent"]
 	path = vim/pack/languages/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent

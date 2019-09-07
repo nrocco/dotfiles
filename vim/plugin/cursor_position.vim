@@ -1,6 +1,7 @@
-if exists("b:did_plugin_cursor_position")
+if exists("g:did_plugin_cursor_position")
   finish
 endif
+let g:did_plugin_cursor_position = 1
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Restore cursor position when switching buffers and back
@@ -29,5 +30,3 @@ endfunction
 " When switching buffers, preserve window view.
 autocmd BufLeave * call AutoSaveWinView()
 autocmd BufEnter * call AutoRestoreWinView()
-
-let b:did_plugin_cursor_position = 1

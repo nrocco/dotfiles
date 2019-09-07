@@ -15,6 +15,7 @@ set showtabline=2
 set nowrap                                      " Disable line wrapping
 set nolinebreak                                 " Disable line breaks
 set nolist                                      " Do not visually show tabs, eol and trailing blanks
+set listchars=tab:»·,trail:·
 set textwidth=0                                 " Disable line breaking
 set wrapmargin=0                                " Disable any margins as wrapping is disabled
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -107,6 +108,7 @@ let g:lightline = {
   \   'statusline': 1,
   \   'tabline': 0,
   \ },
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [
   \     [ 'mode', 'paste' ],
@@ -201,8 +203,8 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_disable_lsp = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 let g:ale_set_signs = 0
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 0
@@ -290,7 +292,7 @@ nmap <leader>Q :call BufferByeForce()!<CR>
 :nmap coh :noh<CR>
 :nmap con :set invnumber<CR>
 :nmap col :set list!<CR>
-nmap <leader>c :ToggleQuickfix<CR>
+nmap <leader>c :ToggleLocList<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Fix Home/End keys in vim
