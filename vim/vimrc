@@ -14,8 +14,8 @@ colorscheme gruvbox                             " Enable a specific color scheme
 set showtabline=2
 set nowrap                                      " Disable line wrapping
 set nolinebreak                                 " Disable line breaks
-set nolist                                      " Do not visually show tabs, eol and trailing blanks
-set listchars=tab:»·,trail:·
+set list                                        " Do not visually show tabs, eol and trailing blanks
+set listchars=tab:»·,trail:·                    " Show spacing characters
 set textwidth=0                                 " Disable line breaking
 set wrapmargin=0                                " Disable any margins as wrapping is disabled
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -208,12 +208,13 @@ let g:ale_set_quickfix = 0
 let g:ale_set_signs = 0
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 0
-let g:ale_list_window_size = 5
+let g:ale_list_window_size = 10
 let g:ale_warn_about_trailing_blank_lines = 1
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   '*':  ['remove_trailing_lines', 'trim_whitespace'],
+\   'go': ['gofmt', 'goimports'],
 \}
 map <leader>l :ALELint<CR>
 map <leader>L :ALEFix<CR>
@@ -223,6 +224,7 @@ map <leader>L :ALEFix<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-tagbar
 " ------------------------------------------------------------------------------------------------------------------------------
+let g:tagbar_sort = 0
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
