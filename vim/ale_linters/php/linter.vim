@@ -5,6 +5,7 @@ function! ale_linters#php#linter#Handle(buffer, lines) abort
         let l:obj = {
         \   'lnum': l:match[1] + 0,
         \   'col': 0,
+        \   'type': 'W',
         \   'text': l:match[2],
         \}
         call add(l:output, l:obj)

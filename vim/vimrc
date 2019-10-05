@@ -212,6 +212,9 @@ let g:ale_list_window_size = 10
 let g:ale_warn_about_trailing_blank_lines = 1
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_fix_on_save = 0
+let g:ale_linters = {
+\   'php': ['linter', 'php', 'phpstan'],
+\}
 let g:ale_fixers = {
 \   '*':  ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt', 'goimports'],
