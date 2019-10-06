@@ -214,6 +214,8 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_fix_on_save = 0
 let g:ale_linters = {
 \   'php': ['linter', 'php', 'phpstan'],
+\   'yaml': ['linter', 'yamllint'],
+\   'json': ['linter', 'jsonlint'],
 \}
 let g:ale_fixers = {
 \   '*':  ['remove_trailing_lines', 'trim_whitespace'],
