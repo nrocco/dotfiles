@@ -14,14 +14,14 @@ BEGIN {
 /\t/ {
     if (ENVIRON["TABS"] != "ignore") {
         errors+=1
-        print FILENAME " on line " NR " uses literal tab characters"
+        print FILENAME " on line " NR " has literal tab characters"
     }
 }
 
 /\r/ {
     if (ENVIRON["CRLF"] != "ignore") {
         errors+=1
-        print FILENAME " on line " NR " uses literal tab characters"
+        print FILENAME " on line " NR " has windows line endings"
     }
 }
 
