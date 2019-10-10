@@ -220,6 +220,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*':  ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt', 'goimports'],
+\   'php': ['php_cs_fixer'],
 \   'json': ['jq'],
 \}
 map <leader>l :ALELint<CR>
