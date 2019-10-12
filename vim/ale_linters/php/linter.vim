@@ -13,10 +13,17 @@ function! ale_linters#php#linter#Handle(buffer, lines) abort
     return l:output
 endfunction
 
+call ale#linter#Define('json', {
+\   'name': 'linter',
+\   'executable': 'linter',
+\   'output_stream': 'stdout',
+\   'command': '%e %s',
+\   'callback': 'ale_linters#php#linter#Handle',
+\})
+
 call ale#linter#Define('php', {
 \   'name': 'linter',
 \   'executable': 'linter',
-\   'lint_file': 1,
 \   'output_stream': 'stdout',
 \   'command': '%e %s',
 \   'callback': 'ale_linters#php#linter#Handle',
