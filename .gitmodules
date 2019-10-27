@@ -115,3 +115,6 @@
 [submodule "vim/pack/languages/start/vim-yaml"]
 	path = vim/pack/languages/start/vim-yaml
 	url = https://github.com/stephpy/vim-yaml
+[submodule "vim/pack/languages/start/vim-php-namespace"]
+	path = vim/pack/languages/start/vim-php-namespace
+	url = https://github.com/arnaud-lb/vim-php-namespace.git
