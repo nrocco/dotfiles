@@ -1,6 +1,7 @@
-vim/.netrwhist
-vim/doc/tags
-vim/temp
-doc/tags
-doc/tags-ja
-vim/spell
+/vim/.netrwhist
+/vim/doc/tags
+/vim/temp
+/doc/tags
+/doc/tags-ja
+/vim/spell
+/vim/plugged/
