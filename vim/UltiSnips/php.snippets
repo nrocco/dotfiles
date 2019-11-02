@@ -7,46 +7,42 @@ endsnippet
 
 snippet <? "Insert opening tag" b
 <?php
-
 $0
 endsnippet
 
 
 snippet php "Insert opening tag" b
 <?php
-
 $0
 endsnippet
 
 
 snippet ns "Insert the current PHP namespace" b
-namespace `!v PhpNamespaceGet()`;
-
-$0
+namespace `!v PhpNamespaceGet()`;$0
 endsnippet
 
 
 snippet pub "Public function" b
-public function ${1:name}(${2:$param})
+public function $1($2)
 {
-	${VISUAL}${5:return null;}
-}$0
+	$0
+}
 endsnippet
 
 
 snippet pro "Protected function" b
-protected function ${1:name}(${2:$param})
+protected function $1($2)
 {
-	${VISUAL}${5:return null;}
-}$0
+	$0
+}
 endsnippet
 
 
 snippet pri "Private function" b
-private function ${1:name}(${2:$param})
+private function $1($2)
 {
-	${VISUAL}${5:return null;}
-}$0
+	$0
+}
 endsnippet
 
 
@@ -96,30 +92,30 @@ endsnippet
 
 
 snippet con "Class constructor template" b
-public function __construct(${1})
+public function __construct($1)
 {
-	${0}
+	$0
 }
 endsnippet
 
 
 snippet fore "foreach loop" b
 foreach ($${1:variable} as $${3:value}) {
-    ${VISUAL}$0
+	$0
 }
 endsnippet
 
 
 snippet forek "foreach variable as key value"
 foreach ($${1:variable} as $${2:key} => $${3:value}) {
-    ${VISUAL}$0
+	$0
 }
 endsnippet
 
 
 snippet for "for i is 0 until x do i++"
 for ($${1:i} = 0; $$1 < $2; $$1++) {
-    ${VISUAL}$0
+	$0
 }
 endsnippet
 
@@ -146,29 +142,29 @@ endsnippet
 
 snippet try "add a try/catch block"
 try {
-	${VISUAL}$1
-} catch (${2:\Exception} as $e) {
-	${3:// catch this}
-}$0
+	$0
+} catch (\Exception $e) {
+	// TODO
+}
 endsnippet
 
 
 snippet catch "add a catch block to an existing try"
-catch (${1:\Exception} as $e) {
-	${2:// catch this}
-}$0
+catch (${1:\Exception} $e) {
+	$0
+}
 endsnippet
 
 
 snippet fpc "file put contents and die"
-file_put_contents('/tmp/fpc.log', ${1} . PHP_EOL, FILE_APPEND); die();
+file_put_contents('/tmp/fpc.log', $1 . PHP_EOL, FILE_APPEND); die();
 endsnippet
 
 
 snippet this "add this"
-$this->$1 = $$1;
+$this->$1 = $$1;$0
 endsnippet
 
 snippet p "add protected variable"
-protected $$1;
+protected $$1;$0
 endsnippet
