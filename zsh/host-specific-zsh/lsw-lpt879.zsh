@@ -3,8 +3,8 @@ export LANG=en_US.UTF-8
 
 export GOPATH=/usr/local/go
 
-source "/usr/local/Cellar/fzf/0.18.0/shell/completion.zsh"
-source "/usr/local/Cellar/fzf/0.18.0/shell/key-bindings.zsh"
+source "/usr/local/var/homebrew/linked/fzf/shell/completion.zsh"
+source "/usr/local/var/homebrew/linked/fzf/shell/key-bindings.zsh"
 
 alias nmap='sudo /usr/local/bin/nmap'
 alias mtr='sudo /usr/local/sbin/mtr'
