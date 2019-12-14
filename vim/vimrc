@@ -369,4 +369,4 @@ nmap <leader>c :ToggleLocList<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 " Automatically save non-existent directories on save
-autocmd BufWritePre * :silent !mkdir -p %:p:h
+autocmd BufWritePre * :silent Mkdir!
