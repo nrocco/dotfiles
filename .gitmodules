@@ -10,3 +10,6 @@
 [submodule "zsh/zsh-git-prompt"]
 	path = zsh/zsh-git-prompt
 	url = https://github.com/starcraftman/zsh-git-prompt.git
+[submodule "zsh/LS_COLORS"]
+	path = zsh/LS_COLORS
+	url = https://github.com/trapd00r/LS_COLORS.git

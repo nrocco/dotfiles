@@ -1,7 +1,13 @@
 ZSH_CACHE="${HOME}/.cache/zsh"
-test -d "${ZSH_CACHE}" || mkdir -p "${ZSH_CACHE}"
-for ZSH_CONF in ${HOME}/.zsh/framework/<00-99>_*.zsh(N)
+
+if [ ! -d "${ZSH_CACHE}" ]
+then
+    mkdir -p "${ZSH_CACHE}"
+fi
+
+for ZSH_CONF in ${ZSH_CONFIG}/framework/<00-99>_*.zsh(N)
 do
     source "${ZSH_CONF}"
 done
-unset ZSH_CACHE ZSH_CONF
+
+unset ZSH_CACHE ZSH_CONF ZSH_CONFIG

@@ -3,10 +3,7 @@ autoload add-zsh-hook
 if [ -f "${0:h}/../zsh-git-prompt/zshrc.sh" ]
 then
     source "${0:h}/../zsh-git-prompt/zshrc.sh"
-
-    export ZSH_GIT_PROMPT_SHOW_UPSTREAM=0
 fi
-
 
 function promptSetup () {
     setopt prompt_subst

@@ -8,5 +8,5 @@ export WORDCHARS='*?_-[]~&;!#$%^(){}<>'
 
 if which dircolors > /dev/null
 then
-    eval $(dircolors -b)
+    eval $(dircolors -b "${ZSH_CONFIG}/LS_COLORS/LS_COLORS")
 fi

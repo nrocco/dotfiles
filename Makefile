@@ -20,10 +20,6 @@ update:
 	ln -sf "$(PWD)/$<" "$@"
 
 
-~/.zsh: zsh
-	ln -sf "$(PWD)/$<" "$@"
-
-
 ~/.vimrc: vim/vimrc
 	ln -sf "$(PWD)/$<" "$@"
 
@@ -79,6 +75,7 @@ git: ~/.gitignore ~/.gitconfig
 gpg: ~/.gnupg/gpg.conf ~/.gnupg/gpg-agent.conf ~/.gnupg/dirmngr.conf
 tmux: ~/.tmux.conf
 vim: ~/.vimrc ~/.vim
-zsh: ~/.zshrc ~/.zsh
+zsh: ~/.zshrc
+
 
 all: zsh ctags curl git vim
