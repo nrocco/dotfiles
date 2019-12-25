@@ -10,6 +10,3 @@
 [submodule "zsh/LS_COLORS"]
 	path = zsh/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS.git
-[submodule "zsh/zsh-autosuggestions"]
-	path = zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
