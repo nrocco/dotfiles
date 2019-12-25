@@ -36,7 +36,7 @@
     warmup = !ide hook run post-checkout
     latest-tags = "!f() { git tag -l '[v0-9.]*' -n1 | sort -V | tail -3; }; f"
     report = "log --since='1 week ago' origin/master"
-    undeployed = "!f() { git $@ $(git tag -l '[v0-9.]*' | sort -V | tail -1)...origin/master; }; f"
+    undeployed = "!f() { git ${@:-log --oneline} $(git tag -l '[v0-9.]*' | sort -V | tail -1)...origin/master; }; f"
 [push]
     default = current
 [pull]
