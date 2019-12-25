@@ -13,7 +13,7 @@ then
 
     if [ ! -f "${ZSH_CACHE}/coreutils_path" ]
     then
-        brew --prefix coreutils 2> "${ZSH_CACHE}/coreutils_path"
+        brew --prefix coreutils > "${ZSH_CACHE}/coreutils_path"
     fi
 
     local coreutils=$(cat "${ZSH_CACHE}/coreutils_path")
