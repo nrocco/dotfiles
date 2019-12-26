@@ -1,17 +1,26 @@
 source "/usr/share/fzf/key-bindings.zsh"
 
 alias bma='docker-compose --file /home/nrocco/nro/docker-compose.yml --file /home/nrocco/nro/docker-compose.override.yml'
-alias redis-cli='bma exec redis redis-cli'
-alias vault='bma exec vault vault'
 compdef bma=docker-compose
 
-path=("${HOME}/bin" ${path} "${HOME}/.composer/vendor/bin")
+alias redis-cli='bma exec redis redis-cli'
+alias vault='bma exec vault vault'
+
+if [ -d "${HOME}/.composer/vendor/bin" ]
+then
+    path=($path "${HOME}/.composer/vendor/bin")
+fi
+
+if [ -d "${GOPATH}/bin" ]
+then
+    path=($path "${GOPATH}/bin")
+fi
 
 alias vimdiff='vim -d'
 compdef vimdiff=vim
 
 function plgrep {
-    rg "$@" ~/www/bmp-api/src ~/www/dedicatedserver-api/src ~/www/emp-dashboard/src ~/www/nse-api/src ~/legacy/cis ~/bundles/*/src
+    rg --no-hidden --ignore --ignore-vcs "$@" -- ~/nro/data/{bmp-api,bmusage-api,dedicatedserver-api,emp-dashboard,nse-api} ~/bundles/{lswauditbundle,lswguzzlemockpluginbundle,lswprocesslayerbundle,lswqueuebundle,lswrestapibundle,lswservicedescriptionsbundle}
 }
 compdef plgrep=rg
 
