@@ -1,7 +1,3 @@
-# Adds sudo to the line
-run-with-sudo() { [[ $BUFFER != sudo\ * ]] && LBUFFER="sudo $LBUFFER" }
-zle -N run-with-sudo
-
 # Create a history completion widget and use it as completion context
 zle -C hist-complete complete-word _generic
 zstyle ':completion:hist-complete:*' completer _history
@@ -28,12 +24,6 @@ fi
 # Use emacs key bindings
 bindkey -e
 
-# [Esc-w] - Kill from the cursor to the mark
-bindkey '\ew' kill-region
-
-# [Ctrl-r] - Search backward incrementally for a specified string.
-bindkey '^r' history-incremental-search-backward
-
 # [Up-Arrow] - Up a line of history
 bindkey "${terminfo[kcuu1]}" up-line-or-history
 
@@ -58,38 +48,11 @@ bindkey "${terminfo[kich1]}" quoted-insert
 # [Space] - do history expansion
 bindkey ' ' magic-space
 
-# [Ctrl|Alt-RightArrow] - move forward one word
-# bindkey '\C-[Oc' forward-word
-bindkey '\e\e[C' forward-word
-
-# [Ctrl|Alt-LeftArrow] - move backward one word
-# bindkey '\C-[Od' backward-word
-bindkey '\e\e[D' backward-word
-
 # [Shift-Tab] - move through the completion menu backwards
 bindkey "${terminfo[kcbt]}" reverse-menu-complete
 
-# [Backspace] - delete backward
-bindkey '^?' backward-delete-char
-
-# [Delete] - delete forward
-bindkey "${terminfo[kdch1]}" delete-char
-
-# [Ctrl-X, Ctrl-S] Add sudo to current command
-bindkey '\C-x\C-s' run-with-sudo
-
-# [Ctrl-X, Ctrl-X] Complete word from history with menu
-bindkey '\C-X\C-X' hist-complete
-
-# File rename magick
-bindkey '^[m' copy-prev-shell-word
-
 # Disable flow control
 stty -ixon -ixoff
-
-# Needed inside tmux
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
 
 # http://stackoverflow.com/a/844299
 expand-or-complete-with-dots() {
