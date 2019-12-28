@@ -2,7 +2,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GOPATH=/usr/local/go
 
-alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
+alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
 
 function vm() {
     if [[ -z $1 || -z $2 ]]
@@ -13,7 +13,7 @@ function vm() {
 
     virt-install \
         --name "${1}" \
-        --ram 1024 \
+        --ram 2048 \
         --import \
         --os-type generic \
         --network network=default,model=virtio \
