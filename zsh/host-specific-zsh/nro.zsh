@@ -11,6 +11,11 @@ then
     path=($path "${HOME}/.composer/vendor/bin")
 fi
 
+if [ -d "${HOME}/bin" ]
+then
+    path=("${HOME}/bin" $path)
+fi
+
 if [ -d "${GOPATH}/bin" ]
 then
     path=($path "${GOPATH}/bin")
