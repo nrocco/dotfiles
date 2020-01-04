@@ -61,6 +61,7 @@ brew "rsync"
 brew "siege"
 brew "socat"
 brew "telnet"
+brew "terraform"
 brew "tree"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "vim"
