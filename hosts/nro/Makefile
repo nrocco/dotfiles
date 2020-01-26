@@ -34,6 +34,7 @@ basics:
 
 networking:
 	apk add \
+		arp-scan@testing \
 		bind-tools \
 		drill \
 		fping \
@@ -41,6 +42,7 @@ networking:
 		iproute2 \
 		iptables \
 		iputils \
+		lldpd@testing \
 		mtr \
 		netcat-openbsd \
 		nmap \
