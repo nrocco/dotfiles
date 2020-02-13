@@ -4,6 +4,14 @@ export GOPATH=/usr/local/go
 
 alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
 
+function to_timestamp() {
+    date -d "$1" -u +"%s"
+}
+
+function to_date() {
+    date -d "@$1" -u
+}
+
 function vm() {
     if [[ -z $1 || -z $2 ]]
     then
