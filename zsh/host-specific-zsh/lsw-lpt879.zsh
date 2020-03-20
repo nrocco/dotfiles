@@ -3,8 +3,7 @@ export LANG=en_US.UTF-8
 export GOPATH=/usr/local/go
 
 alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
-alias convert='docker container run --rm -v "$PWD:$PWD" -w "$PWD" nrocco/imagemagick:latest convert'
-alias mogrify='docker container run --rm -v "$PWD:$PWD" -w "$PWD" nrocco/imagemagick:latest mogrify'
+alias magick='docker container run --rm -v "$PWD:$PWD" -w "$PWD" nrocco/imagemagick:latest'
 
 # Convert a date to a UTC timestamp
 function to_timestamp() {
