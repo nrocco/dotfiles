@@ -2,8 +2,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GOPATH=/usr/local/go
 
-alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
-alias magick='docker container run --rm -v "$PWD:$PWD" -w "$PWD" nrocco/imagemagick:latest'
+alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
+alias magick='docker container run --rm -v "$PWD:$PWD" -w "$PWD" --entrypoint= nrocco/imagemagick:latest magick'
 
 # Convert a date to a UTC timestamp
 function to_timestamp() {
@@ -19,25 +19,6 @@ function to_date() {
 function key_for_data_bag() {
     cat "$1" | sed s/$/\\\\n/ | tr -d '\n'
     echo
-}
-
-function vm() {
-    if [[ -z $1 || -z $2 ]]
-    then
-        echo vm [name] [image]
-        return 1
-    fi
-
-    virt-install \
-        --name "${1}" \
-        --ram 2048 \
-        --import \
-        --os-type generic \
-        --network network=default,model=virtio \
-        --boot hd \
-        --graphics vnc \
-        --noautoconsole \
-        --disk "pool=default,size=50,backing_store=${2},backing_format=qcow2,format=qcow2"
 }
 
 source "/usr/local/var/homebrew/linked/fzf/shell/completion.zsh"
