@@ -61,7 +61,6 @@ brew "rsync"
 brew "siege"
 brew "socat"
 brew "telnet"
-brew "terraform"
 brew "tree"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "vim"
@@ -85,5 +84,4 @@ cask "wireshark"
 cask "zoomus"
 
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "OneDrive", id: 823766827
 mas "WireGuard", id: 1451685025
