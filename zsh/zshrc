@@ -5,9 +5,17 @@ then
     mkdir -p "${ZSH_CACHE}"
 fi
 
+# start=$(gdate +%s%3N)
 for ZSH_CONF in ${ZSH_CONFIG}/framework/<00-99>_*.zsh(N)
 do
+    # lstart=$(gdate +%s%3N)
     source "${ZSH_CONF}"
+    # lfinish=$(gdate +%s%3N)
+
+    # echo "==> ${ZSH_CONF} took $(($lfinish - $lstart))ms"
 done
+# finish=$(gdate +%s%3N)
 
 unset ZSH_CACHE ZSH_CONF ZSH_CONFIG
+
+# echo "==> Total startup time was $(($finish - $start))ms"

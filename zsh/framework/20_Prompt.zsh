@@ -1,9 +1,11 @@
 autoload add-zsh-hook
 
-if [ -f "${0:h}/../zsh-git-prompt/zshrc.sh" ]
+if [ -f "${0:h}/../git-prompt.zsh/git-prompt.zsh" ]
 then
-    source "${0:h}/../zsh-git-prompt/zshrc.sh"
+    source "${0:h}/../git-prompt.zsh/git-prompt.zsh"
 fi
+
+ZSH_GIT_PROMPT_FORCE_BLANK=1
 
 function promptSetup () {
     setopt prompt_subst
@@ -27,7 +29,7 @@ function promptSetup () {
     PS4="+%B%* %F{cyan}%N%f:%F{yellow}%i%f>%b "
 
     # right prompt
-    RPROMPT='$(git_super_status)'
+    RPROMPT='$(gitprompt)'
 }
 
 add-zsh-hook precmd promptSetup
