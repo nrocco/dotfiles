@@ -63,6 +63,7 @@ set ttyfast                                     " Indicates a fast terminal conn
 set ttyscroll=3                                 " Maximum number of lines to scroll the screen.
 set nofoldenable                                " When off, all folds are open.
 set foldcolumn=0                                " The amount of space to show fold markers
+set foldmethod=syntax                           " Fold source code by looking at syntax
 " ------------------------------------------------------------------------------------------------------------------------------
 set backspace=start,indent                      " Do not allow backspace to remove a line
 set whichwrap=b,s                               " You cannot use arrow keys to go prev or next lines
@@ -316,6 +317,8 @@ nnoremap <leader>i mzgg=G`z<CR>
 nnoremap <leader>s :%s/
 vmap <leader>s :s/
 
+" Keyboard shortcut for folding
+nmap <leader>z zA
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
