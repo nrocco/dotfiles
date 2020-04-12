@@ -29,6 +29,7 @@ call plug#begin()
   Plug 'plasticboy/vim-markdown'
   Plug 'StanAngeloff/php.vim'
   Plug 'vim-python/python-syntax'
+  Plug 'tmhedberg/SimpylFold'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'lumiliet/vim-twig'
   Plug 'leafgarland/typescript-vim'
@@ -296,7 +297,6 @@ nmap <silent> <leader>T :TestFile<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Keyboard shortcuts
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " ------------------------------------------------------------------------------------------------------------------------------
 
 " Shortcut to start command mode with the spacebar
@@ -316,9 +316,6 @@ nnoremap <leader>i mzgg=G`z<CR>
 " Keyboard shortcut for find-and-replace
 nnoremap <leader>s :%s/
 vmap <leader>s :s/
-
-" Keyboard shortcut for folding
-nmap <leader>z zA
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
