@@ -1,7 +1,8 @@
-/vim/.netrwhist
-/vim/doc/tags
-/vim/temp
 /doc/tags
 /doc/tags-ja
-/vim/spell
+/vim/.netrwhist
+/vim/autoload/plug.vim.old
+/vim/doc/tags
 /vim/plugged/
+/vim/spell
+/vim/temp
