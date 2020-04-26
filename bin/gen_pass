@@ -1306,7 +1306,7 @@ function usage() {
 }
 
 WORDS=
-SEPERATOR=,
+SEPARATOR=,
 
 while getopts "hw:s:" OPTION
 do
@@ -1318,7 +1318,7 @@ do
             WORDS=$OPTARG
             ;;
         s)
-            SEPERATOR=$OPTARG
+            SEPARATOR=$OPTARG
             ;;
         *)
             usage
@@ -1345,7 +1345,7 @@ do
     PASSWORD+=$(awk "/^${NUMBER}/{print \$2}" <<< "$DATA")
     if [ $i -ne $WORDS ]
     then
-        PASSWORD+=$SEPERATOR
+        PASSWORD+=$SEPARATOR
     fi
 done
 
