@@ -120,6 +120,14 @@ set wildignore+=*.pyc,*/cache/*,*/log/*,*/logs/*,*.so,*.swp
 set wildignorecase                              " Case is ignored when completing file names and directories.
 " ------------------------------------------------------------------------------------------------------------------------------
 
+" This will map <c-]> to g<c-]> for both normal and visual modes
+nnoremap g] g<c-]>
+vnoremap g] g<c-]>
+
+" This will map g<c-]> to <c-]>. In other words just swap the commands
+nnoremap gt <c-t>
+vnoremap gt <c-t>
+
 " Toggle between paste and nopaste modes
 nnoremap <leader>p :set invpaste<CR>
 
