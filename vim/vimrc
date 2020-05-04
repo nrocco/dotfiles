@@ -266,7 +266,7 @@ let g:ale_linters = {
 \   'go':     ['gobuild', 'gofmt', 'golint', 'govet'],
 \   'json':   ['linter', 'jsonlint'],
 \   'php':    ['linter', 'php', 'phpstan', 'phpmd'],
-\   'python': ['linter', 'flake8'],
+\   'python': ['linter', 'black'],
 \   'yaml':   ['linter', 'yamllint'],
 \}
 let g:ale_fixers = {
@@ -274,7 +274,7 @@ let g:ale_fixers = {
 \   'go':     ['remove_trailing_lines', 'trim_whitespace', 'gofmt', 'goimports'],
 \   'json':   ['remove_trailing_lines', 'trim_whitespace', 'jq'],
 \   'php':    ['remove_trailing_lines', 'trim_whitespace', 'php_cs_fixer'],
-\   'python': ['remove_trailing_lines', 'trim_whitespace', 'autopep8'],
+\   'python': ['remove_trailing_lines', 'trim_whitespace', 'black'],
 \}
 map <leader>l :ALELint<CR>
 map <leader>L :ALEFix<CR>
