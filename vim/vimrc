@@ -265,7 +265,7 @@ let g:ale_linters = {
 \   '*':      ['linter'],
 \   'go':     ['gobuild', 'gofmt', 'golint', 'govet'],
 \   'json':   ['linter', 'jsonlint'],
-\   'php':    ['linter', 'php', 'phpstan', 'phpmd'],
+\   'php':    ['linter', 'php', 'phpstan'],
 \   'python': ['linter', 'black'],
 \   'yaml':   ['linter', 'yamllint'],
 \}
