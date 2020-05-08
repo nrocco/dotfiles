@@ -1,24 +1,32 @@
 call plug#begin()
-  Plug 'tpope/vim-fugitive'
+  " layout
   Plug 'ap/vim-buftabline'
+  Plug 'itchyny/lightline.vim'
+  Plug 'morhetz/gruvbox'
+
+  " Powerusage
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-ragtag'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-eunuch'
-  Plug 'itchyny/lightline.vim'
-  Plug 'morhetz/gruvbox'
+  Plug 'tpope/vim-unimpaired'
+
+  " Testing, linting and fixing
   Plug 'janko-m/vim-test'
-  Plug 'dantleech/vim-phpnamespace'
-  Plug 'majutsushi/tagbar'
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
-  Plug 'SirVer/ultisnips'
-  Plug 'jamessan/vim-gnupg'
-  Plug 'honza/vim-snippets'
   Plug 'dense-analysis/ale'
   Plug 'maximbaz/lightline-ale'
-  Plug 'tpope/vim-unimpaired'
+
+  " Snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+
+  " Language tools
+  Plug 'dantleech/vim-phpnamespace'
+  Plug 'jamessan/vim-gnupg'
   Plug 'dougireton/vim-chef'
   Plug 'storyn26383/vim-vue'
   Plug 'ekalinin/Dockerfile.vim'
@@ -29,7 +37,6 @@ call plug#begin()
   Plug 'plasticboy/vim-markdown'
   Plug 'StanAngeloff/php.vim'
   Plug 'vim-python/python-syntax'
-  Plug 'tmhedberg/SimpylFold'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'lumiliet/vim-twig'
   Plug 'leafgarland/typescript-vim'
@@ -39,7 +46,7 @@ call plug#end()
 
 set nocompatible                                " Make Vim behave in a more useful way.
 set hidden                                      " A buffer becomes hidden when it is abandoned. So we can move away from unwritten buffers
-set nomodeline                                  " Disble modelines to avoid arbitrary code execution
+set nomodeline                                  " Disable modelines to avoid arbitrary code execution
 set noshowmode                                  " Vim Airline takes care of showing the mode
 " ------------------------------------------------------------------------------------------------------------------------------
 syntax on                                       " Enable Syntax highlighting
@@ -87,8 +94,8 @@ set tm=500
 set autoread                                    " Set to auto read when a file is changed from the outside
 set wildmenu                                    " Enables a menu at the bottom of the vim/gvim window.
 set wildmode=list:longest,full                  " Completion on the command line
-set completeopt=menu,menuone,noselect,noinsert  " Completion popup doesn’t select first item and typing new letters updates the completion list
-set showmatch                                   " Show/highlight matching braches
+set completeopt=menu,menuone,noselect,noinsert  " Completion popup does not select first item and typing new letters updates the completion list
+set showmatch                                   " Show/highlight matching braces
 set mat=2                                       " How many tenths of a second to blink when matching brackets
 set nosmartindent                               " Automatically indent braces (overrides autoindent)
 set report=0                                    " Tell us when anything is changed via :...
@@ -134,7 +141,8 @@ nnoremap <leader>p :set invpaste<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim netrw
 " ------------------------------------------------------------------------------------------------------------------------------
-let g:netrw_banner = 0            " suppress the banner
+let loaded_netrwPlugin = 1                      " disable netrw plugin completely
+let g:netrw_banner = 0                          " suppress the banner
 let g:netrw_fastbrowse = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -282,14 +290,6 @@ map <leader>L :ALEFix<CR>
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: vim-tagbar
-" ------------------------------------------------------------------------------------------------------------------------------
-let g:tagbar_sort = 0
-nnoremap <silent> <F8> :TagbarToggle<CR>
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-json
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:vim_json_syntax_conceal = 0
@@ -300,7 +300,6 @@ let g:vim_json_syntax_conceal = 0
 " PLUGIN: vim-test
 " ------------------------------------------------------------------------------------------------------------------------------
 let test#strategy = "vimterminal"
-
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -309,7 +308,6 @@ nmap <silent> <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 " Keyboard shortcuts
 " ------------------------------------------------------------------------------------------------------------------------------
-
 " Shortcut to start command mode with the spacebar
 nmap <space> :
 
@@ -321,15 +319,18 @@ vnoremap > >gv
 nnoremap j gj
 nnoremap k gk
 
-" Fix indentiation in whole file
+" Fix indentation in whole file
 nnoremap <leader>i mzgg=G`z<CR>
 
 " Keyboard shortcut for find-and-replace
 nnoremap <leader>s :%s/
 vmap <leader>s :s/
+" ------------------------------------------------------------------------------------------------------------------------------
+
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
+" ------------------------------------------------------------------------------------------------------------------------------
 map <C-h> :bprevious!<CR>
 map <C-l> :bnext!<CR>
 nmap <leader>n :enew<CR>
@@ -371,6 +372,7 @@ nmap <leader>c :ToggleLocList<CR>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Fix Home/End keys in vim
+" ------------------------------------------------------------------------------------------------------------------------------
 :map  <ESC>[H <Home>
 :map  <ESC>[F <End>
 :imap <ESC>[H <C-O><Home>
