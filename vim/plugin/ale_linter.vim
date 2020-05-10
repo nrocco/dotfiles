@@ -1,3 +1,16 @@
+if !exists("g:ale_enabled")
+    finish
+endif
+
+if g:ale_enabled != 1
+    finish
+endif
+
+if exists("g:did_plugin_ale_linter")
+  finish
+endif
+let g:did_plugin_ale_linter = 1
+
 function! AleGenericLinter(buffer, lines) abort
     let l:pattern = '.\+ on line \(\d\+\) \(.\+\)'
     let l:output = []
