@@ -244,7 +244,9 @@ let g:UltiSnipsListSnippets="<F5>"
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-ale
 " ------------------------------------------------------------------------------------------------------------------------------
+set omnifunc=ale#completion#OmniFunc
 let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 0
 let g:ale_keep_list_window_open = 0
 let g:ale_lint_on_enter = 0
@@ -262,7 +264,7 @@ let g:ale_warn_about_trailing_blank_lines = 1
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_linters = {
 \   '*':      ['linter'],
-\   'go':     ['gobuild', 'gofmt', 'golint', 'govet'],
+\   'go':     ['gobuild', 'gofmt', 'golint', 'govet', 'gopls'],
 \   'json':   ['linter', 'jsonlint'],
 \   'php':    ['linter', 'php', 'phpstan'],
 \   'python': ['linter', 'flake8'],
