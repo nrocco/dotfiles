@@ -1,11 +1,3 @@
-if !exists("g:ale_enabled")
-    finish
-endif
-
-if g:ale_enabled != 1
-    finish
-endif
-
 if exists("g:did_plugin_ale_linter")
   finish
 endif
