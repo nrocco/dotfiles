@@ -9,12 +9,12 @@ command! ToggleQuickfix call s:ToggleQuickfix()
 command! ToggleLocList call s:ToggleLocList()
 
 function! s:ToggleQuickfix()
-	let buffer_count_before = s:BufferCount()
-	silent! cclose
+    let buffer_count_before = s:BufferCount()
+    silent! cclose
 
-	if s:BufferCount() == buffer_count_before
-		execute "silent! botright copen"
-	endif
+    if s:BufferCount() == buffer_count_before
+        execute "silent! botright copen"
+    endif
 endfunction
 
 function! s:ToggleLocList() abort
