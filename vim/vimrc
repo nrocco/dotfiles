@@ -355,9 +355,6 @@ nmap <leader>Q :call BufferByeForce()!<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
-:nmap coh :noh<CR>
-:nmap con :set invnumber<CR>
-:nmap col :set list!<CR>
 nmap <leader>c :ToggleLocList<CR>
 
 
