@@ -204,6 +204,7 @@ let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.cache/fzf-history'
 
 nnoremap <leader>fh :Helptags<CR>
+nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fc :BCommits<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>ff :Files<CR>
@@ -335,23 +336,25 @@ function! BufferByeAndWrite()
         :wq
     else
         :write
-        :bdelete
+        :bwipeout
     endif
 endfunction
 nmap <leader>wq :call BufferByeAndWrite()<CR>
+
 function! BufferBye()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :q
     else
-        :bdelete
+        :bwipeout
     endif
 endfunction
 nmap <leader>q :call BufferBye()<CR>
+
 function! BufferByeForce()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :q!
     else
-        :bdelete!
+        :bwipeout!
     endif
 endfunction
 nmap <leader>Q :call BufferByeForce()!<CR>
