@@ -6,7 +6,6 @@ endif
 let g:did_plugin_toggle_quickfix = 1
 
 command! ToggleQuickfix call s:ToggleQuickfix()
-command! ToggleLocList call s:ToggleLocList()
 
 function! s:ToggleQuickfix()
     let buffer_count_before = s:BufferCount()
@@ -14,18 +13,6 @@ function! s:ToggleQuickfix()
 
     if s:BufferCount() == buffer_count_before
         execute "silent! botright copen"
-    endif
-endfunction
-
-function! s:ToggleLocList() abort
-    let buffer_count_before = s:BufferCount()
-    " Location list can't be closed if there's cursor in it, so we need
-    " to call lclose twice to move cursor to the main pane
-    silent! lclose
-    silent! lclose
-
-    if s:BufferCount() == buffer_count_before
-        execute "silent! lopen"
     endif
 endfunction
 
