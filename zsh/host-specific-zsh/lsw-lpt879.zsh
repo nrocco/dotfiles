@@ -4,6 +4,10 @@ export GOPATH=/usr/local/go
 
 #alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
 
+function mac_to_vendor() {
+    curl "https://api.macvendors.com/${1}"; echo
+}
+
 # Convert a date to a UTC timestamp
 function to_timestamp() {
     date -d "$1" -u +"%s"
