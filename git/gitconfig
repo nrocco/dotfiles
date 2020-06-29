@@ -26,6 +26,7 @@
     mirror = "!f() { local cur_branch=$(git rev-parse --abbrev-ref HEAD); git branch --set-upstream-to=${1:-origin}/$cur_branch $cur_branch; }; f"
     bview = branch -vv --sort=committerdate
     bprune =  "!f() { git show-ref --quiet refs/remotes/origin/master && git branch --quiet --no-color --merged=origin/master | grep -vE '^\\* |^\\s+master' | while read branch; do git branch -d $branch; done; }; f"
+    bwhat = "!f() { git diff `git merge-base ${1:-HEAD} master` ${1:-HEAD}; }; f"
     comm = commit -v
     padd = add -p
     pcheckout = checkout -p
