@@ -6,6 +6,7 @@ man:
 
 basics:
 	apk add \
+		bash \
 		binutils \
 		coreutils \
 		curl \
@@ -55,7 +56,9 @@ editing:
 	apk add \
 		aspell \
 		ctagsio \
-		direnv \
+		direnv@testing \
+		docker \
+		docker-compose \
 		fd-doc@testing \
 		fd-zsh-completion@testing \
 		fd@testing \
