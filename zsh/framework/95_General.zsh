@@ -19,3 +19,8 @@ then
         jq "$@"
     }
 fi
+
+function shellcheck() {
+    local script=$(realpath $1)
+    docker container run --rm -v "${script}:${script}" -w "$(dirname $script)" docker.io/koalaman/shellcheck-alpine:latest shellcheck "${script}"
+}
