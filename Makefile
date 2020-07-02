@@ -10,6 +10,14 @@ update:
 	wget -O zsh/custom-completions/_docker-compose https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
 	vim +PlugClean +PlugUpdate +qall
 	git gc
+	git add \
+		zsh/LS_COLORS \
+		zsh/git-prompt.zsh \
+		zsh/zsh-completions \
+		zsh/zsh-syntax-highlighting \
+		zsh/custom-completions/_docker \
+		zsh/custom-completions/_docker-compose \
+		&& git commit -m 'Updated 3rd party dependencies'
 	git status
 
 
