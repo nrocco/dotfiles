@@ -1,15 +1,10 @@
 source "/usr/share/fzf/key-bindings.zsh"
 
-alias baremetal='docker-compose --file /home/nrocco/nro/docker-compose.yml --file /home/nrocco/nro/docker-compose.override.yml'
 compdef baremetal=docker-compose
 
-alias redis-cli='baremetal exec redis redis-cli'
-alias vault='baremetal exec vault vault'
-alias mongo='baremetal exec mongo mongo bmsdb'
-
-if [ -d "${HOME}/.composer/vendor/bin" ]
+if [ -d "${HOME}/nro/bin" ]
 then
-    path=($path "${HOME}/.composer/vendor/bin")
+    path=("${HOME}/nro/bin" $path)
 fi
 
 if [ -d "${HOME}/bin" ]
