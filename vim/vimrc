@@ -21,28 +21,29 @@ call plug#begin()
   Plug 'maximbaz/lightline-ale'
 
   " Snippets
-  Plug 'SirVer/ultisnips'
+  Plug 'sirver/ultisnips'
   Plug 'honza/vim-snippets'
 
   " Language tools
+  Plug 'arnaud-lb/vim-php-namespace'
   Plug 'dantleech/vim-phpnamespace'
-  Plug 'jamessan/vim-gnupg'
   Plug 'dougireton/vim-chef'
-  Plug 'storyn26383/vim-vue'
-  Plug 'ekalinin/Dockerfile.vim'
+  Plug 'ekalinin/dockerfile.vim'
+  Plug 'elzr/vim-json'
+  Plug 'jamessan/vim-gnupg'
+  Plug 'jwalton512/vim-blade'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'lumiliet/vim-twig'
   Plug 'othree/html5.vim'
   Plug 'pangloss/vim-javascript'
-  Plug 'elzr/vim-json'
-  Plug 'tbastos/vim-lua'
   Plug 'plasticboy/vim-markdown'
-  Plug 'StanAngeloff/php.vim'
-  Plug 'jwalton512/vim-blade'
-  Plug 'vim-python/python-syntax'
-  Plug 'Vimjas/vim-python-pep8-indent'
-  Plug 'lumiliet/vim-twig'
-  Plug 'leafgarland/typescript-vim'
+  Plug 'pprovost/vim-ps1'
+  Plug 'stanangeloff/php.vim'
   Plug 'stephpy/vim-yaml'
-  Plug 'arnaud-lb/vim-php-namespace'
+  Plug 'storyn26383/vim-vue'
+  Plug 'tbastos/vim-lua'
+  Plug 'vim-python/python-syntax'
+  Plug 'vimjas/vim-python-pep8-indent'
 call plug#end()
 
 set nocompatible                                " Make Vim behave in a more useful way.
