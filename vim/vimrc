@@ -229,8 +229,8 @@ autocmd FileType php      set commentstring=//\ %s
 autocmd FileType markdown set commentstring=>\ %s
 autocmd FileType yaml     set commentstring=#\ %s
 
-nmap \\\ gcc
-vmap \\ gc
+nnoremap \\\ gcc
+vnoremap \\ gc
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -275,9 +275,9 @@ let g:ale_fixers = {
 \   'php':    ['remove_trailing_lines', 'trim_whitespace', 'php_cs_fixer'],
 \   'python': ['remove_trailing_lines', 'trim_whitespace'],
 \}
-map <leader>c :ALEReset<CR>
-map <leader>l :ALELint<CR>
-map <leader>L :ALEFix<CR>
+nnoremap <leader>c :ALEReset<CR>
+nnoremap <leader>l :ALELint<CR>
+nnoremap <leader>L :ALEFix<CR>
 augroup CloseLoclistWindowGroup
   autocmd!
   autocmd QuitPre * if empty(&buftype) | lclose | endif
@@ -296,8 +296,8 @@ let g:vim_json_syntax_conceal = 0
 " PLUGIN: vim-test
 " ------------------------------------------------------------------------------------------------------------------------------
 let test#strategy = "vimterminal"
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
+nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -305,7 +305,7 @@ nmap <silent> <leader>T :TestFile<CR>
 " Keyboard shortcuts
 " ------------------------------------------------------------------------------------------------------------------------------
 " Shortcut to start command mode with the spacebar
-nmap <space> :
+nnoremap <space> :
 
 " Keep selection in visual mode after indenting lines
 vnoremap < <gv
@@ -320,18 +320,18 @@ nnoremap <leader>i mzgg=G`z<CR>
 
 " Keyboard shortcut for find-and-replace
 nnoremap <leader>s :%s/
-vmap <leader>s :s/
+vnoremap <leader>s :s/
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
 " ------------------------------------------------------------------------------------------------------------------------------
-map <C-h> :bprevious!<CR>
-map <C-l> :bnext!<CR>
-nmap <leader>n :enew<CR>
-nmap <leader>e :edit<SPACE>
-nmap <leader>w :w<CR>
+nnoremap <C-h> :bprevious!<CR>
+nnoremap <C-l> :bnext!<CR>
+nnoremap <leader>n :enew<CR>
+nnoremap <leader>e :edit<SPACE>
+nnoremap <leader>w :w<CR>
 function! BufferByeAndWrite()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :wq
@@ -340,7 +340,7 @@ function! BufferByeAndWrite()
         :bwipeout
     endif
 endfunction
-nmap <leader>wq :call BufferByeAndWrite()<CR>
+nnoremap <leader>wq :call BufferByeAndWrite()<CR>
 
 function! BufferBye()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
@@ -349,7 +349,7 @@ function! BufferBye()
         :bwipeout
     endif
 endfunction
-nmap <leader>q :call BufferBye()<CR>
+nnoremap <leader>q :call BufferBye()<CR>
 
 function! BufferByeForce()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
@@ -358,7 +358,7 @@ function! BufferByeForce()
         :bwipeout!
     endif
 endfunction
-nmap <leader>Q :call BufferByeForce()!<CR>
+nnoremap <leader>Q :call BufferByeForce()!<CR>
 
 " exclude quickfix buffer from :bnext and :bprevious
 augroup qf
