@@ -229,8 +229,8 @@ autocmd FileType php      set commentstring=//\ %s
 autocmd FileType markdown set commentstring=>\ %s
 autocmd FileType yaml     set commentstring=#\ %s
 
-nnoremap \\\ gcc
-vnoremap \\ gc
+nmap \\\ gcc
+vmap \\ gc
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
