@@ -78,7 +78,7 @@ basics:
 editing:
 	apk add \
 		aspell \
-		ctagsio \
+		ctags \
 		direnv@testing \
 		docker \
 		docker-compose \
