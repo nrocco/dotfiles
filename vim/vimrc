@@ -208,10 +208,8 @@ let g:fzf_history_dir = '~/.cache/fzf-history'
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fc :BCommits<CR>
-nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
-nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fs :History/<CR>
 nnoremap <leader>fa :Rg<CR>
 
@@ -326,8 +324,6 @@ vnoremap <leader>s :s/
 " ------------------------------------------------------------------------------------------------------------------------------
 " Buffer navigation
 " ------------------------------------------------------------------------------------------------------------------------------
-nnoremap <C-h> :bprevious!<CR>
-nnoremap <C-l> :bnext!<CR>
 nnoremap <leader>n :enew<CR>
 nnoremap <leader>e :edit<SPACE>
 nnoremap <leader>w :w<CR>
