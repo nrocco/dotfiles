@@ -40,12 +40,7 @@ then
 
     if [[ -z "$TMUX" ]]
     then
-        if ! tmux -u has-session -t default 2>/dev/null
-        then
-            tmux -u new-session -d -s default
-        fi
-
-        exec tmux -u attach-session -t default
+        exec tmux att
     fi
 
     bindkey "\e[1~" beginning-of-line
