@@ -1,6 +1,5 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export GOPATH=/usr/local/go
 
 #alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
 
@@ -35,11 +34,6 @@ alias traceroute='sudo /usr/sbin/traceroute'
 if [ -d "${HOME}/.composer/vendor/bin" ]
 then
     path=($path "${HOME}/.composer/vendor/bin")
-fi
-
-if [ -d "${GOPATH}/bin" ]
-then
-    path=($path "${GOPATH}/bin")
 fi
 
 if [ -d "${HOME}/bin" ]

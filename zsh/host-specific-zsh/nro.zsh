@@ -12,11 +12,6 @@ then
     path=("${HOME}/bin" $path)
 fi
 
-if [ -d "${GOPATH}/bin" ]
-then
-    path=($path "${GOPATH}/bin")
-fi
-
 alias vimdiff='vim -d'
 compdef vimdiff=vim
 
