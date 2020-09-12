@@ -326,40 +326,10 @@ vnoremap <leader>s :s/
 " ------------------------------------------------------------------------------------------------------------------------------
 nnoremap <leader>n :enew<CR>
 nnoremap <leader>e :edit<SPACE>
-nnoremap <leader>w :w<CR>
-function! BufferByeAndWrite()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :wq
-    else
-        :write
-        :bwipeout
-    endif
-endfunction
-nnoremap <leader>wq :call BufferByeAndWrite()<CR>
-
-function! BufferBye()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :q
-    else
-        :bwipeout
-    endif
-endfunction
-nnoremap <leader>q :call BufferBye()<CR>
-
-function! BufferByeForce()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :q!
-    else
-        :bwipeout!
-    endif
-endfunction
-nnoremap <leader>Q :call BufferByeForce()!<CR>
-
-" exclude quickfix buffer from :bnext and :bprevious
-augroup qf
-    autocmd!
-    autocmd FileType qf set nobuflisted
-augroup END
+nnoremap <leader>w :write<CR>
+nnoremap <leader>wq :write<CR>:bwipeout<CR>
+nnoremap <leader>q :bwipeout<CR>
+nnoremap <leader>Q :bwipeout!<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -374,5 +344,9 @@ augroup END
 :cmap <ESC>[F <End>
 " ------------------------------------------------------------------------------------------------------------------------------
 
+
+" ------------------------------------------------------------------------------------------------------------------------------
 " Automatically save non-existent directories on save
+" ------------------------------------------------------------------------------------------------------------------------------
 autocmd BufWritePre * :silent Mkdir!
+" ------------------------------------------------------------------------------------------------------------------------------
