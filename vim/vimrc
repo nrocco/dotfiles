@@ -327,9 +327,31 @@ vnoremap <leader>s :s/
 nnoremap <leader>n :enew<CR>
 nnoremap <leader>e :edit<SPACE>
 nnoremap <leader>w :write<CR>
-nnoremap <leader>wq :write<CR>:bwipeout<CR>
-nnoremap <leader>q :bwipeout<CR>
-nnoremap <leader>Q :bwipeout!<CR>
+nnoremap <leader>wq :call BufferByeAndWrite()<CR>
+nnoremap <leader>q :call BufferBye()<CR>
+nnoremap <leader>Q :call BufferByeForce()!<CR>
+function! BufferByeAndWrite()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :wq
+    else
+        :write
+        :bwipeout
+    endif
+endfunction
+function! BufferBye()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :quit
+    else
+        :bwipeout
+    endif
+endfunction
+function! BufferByeForce()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :quit!
+    else
+        :bwipeout!
+    endif
+endfunction
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
