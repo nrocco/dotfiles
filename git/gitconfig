@@ -33,7 +33,7 @@
     ide = !ide
     make = !make
     warmup = !ide hook run post-checkout
-    bumpversion = "!f() { bumpversion --verbose --current-version $(git current-tag) --tag --no-commit --tag-name '{new_version} ${1:-patch} && git push --tags}; f"
+    bumpversion = "!f() { bumpversion --verbose --current-version $(git current-tag) --tag --no-commit --tag-name '{new_version}' ${1:-patch} && git push --tags; }; f"
     latest-tags = "!f() { git tag --list --sort=-creatordate --format='%(refname:strip=2) - created at %(creatordate)' --color | head -${1:-3}; }; f"
     current-tag = describe --abbrev=0 --tags
     report = log --since='1 week ago' origin/master
