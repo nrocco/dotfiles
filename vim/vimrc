@@ -79,6 +79,7 @@ set redrawtime=5000                             " The time in milliseconds for r
 set nocursorline                                " Do not highlight the text line of the cursor
 set synmaxcol=300                               " Maximum column in which to search for syntax items.
 set norelativenumber                            " Do not show the line number relative to the line with the cursor
+set noshowmatch                                 " When a bracket is inserted, do not jump to the matching one.
 " ------------------------------------------------------------------------------------------------------------------------------
 set backspace=start,indent                      " Do not allow backspace to remove a line
 set whichwrap=b,s                               " You cannot use arrow keys to go prev or next lines
