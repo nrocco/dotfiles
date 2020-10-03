@@ -145,6 +145,9 @@ vnoremap gt <c-t>
 " Toggle between paste and nopaste modes
 nnoremap <leader>p :set invpaste<CR>
 
+" Clear highlight on pressing ESC
+nnoremap <esc> :noh<return><esc>
+
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim netrw
 " ------------------------------------------------------------------------------------------------------------------------------
