@@ -133,7 +133,7 @@ zstyle ':completion::complete:*' cache-path "${ZSH_CACHE}/zcompcache"
 fpath+="${0:h}/../zsh-completions/src"
 fpath+="${0:h}/../custom-completions"
 
-compinit -i -d "${ZSH_CACHE}/zcompdump"
+compinit -d "${ZSH_CACHE}/zcompdump"
 
 # Complete them as ssh
 compdef _ssh sshc=ssh
