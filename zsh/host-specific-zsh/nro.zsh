@@ -16,7 +16,7 @@ alias vimdiff='vim -d'
 compdef vimdiff=vim
 
 function plgrep {
-    rg --ignore --ignore-vcs "$@" -- ~/nro/data/* ~/nro/bundles/*
+    rg --ignore --ignore-vcs "$@" -- ~/nro/bundles/* ~/nro/frontend-layer/* ~/nro/process-layer/* ~/nro/python/* ~/nro/service-layer/*
 }
 compdef plgrep=rg
 
