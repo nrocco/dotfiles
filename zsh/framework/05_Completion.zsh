@@ -136,6 +136,9 @@ fpath+="${0:h}/../custom-completions"
 compinit -d "${ZSH_CACHE}/zcompdump"
 
 # Complete them as ssh
+compdef _ssh wireshark-remote=ssh
+
+# Complete them as ssh
 compdef _ssh sshc=ssh
 
 # Complete them as scp
