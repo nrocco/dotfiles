@@ -1,7 +1,7 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-#alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" --entrypoint= nrocco/virt-install:latest /app/virt-install'
+alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
 
 function mac_to_vendor() {
     curl "https://api.macvendors.com/${1}"; echo
@@ -30,11 +30,6 @@ alias nmap='sudo /usr/local/bin/nmap'
 alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
-
-if [ -d "${HOME}/.composer/vendor/bin" ]
-then
-    path=($path "${HOME}/.composer/vendor/bin")
-fi
 
 if [ -d "${HOME}/bin" ]
 then

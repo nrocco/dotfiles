@@ -1,2 +1,15 @@
 #!/bin/bash
-exec docker run -v "$PWD:$PWD" -w "$PWD" --rm nrocco/imagemagick mogrify -auto-orient -resize '1280>' -interlace Plane -strip "$@"
+exec docker container run \
+    --rm \
+    --volume "$PWD:$PWD" \
+    --workdir "$PWD" \
+    nrocco/imagemagick:latest \
+        mogrify \
+            -auto-orient \
+            -units PixelsPerInch \
+            -density 75 \
+            -quality 75 \
+            -resize '1280>' \
+            -interlace Plane \
+            -strip \
+            "${1}"

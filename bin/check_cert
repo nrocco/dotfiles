@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+HOST="${1}"
+shift
+openssl s_client -connect "${HOST}:443" -servername "${HOST}" -showcerts < /dev/null 2> /dev/null | exec openssl x509 -noout "${@:--text}"
