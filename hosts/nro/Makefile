@@ -60,6 +60,7 @@ basics:
 		shadow-doc \
 		socat \
 		strace \
+		sysstat \
 		tar \
 		tcpdump \
 		tcpdump-doc \
