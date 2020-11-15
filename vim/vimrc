@@ -5,6 +5,7 @@ call plug#begin()
   Plug 'morhetz/gruvbox'
 
   " Powerusage
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
@@ -123,6 +124,9 @@ set updatetime=100
 set laststatus=2                                " Always show the status line
 set cmdheight=1                                 " Height of the command bar
 set diffopt+=hiddenoff
+" ------------------------------------------------------------------------------------------------------------------------------
+set splitbelow                                  " Open new split panes to right and bottom, which feels more natural
+set splitright                                  " Open new split panes to right and bottom, which feels more natural
 " ------------------------------------------------------------------------------------------------------------------------------
 set clipboard-=autoselect                       " Disable the automatic selection and copying of text in terminal Vim
 set path=.,**
@@ -360,6 +364,16 @@ function! BufferByeForce()
         :bwipeout!
     endif
 endfunction
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
+" Split navigation
+" ------------------------------------------------------------------------------------------------------------------------------
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
