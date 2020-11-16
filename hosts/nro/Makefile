@@ -108,6 +108,7 @@ editing:
 		tmux \
 		tmux-zsh-completion \
 		vim \
+		vimdiff \
 		zsh \
 		zsh-vcs \
 	&& true
