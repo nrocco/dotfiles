@@ -108,6 +108,8 @@ editing:
 		tmux \
 		tmux-zsh-completion \
 		vim \
+		vim-doc \
+		vim-help \
 		vimdiff \
 		zsh \
 		zsh-vcs \
