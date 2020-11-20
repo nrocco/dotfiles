@@ -24,17 +24,6 @@ then
     export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 
-if which tmux &> /dev/null
-then
-    precmd () {
-        tmux rename-window "${PWD##/*/}"
-    }
-
-    if [[ -z "$TMUX" ]]
-    then
-        exec tmux att
-    fi
-
-    bindkey "\e[1~" beginning-of-line
-    bindkey "\e[4~" end-of-line
-fi
+# Fix key bindings in tmux
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
