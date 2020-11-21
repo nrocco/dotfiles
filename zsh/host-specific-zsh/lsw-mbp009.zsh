@@ -1,6 +1,10 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Enable buildkit
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
+
 alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
 
 function mac_to_vendor() {
