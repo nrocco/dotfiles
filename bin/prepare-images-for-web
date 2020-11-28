@@ -8,4 +8,5 @@ exec docker container run --rm --volume "$PWD:$PWD" --workdir "$PWD" nrocco/imag
         -resize '1280>' \
         -interlace Plane \
         -strip \
-        "${1}"
+        -verbose \
+        "${@}"

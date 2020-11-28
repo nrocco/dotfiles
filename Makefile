@@ -29,6 +29,11 @@ update:
 	ln -sf "$(PWD)/$<" "$@"
 
 
+~/.config/fd/ignore: fdignore
+	mkdir -p ~/.config/fd
+	ln -sf "$(PWD)/$<" "$@"
+
+
 ~/.vimrc: vim/vimrc
 	ln -sf "$(PWD)/$<" "$@"
 
@@ -80,6 +85,7 @@ remove:
 
 ctags: ~/.ctags
 curl: ~/.curlrc
+fd: ~/.config/fd/ignore
 git: ~/.gitignore ~/.gitconfig
 gpg: ~/.gnupg/gpg.conf ~/.gnupg/gpg-agent.conf ~/.gnupg/dirmngr.conf
 tmux: ~/.tmux.conf

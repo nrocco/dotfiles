@@ -218,11 +218,9 @@ let g:fzf_preview_window = ''
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.cache/fzf-history'
 
-nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>b :Buffers<CR>
-" nnoremap <leader>fc :BCommits<CR>
-nnoremap <leader>a :Files<CR>
-nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>r :Rg<CR>
 
 autocmd! FileType fzf
