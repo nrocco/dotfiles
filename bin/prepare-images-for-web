@@ -1,15 +1,11 @@
-#!/bin/bash
-exec docker container run \
-    --rm \
-    --volume "$PWD:$PWD" \
-    --workdir "$PWD" \
-    nrocco/imagemagick:latest \
-        mogrify \
-            -auto-orient \
-            -units PixelsPerInch \
-            -density 75 \
-            -quality 75 \
-            -resize '1280>' \
-            -interlace Plane \
-            -strip \
-            "${1}"
+#!/bin/sh
+exec docker container run --rm --volume "$PWD:$PWD" --workdir "$PWD" nrocco/imagemagick:latest \
+    mogrify \
+        -auto-orient \
+        -units PixelsPerInch \
+        -density 75 \
+        -quality 75 \
+        -resize '1280>' \
+        -interlace Plane \
+        -strip \
+        "${1}"
