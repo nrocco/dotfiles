@@ -221,7 +221,7 @@ let g:fzf_history_dir = '~/.cache/fzf-history'
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :Helptags<CR>
-nnoremap <leader>r :Rg<CR>
+nnoremap <leader>g :Rg<CR>
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
