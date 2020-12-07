@@ -109,10 +109,7 @@ set mat=2                                       " How many tenths of a second to
 set nosmartindent                               " Automatically indent braces (overrides autoindent)
 set report=0                                    " Tell us when anything is changed via :...
 " ------------------------------------------------------------------------------------------------------------------------------
-set directory=~/.cache/vim                      " Directory to place swap files in
-set nobackup                                    " Turn backup off since most stuff is in git anyway
-set nowb                                        " Turn backup off since most stuff is in git anyway
-set noswapfile                                  " Turn backup off since most stuff is in git anyway
+set directory=~/.cache/vim//                    " Directory to place swap files in
 " ------------------------------------------------------------------------------------------------------------------------------
 set expandtab                                   " Tab will be translated to spaces
 set softtabstop=4                               " Use these amount of spaces when inserting a tab
