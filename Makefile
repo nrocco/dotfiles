@@ -34,10 +34,6 @@ update:
 	ln -sf "$(PWD)/$<" "$@"
 
 
-~/.vimrc: vim/vimrc
-	ln -sf "$(PWD)/$<" "$@"
-
-
 ~/.vim: vim
 	ln -sf "$(PWD)/$<" "$@"
 
@@ -80,7 +76,6 @@ remove:
 	@$(call __remove,~/.gitignore)
 	@$(call __remove,~/.tmux.conf)
 	@$(call __remove,~/.vim)
-	@$(call __remove,~/.vimrc)
 
 
 ctags: ~/.ctags
@@ -89,7 +84,6 @@ fd: ~/.config/fd/ignore
 git: ~/.gitignore ~/.gitconfig
 gpg: ~/.gnupg/gpg.conf ~/.gnupg/gpg-agent.conf ~/.gnupg/dirmngr.conf
 tmux: ~/.tmux.conf
-vim: ~/.vimrc ~/.vim
 zsh: ~/.zshrc
 
 
