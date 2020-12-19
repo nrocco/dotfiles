@@ -39,7 +39,6 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'
   Plug 'plasticboy/vim-markdown'
   Plug 'pprovost/vim-ps1'
-  Plug 'stanangeloff/php.vim'
   Plug 'stephpy/vim-yaml'
   Plug 'storyn26383/vim-vue'
   Plug 'tbastos/vim-lua'
