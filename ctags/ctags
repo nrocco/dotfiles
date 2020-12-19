@@ -5,5 +5,5 @@
 --tag-relative=yes
 --totals=yes
 --exclude=*\.phar
---exclude=*Test.php
+--exclude=tests
 --exclude=*phpunit*
