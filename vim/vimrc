@@ -27,7 +27,6 @@ call plug#begin()
 
   " Language tools
   Plug 'arnaud-lb/vim-php-namespace'
-  Plug 'dantleech/vim-phpnamespace'
   Plug 'dougireton/vim-chef'
   Plug 'ekalinin/dockerfile.vim'
   Plug 'elzr/vim-json'
