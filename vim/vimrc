@@ -102,7 +102,7 @@ set tm=500
 set autoread                                    " Set to auto read when a file is changed from the outside
 set wildmenu                                    " Enables a menu at the bottom of the vim/gvim window.
 set wildmode=list:longest,full                  " Completion on the command line
-set completeopt=menu,menuone,noselect,noinsert  " Completion popup does not select first item and typing new letters updates the completion list
+set completeopt=menu,longest                    " Completion popup does not select first item and typing new letters updates the completion list
 set showmatch                                   " Show/highlight matching braces
 set mat=2                                       " How many tenths of a second to blink when matching brackets
 set nosmartindent                               " Automatically indent braces (overrides autoindent)
