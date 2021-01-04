@@ -1,12 +1,8 @@
 #!/bin/sh
-exec docker container run --rm --volume "$PWD:$PWD" --workdir "$PWD" nrocco/imagemagick:latest \
-    mogrify \
-        -auto-orient \
-        -units PixelsPerInch \
-        -density 75 \
-        -quality 75 \
-        -resize '1280>' \
-        -interlace Plane \
-        -strip \
-        -verbose \
-        "${@}"
+cat "${1}" | docker container run -i --rm nrocco/imagemagick:latest png:- -auto-orient -units PixelsPerInch -density 75 -quality 75 -resize '1280>' -interlace Plane -strip -verbose png:- > "${1}-temp"
+if [ $? -eq 0 ]
+then
+    mv "${1}-temp" "${1}"
+else
+    rm -f "${1}-temp"
+fi
