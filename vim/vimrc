@@ -5,7 +5,6 @@ call plug#begin()
   Plug 'morhetz/gruvbox'
 
   " Powerusage
-  Plug 'christoomey/vim-tmux-navigator'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
@@ -17,6 +16,7 @@ call plug#begin()
   Plug 'tpope/vim-unimpaired'
 
   " Testing, linting and fixing
+  Plug 'benmills/vimux'
   Plug 'janko-m/vim-test'
   Plug 'dense-analysis/ale'
   Plug 'maximbaz/lightline-ale'
@@ -301,7 +301,7 @@ let g:vim_json_syntax_conceal = 0
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-test
 " ------------------------------------------------------------------------------------------------------------------------------
-let test#strategy = "vimterminal"
+let test#strategy = "vimux"
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
