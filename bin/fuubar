@@ -91,17 +91,17 @@ def lint_php(file):
 
 def lint_php_cs_fixer(file):
     errors = []
-    result = subprocess.run(['php-cs-fixer', 'fix', '--no-ansi', '--dry-run', '--format=gitlab', file], capture_output=True, text=True)
+    result = subprocess.run(['bin/php-cs-fixer', 'fix', '--no-ansi', '--dry-run', '--format=gitlab', file], capture_output=True, text=True)
     for line in result.stdout.splitlines():
         if line.startswith('[{'):
             data = json.loads(line)
+            for error in data:
+                errors.append({
+                    'file': error['location']['path'],
+                    'line': 1,
+                    'message': error['description']
+                })
             break
-    for error in data:
-        errors.append({
-            'file': error['location']['path'],
-            'line': 1,
-            'message': error['description']
-        })
     return errors
 
 
