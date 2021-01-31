@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import pprint
+import re
+import subprocess
+
+
+# MAPPING = {
+#     '.*': [
+#         'linter'
+#     ],
+#     '.json': [
+#         'jq',
+#     ],
+#     '.php': [
+#         'php',
+#     ],
+# }
+
+
+def lint_govet(file):
+    errors = []
+    result = subprocess.run(['go', 'vet', './...'], capture_output=True, text=True)
+    for line in result.stderr.splitlines():
+        match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
+        if match and match.group(1) == file:
+            errors.append({
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            })
+    return errors
+
+
+def lint_golint(file):
+    errors = []
+    result = subprocess.run(['golint', '-set_exit_status', './...'], capture_output=True, text=True)
+    for line in result.stderr.splitlines():
+        match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
+        if match and match.group(1) == file:
+            errors.append({
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            })
+    return errors
+
+
+def lint_yaml(file):
+    errors = []
+    result = subprocess.run(['yamllint', '--strict', '--format=parsable', file], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
+        if match:
+            errors.append({
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            })
+    return errors
+
+
+def lint_jq(file):
+    errors = []
+    result = subprocess.run(['jq', '.', file], capture_output=True, text=True)
+    for line in result.stderr.splitlines():
+        match = re.match(r"^parse error: (.*) at line (\d+), .*$", line)
+        if match:
+            errors.append({
+                'file': file,
+                'line': match.group(2),
+                'message': match.group(1),
+            })
+    return errors
+
+
+def lint_php(file):
+    errors = []
+    result = subprocess.run(['php', '-l', file], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        match = re.match(r"^Parse error: (.*) in (.*) on line (\d+)$", line)
+        if match:
+            errors.append({
+                'file': match.group(2),
+                'line': match.group(3),
+                'message': match.group(1),
+            })
+    return errors
+
+
+def lint_php_cs_fixer(file):
+    errors = []
+    result = subprocess.run(['php-cs-fixer', 'fix', '--no-ansi', '--dry-run', '--format=gitlab', file], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        if line.startswith('[{'):
+            data = json.loads(line)
+            break
+    for error in data:
+        errors.append({
+            'file': error['location']['path'],
+            'line': 1,
+            'message': error['description']
+        })
+    return errors
+
+
+def lint_rubocop(file):
+    errors = []
+    result = subprocess.run(['chef', 'exec', 'rake', 'style:ruby'], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        match = re.match(r"^([^:]*):(\d+):\d+: (.*)$", line)
+        if match and match.group(1) == file:
+            errors.append({
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            })
+    return errors
+
+
+def lint_foodcritic(file):
+    errors = []
+    result = subprocess.run(['foodcritic', '--no-progress', file], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        match = re.match(r"^(.*): ([^:]+):(\d+)$", line)
+        if match:
+            errors.append({
+                'file': match.group(2),
+                'line': match.group(3),
+                'message': match.group(1),
+            })
+    return errors
+
+
+def lint_linter(file):
+    errors = []
+    result = subprocess.run(['linter', file], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        match = re.match(r"^(.*) on line (\d+) (has .*)$", line)
+        if match:
+            errors.append({
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            })
+    return errors
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("files", nargs='*', help="files to lint")
+    args = parser.parse_args()
+    errors = []
+    for file in args.files:
+        if file.endswith('.yaml') or file.endswith('.yml'):
+            errors += lint_linter(file)
+            errors += lint_yaml(file)
+        if file.endswith('.json'):
+            errors += lint_linter(file)
+            errors += lint_jq(file)
+        if file.endswith('.go'):
+            # errors += lint_linter(file)
+            errors += lint_govet(file)
+            errors += lint_golint(file)
+        if file.endswith('.php'):
+            errors += lint_linter(file)
+            errors += lint_php(file)
+            errors += lint_php_cs_fixer(file)
+        if file.endswith('.rb'):
+            errors += lint_linter(file)
+            errors += lint_rubocop(file)
+            errors += lint_foodcritic(file)
+    for error in errors:
+        print("{file}||{line}||{message}".format(**error))
+
+
+if __name__ == '__main__':
+    main()

@@ -16,10 +16,8 @@ call plug#begin()
   Plug 'tpope/vim-unimpaired'
 
   " Testing, linting and fixing
-  Plug 'benmills/vimux'
   Plug 'janko-m/vim-test'
-  Plug 'dense-analysis/ale'
-  Plug 'maximbaz/lightline-ale'
+  Plug 'tpope/vim-dispatch'
 
   " Snippets
   Plug 'sirver/ultisnips'
@@ -174,37 +172,24 @@ let g:buftabline_indicators = 1
 " PLUGIN: lightline
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:lightline = {
-  \ 'enable': {
-  \   'statusline': 1,
-  \   'tabline': 0,
-  \ },
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'gitbranch', 'readonly', 'relativepath' ]
-  \   ],
-  \   'right': [
-  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-  \     [ 'lineinfo', 'percent' ],
-  \     [ 'fileformat', 'fileencoding', 'filetype' ],
-  \   ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head'
-  \ },
-  \ 'component_expand': {
-  \   'linter_checking': 'lightline#ale#checking',
-  \   'linter_warnings': 'lightline#ale#warnings',
-  \   'linter_errors': 'lightline#ale#errors',
-  \   'linter_ok': 'lightline#ale#ok',
-  \ },
-  \ 'component_type': {
-  \   'linter_checking': 'left',
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_ok': 'left',
-  \ }
+  \   'enable': {
+  \     'statusline': 1,
+  \     'tabline': 0,
+  \   },
+  \   'colorscheme': 'gruvbox',
+  \   'active': {
+  \     'left': [
+  \       [ 'mode', 'paste' ],
+  \       [ 'gitbranch', 'readonly', 'relativepath' ]
+  \     ],
+  \     'right': [
+  \       [ 'lineinfo', 'percent' ],
+  \       [ 'fileformat', 'fileencoding', 'filetype' ],
+  \     ]
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head'
+  \   }
   \ }
 " ------------------------------------------------------------------------------------------------------------------------------
 
@@ -252,42 +237,9 @@ let g:UltiSnipsListSnippets="<F5>"
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: vim-ale
+" PLUGIN: lint and fix
 " ------------------------------------------------------------------------------------------------------------------------------
-set omnifunc=ale#completion#OmniFunc
-let g:ale_cache_executable_check_failures = 1
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters_explicit = 1
-let g:ale_open_list = 1
-let g:ale_set_balloons = 0
-let g:ale_set_signs = 0
-let g:ale_linters = {
-\   '*':      ['linter'],
-\   'go':     ['gobuild', 'gofmt', 'golint', 'govet', 'gopls'],
-\   'json':   ['linter', 'jsonlint'],
-\   'php':    ['linter', 'php', 'phpstan', 'psalm'],
-\   'python': ['linter', 'flake8'],
-\   'yaml':   ['linter', 'yamllint'],
-\}
-let g:ale_fixers = {
-\   '*':      ['remove_trailing_lines', 'trim_whitespace'],
-\   'go':     ['remove_trailing_lines', 'trim_whitespace', 'gofmt', 'goimports'],
-\   'json':   ['remove_trailing_lines', 'trim_whitespace', 'jq'],
-\   'php':    ['remove_trailing_lines', 'trim_whitespace', 'php_cs_fixer'],
-\   'python': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-nnoremap <leader>c :ALEReset<CR>
-nnoremap <leader>l :ALELint<CR>
-nnoremap <leader>L :ALEFix<CR>
-augroup CloseLoclistWindowGroup
-  autocmd!
-  autocmd QuitPre * if empty(&buftype) | lclose | endif
-augroup END
+noremap <Leader>l :Dispatch fuubar %<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -301,7 +253,7 @@ let g:vim_json_syntax_conceal = 0
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim-test
 " ------------------------------------------------------------------------------------------------------------------------------
-let test#strategy = "vimux"
+let test#strategy = "dispatch"
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -327,50 +279,6 @@ nnoremap <leader>i mzgg=G`z<CR>
 " Keyboard shortcut for find-and-replace
 nnoremap <leader>s :%s/
 vnoremap <leader>s :s/
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" Buffer navigation
-" ------------------------------------------------------------------------------------------------------------------------------
-nnoremap <leader>n :enew<CR>
-nnoremap <leader>e :edit<SPACE>
-nnoremap <leader>w :write<CR>
-nnoremap <leader>wq :call BufferByeAndWrite()<CR>
-nnoremap <leader>q :call BufferBye()<CR>
-nnoremap <leader>Q :call BufferByeForce()!<CR>
-function! BufferByeAndWrite()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :wq
-    else
-        :write
-        :bwipeout
-    endif
-endfunction
-function! BufferBye()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :quit
-    else
-        :bwipeout
-    endif
-endfunction
-function! BufferByeForce()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        :quit!
-    else
-        :bwipeout!
-    endif
-endfunction
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" Split navigation
-" ------------------------------------------------------------------------------------------------------------------------------
-nnoremap <C-Down> <C-w><C-j>
-nnoremap <C-Up> <C-w><C-k>
-nnoremap <C-Right> <C-w><C-l>
-nnoremap <C-Left> <C-w><C-h>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
