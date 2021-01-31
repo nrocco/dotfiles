@@ -16,7 +16,7 @@ function! ToggleQuickfix() abort
             return
         endif
     endfor
-    copen
+    cwindow
 endfunction
 
 nnoremap <leader>c :call ToggleQuickfix()<CR>
