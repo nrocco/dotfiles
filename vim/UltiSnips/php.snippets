@@ -160,6 +160,23 @@ snippet this "add this"
 $this->$1 = $$1;$0
 endsnippet
 
+
 snippet p "add protected variable"
 protected $$1;$0
+endsnippet
+
+
+snippet setup "public function setUp(): void { ... }"
+public function setUp(): void
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+snippet teardown "protected function tearDown(): void { ... }"
+public function tearDown(): void
+{
+	${0:${VISUAL}}
+}
 endsnippet
