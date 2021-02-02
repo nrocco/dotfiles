@@ -7,3 +7,6 @@ setlocal textwidth=0
 
 " Put the cursor at the end of the 1st line
 normal $
+
+" Do not highlight special characters
+setlocal listchars=tab:\ \ 
