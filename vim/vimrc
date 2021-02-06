@@ -251,7 +251,7 @@ let g:dispatch_no_tmux_make = 1
 let g:dispatch_no_tmux_dispatch = 1
 
 noremap <Leader>l :Dispatch linter %<CR>
-noremap <Leader>L :Dispatch fixer %<CR>
+noremap <Leader>L :Dispatch! fixer %<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
