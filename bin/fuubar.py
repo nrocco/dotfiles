@@ -74,6 +74,21 @@ def lint_jq(file):
             }
 
 
+def lint_shellcheck(file):
+    try:
+        result = subprocess.run(['shellcheck', '--format', 'gcc', file], capture_output=True, text=True)
+    except FileNotFoundError:
+        return []
+    for line in result.stdout.splitlines():
+        match = re.match(r"^(.*):(\d+):\d+: (.*)$", line)
+        if match:
+            yield {
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            }
+
+
 def lint_flake8(file):
     try:
         result = subprocess.run(['flake8', '--extend-ignore', 'E501', file], capture_output=True, text=True)
@@ -226,6 +241,7 @@ MAPPING = {
         '.php':  [lint_whitespace, lint_php, lint_phpstan],
         '.py':   [lint_whitespace, lint_flake8],
         '.rb':   [lint_whitespace, lint_rubocop, lint_foodcritic],
+        '.sh':   [lint_whitespace, lint_shellcheck],
         '.yaml': [lint_whitespace, lint_yaml],
         '.yml':  [lint_whitespace, lint_yaml],
     },
@@ -233,7 +249,9 @@ MAPPING = {
         '.go':   [fix_clrf, fix_whitespace, fix_gofmt, fix_goimports],
         '.json': [fix_clrf, fix_whitespace, fix_json],
         '.php':  [fix_clrf, fix_whitespace, fix_php_cs_fixer],
+        '.py':   [fix_clrf, fix_whitespace],
         '.rb':   [fix_clrf, fix_whitespace],
+        '.sh':   [fix_clrf, fix_whitespace],
         '.yaml': [fix_clrf, fix_whitespace],
         '.yml':  [fix_clrf, fix_whitespace],
     }
