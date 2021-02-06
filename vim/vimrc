@@ -242,7 +242,8 @@ let g:UltiSnipsListSnippets="<F5>"
 let g:dispatch_no_tmux_make = 1
 let g:dispatch_no_tmux_dispatch = 1
 
-noremap <Leader>l :Dispatch fuubar %<CR>
+noremap <Leader>l :Dispatch linter %<CR>
+noremap <Leader>L :Dispatch fixer %<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -265,6 +266,13 @@ nnoremap <leader>T :TestFile<CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 " Keyboard shortcuts
 " ------------------------------------------------------------------------------------------------------------------------------
+" Never use ZZ, too dangerous
+nnoremap ZZ <nop>
+
+" Use tab and shift-tab to cycle through windows.
+nnoremap <Tab> <C-W>w
+nnoremap <S-Tab> <C-W>W
+
 " Shortcut to start command mode with the spacebar
 nnoremap <space> :
 
