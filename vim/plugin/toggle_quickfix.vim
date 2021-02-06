@@ -11,12 +11,12 @@ let g:did_plugin_toggle_quickfix = 1
 function! ToggleQuickfix() abort
     for winnum in range(1, winnr('$'))
         if getwinvar(winnum, "&filetype") == "qf"
-            cexpr []
+            call setqflist([])
             cclose
             return
         endif
     endfor
-    cwindow
+    copen
 endfunction
 
 nnoremap <leader>c :call ToggleQuickfix()<CR>

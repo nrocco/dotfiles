@@ -9,6 +9,7 @@ endif
 let g:did_plugin_buffer_nav = 1
 
 function! BufferByeAndWrite()
+    :cclose
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :wq
     else
@@ -18,6 +19,7 @@ function! BufferByeAndWrite()
 endfunction
 
 function! BufferBye()
+    :cclose
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :quit
     else
@@ -26,6 +28,7 @@ function! BufferBye()
 endfunction
 
 function! BufferByeForce()
+    :cclose
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
         :quit!
     else
