@@ -7,6 +7,13 @@ import subprocess
 import sys
 
 
+def get_binary(binaries):
+    for binary in binaries:
+        if os.path.exists(binary):
+            return binary
+    return binaries[-1]
+
+
 def lint_govet(file):
     try:
         result = subprocess.run(['go', 'vet', './...'], capture_output=True, text=True)
@@ -99,7 +106,7 @@ def lint_php(file):
 
 def lint_phpstan(file):
     try:
-        result = subprocess.run(['phpstan', 'analyse', '--no-ansi', '--no-interaction', '--no-progress', '--error-format=json', file], capture_output=True, text=True)
+        result = subprocess.run([get_binary(['bin/phpstan', 'phpstan']), 'analyse', '--no-ansi', '--no-interaction', '--no-progress', '--error-format=json', file], capture_output=True, text=True)
     except FileNotFoundError:
         return []
     data = json.loads(result.stdout)
@@ -168,7 +175,7 @@ def fix_whitespace(file):
 
 
 def fix_php_cs_fixer(file):
-    subprocess.run(['php-cs-fixer', 'fix', '--no-ansi', '--no-interaction', file], check=True)
+    subprocess.run([get_binary(['bin/php-cs-fixer', 'php-cs-fixer']), 'fix', '--no-ansi', '--no-interaction', file], check=True)
 
 
 def fix_gofmt(file):
