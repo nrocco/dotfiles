@@ -99,7 +99,7 @@ def lint_php(file):
 
 def lint_phpstan(file):
     try:
-        result = subprocess.run(['bin/phpstan', 'analyse', '--no-ansi', '--no-interaction', '--no-progress', '--error-format=json', file], capture_output=True, text=True)
+        result = subprocess.run(['phpstan', 'analyse', '--no-ansi', '--no-interaction', '--no-progress', '--error-format=json', file], capture_output=True, text=True)
     except FileNotFoundError:
         return []
     data = json.loads(result.stdout)
@@ -207,7 +207,8 @@ def fix(args):
         for ext, fixers in MAPPING['fixer'].items():
             if file.endswith(ext):
                 for fixer in fixers:
-                    print("==> Run {} on file {}".format(fixer.__name__, file))
+                    if args.verbose:
+                        print("==> Run {} on file {}".format(fixer.__name__, file))
                     fixer(file)
 
 
