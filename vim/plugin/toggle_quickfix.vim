@@ -8,15 +8,20 @@ endif
 
 let g:did_plugin_toggle_quickfix = 1
 
-function! ToggleQuickfix() abort
+function! QuickfixToggle() abort
     for winnum in range(1, winnr('$'))
         if getwinvar(winnum, "&filetype") == "qf"
-            call setqflist([])
             cclose
             return
         endif
     endfor
-    copen
+    cwindow
 endfunction
 
-nnoremap <leader>c :call ToggleQuickfix()<CR>
+function! QuickfixClear() abort
+    call setqflist([])
+    cclose
+endfunction
+
+nnoremap <leader>c :call QuickfixToggle()<CR>
+nnoremap <leader>C :call QuickfixClear()<CR>
