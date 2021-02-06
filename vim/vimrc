@@ -7,12 +7,13 @@ call plug#begin()
   " Powerusage
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-fugitive'
+  Plug 'preservim/tagbar'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-ragtag'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-ragtag'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
 
   " Testing, linting and fixing
@@ -195,6 +196,13 @@ let g:lightline = {
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
+" PLUGIN: preservim/tagbar - Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file
+" ------------------------------------------------------------------------------------------------------------------------------
+nnoremap <leader>b :TagbarToggle<CR>
+" ------------------------------------------------------------------------------------------------------------------------------
+
+
+" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: junegunn/fzf.vim - A command-line fuzzy finder written in Go
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:fzf_buffers_jump = 1
@@ -202,7 +210,7 @@ let g:fzf_preview_window = ''
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.cache/fzf-history'
 
-nnoremap <leader>b :Buffers<CR>
+" TODO disabled in favor for tagbar: nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>g :Rg<CR>
