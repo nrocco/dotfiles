@@ -162,7 +162,7 @@ def fix_clrf(file):
 
 
 def fix_whitespace(file):
-    subprocess.run(['sed', '-i', '', '-e', 's/[ 	]*$//', file], check=True)
+    subprocess.run(['sed', '-i', '-e', 's/[ 	]*$//', file], check=True)
     print("Ran sed to remove trailing tabs and white spaces")
 
 
