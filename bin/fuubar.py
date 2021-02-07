@@ -14,6 +14,21 @@ def get_binary(binaries):
     return binaries[-1]
 
 
+def lint_gobuild(file):
+    try:
+        result = subprocess.run(['go', 'build', './...'], capture_output=True, text=True)
+    except FileNotFoundError:
+        return []
+    for line in result.stderr.splitlines():
+        match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
+        if match:
+            yield {
+                'file': match.group(1),
+                'line': match.group(2),
+                'message': match.group(3),
+            }
+
+
 def lint_govet(file):
     try:
         result = subprocess.run(['go', 'vet', './...'], capture_output=True, text=True)
@@ -21,7 +36,7 @@ def lint_govet(file):
         return []
     for line in result.stderr.splitlines():
         match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
-        if match and match.group(1) == file:
+        if match:
             yield {
                 'file': match.group(1),
                 'line': match.group(2),
@@ -36,7 +51,7 @@ def lint_golint(file):
         return []
     for line in result.stderr.splitlines():
         match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
-        if match and match.group(1) == file:
+        if match:
             yield {
                 'file': match.group(1),
                 'line': match.group(2),
@@ -236,7 +251,7 @@ def fix(args):
 
 MAPPING = {
     'linter': {
-        '.go':   [[lint_whitespace, dict(tabs=False)], lint_govet, lint_golint],
+        '.go':   [[lint_whitespace, dict(tabs=False)], lint_govet, lint_golint, lint_gobuild],
         '.json': [lint_whitespace, lint_jq],
         '.php':  [lint_whitespace, lint_php, lint_phpstan],
         '.py':   [lint_whitespace, lint_flake8],
