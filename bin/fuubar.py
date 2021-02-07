@@ -210,25 +210,34 @@ def lint_whitespace(file, spaces=True, clrf=True, tabs=True):
 
 
 def fix_clrf(file):
-    subprocess.run(['dos2unix', '--safe', file], check=True)
+    subprocess.run(['dos2unix', '--verbose', '--safe', file])
 
 
 def fix_whitespace(file):
-    subprocess.run(['sed', '-i.bak', '-e', 's/[ 	]*$//', file], check=True)
+    subprocess.run(['sed', '-i.bak', '-e', "s/[ \t]*$//", file])
     os.remove("{}.bak".format(file))
     print("Ran sed to remove trailing tabs and white spaces")
 
 
 def fix_php_cs_fixer(file):
-    subprocess.run([get_binary(['bin/php-cs-fixer', 'php-cs-fixer']), 'fix', '--no-ansi', '--no-interaction', file], check=True)
+    try:
+        subprocess.run([get_binary(['bin/php-cs-fixer', 'php-cs-fixer']), 'fix', '--no-ansi', '--no-interaction', file])
+    except FileNotFoundError:
+        pass
 
 
 def fix_gofmt(file):
-    subprocess.run(['gofmt', '-w', '-s', file], check=True)
+    try:
+        subprocess.run(['gofmt', '-w', '-s', file])
+    except FileNotFoundError:
+        pass
 
 
 def fix_goimports(file):
-    subprocess.run(['goimports', '-w', file], check=True)
+    try:
+        subprocess.run(['goimports', '-w', file])
+    except FileNotFoundError:
+        pass
 
 
 def fix_json(file):
