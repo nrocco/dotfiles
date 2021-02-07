@@ -74,6 +74,21 @@ def lint_yaml(file):
             }
 
 
+def lint_tslint(file):
+    try:
+        result = subprocess.run(['tslint', file], capture_output=True, text=True)
+    except FileNotFoundError:
+        return []
+    for line in result.stdout.splitlines():
+        match = re.match(r"^ERROR: (\d+):\d+ +([a-z-]*) + (.*)$", line)
+        if match:
+            yield {
+                'file': file,
+                'line': match.group(1),
+                'message': "{} ({})".format(match.group(3), match.group(2)),
+            }
+
+
 def lint_jq(file):
     try:
         result = subprocess.run(['jq', '.', file], capture_output=True, text=True)
@@ -257,6 +272,7 @@ MAPPING = {
         '.py':   [lint_whitespace, lint_flake8],
         '.rb':   [lint_whitespace, lint_rubocop, lint_foodcritic],
         '.sh':   [lint_whitespace, lint_shellcheck],
+        '.ts':   [lint_whitespace, lint_tslint],
         '.yaml': [lint_whitespace, lint_yaml],
         '.yml':  [lint_whitespace, lint_yaml],
     },
@@ -267,6 +283,7 @@ MAPPING = {
         '.py':   [fix_clrf, fix_whitespace],
         '.rb':   [fix_clrf, fix_whitespace],
         '.sh':   [fix_clrf, fix_whitespace],
+        '.ts':   [fix_clrf, fix_whitespace],
         '.yaml': [fix_clrf, fix_whitespace],
         '.yml':  [fix_clrf, fix_whitespace],
     }
