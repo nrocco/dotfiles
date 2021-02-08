@@ -149,7 +149,7 @@ vnoremap gt <c-t>
 nnoremap <leader>p :set invpaste<CR>
 
 " Clear highlight on pressing ESC
-nnoremap <esc> :noh<return><esc>
+nnoremap <esc> :nohlsearch<return><esc>
 
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim netrw
