@@ -1,7 +1,6 @@
 call plug#begin()
   " layout
   Plug 'ap/vim-buftabline'
-  Plug 'itchyny/lightline.vim'
   Plug 'morhetz/gruvbox'
 
   " Powerusage
@@ -48,7 +47,7 @@ call plug#end()
 set nocompatible                                " Make Vim behave in a more useful way.
 set hidden                                      " A buffer becomes hidden when it is abandoned. So we can move away from unwritten buffers
 set nomodeline                                  " Disable modelines to avoid arbitrary code execution
-set noshowmode                                  " Vim Airline takes care of showing the mode
+set showmode                                    " Show the mode we are in
 " ------------------------------------------------------------------------------------------------------------------------------
 syntax on                                       " Enable Syntax highlighting
 set termguicolors                               " Use highlight-guifg and highlight-guibg attributes (thus using 24-bit color).
@@ -120,6 +119,14 @@ set shiftwidth=4                                " Control how many columns text 
 set ruler                                       " Show line number and cursor position
 set updatetime=100
 set laststatus=2                                " Always show the status line
+set statusline=
+set statusline+=\ %f                            " relative path to file
+set statusline+=%m                              " modifable
+set statusline+=\ [%{fugitive#head(8)}]         " git branch
+set statusline+=%=                              " push right
+set statusline+=\ %y                            " file type
+set statusline+=\ %l:%c\ \|                     " line and column
+set statusline+=\ %p%%\                         " percentage of file
 set cmdheight=1                                 " Height of the command bar
 set diffopt+=hiddenoff
 " ------------------------------------------------------------------------------------------------------------------------------
@@ -166,32 +173,6 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:buftabline_plug_max = 0
 let g:buftabline_indicators = 1
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: lightline
-" ------------------------------------------------------------------------------------------------------------------------------
-let g:lightline = {
-  \   'enable': {
-  \     'statusline': 1,
-  \     'tabline': 0,
-  \   },
-  \   'colorscheme': 'gruvbox',
-  \   'active': {
-  \     'left': [
-  \       [ 'mode', 'paste' ],
-  \       [ 'gitbranch', 'readonly', 'relativepath' ]
-  \     ],
-  \     'right': [
-  \       [ 'lineinfo', 'percent' ],
-  \       [ 'fileformat', 'fileencoding', 'filetype' ],
-  \     ]
-  \   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head'
-  \   }
-  \ }
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
