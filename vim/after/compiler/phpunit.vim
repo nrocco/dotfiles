@@ -8,7 +8,7 @@ let s:cpo_save = &cpo
 set cpo-=C
 
 CompilerSet makeprg=phpunit\ $*
-CompilerSet errorformat=%E%n)\ %.%#,%Z/app/%f:%l,%C%m,%C,%-G%.%#
+CompilerSet errorformat=/app/%f:%l
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
