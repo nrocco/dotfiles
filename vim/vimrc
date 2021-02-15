@@ -99,6 +99,7 @@ set showmatch                                   " Show/highlight matching braces
 set mat=2                                       " How many tenths of a second to blink when matching brackets
 set nosmartindent                               " Automatically indent braces (overrides autoindent)
 set report=0                                    " Tell us when anything is changed via :...
+set isfname=@,48-57,/,.,-,_,+,,,$,%,~,=
 " ------------------------------------------------------------------------------------------------------------------------------
 set directory=~/.cache/vim//                    " Directory to place swap files in
 set nobackup                                    " Turn backup off since most stuff is in git anyway
@@ -274,6 +275,8 @@ nnoremap <leader>i mzgg=G`z<CR>
 " Keyboard shortcut for find-and-replace
 nnoremap <leader>s :%s/
 vnoremap <leader>s :s/
+
+nnoremap gf :edit %:h/<cfile><CR>
 " ------------------------------------------------------------------------------------------------------------------------------
 
 
