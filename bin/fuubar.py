@@ -74,9 +74,9 @@ def lint_yaml(file):
             }
 
 
-def lint_tslint(file):
+def lint_eslint(file):
     try:
-        result = subprocess.run(['tslint', file], capture_output=True, text=True)
+        result = subprocess.run(['eslint', file], capture_output=True, text=True)
     except FileNotFoundError:
         return []
     for line in result.stdout.splitlines():
@@ -281,7 +281,7 @@ MAPPING = {
         '.py':   [lint_whitespace, lint_flake8],
         '.rb':   [lint_whitespace, lint_rubocop, lint_foodcritic],
         '.sh':   [lint_whitespace, lint_shellcheck],
-        '.ts':   [lint_whitespace, lint_tslint],
+        '.ts':   [lint_whitespace, lint_eslint],
         '.yaml': [lint_whitespace, lint_yaml],
         '.yml':  [lint_whitespace, lint_yaml],
     },
