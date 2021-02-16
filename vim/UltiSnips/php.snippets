@@ -180,3 +180,11 @@ public function tearDown(): void
 	${0:${VISUAL}}
 }
 endsnippet
+
+snippet testlogs "show all monolog messages"
+print_r($this->getContainer()->get('monolog.handler.main')->getRecords());$0
+endsnippet
+
+snippet testmocks "show all api calls made to guzzle mock plugin"
+print_r(array_keys($this->getContainer()->get("$1.mocks")->getReceivedRequests()));$0
+endsnippet
