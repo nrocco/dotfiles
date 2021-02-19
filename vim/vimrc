@@ -66,7 +66,6 @@ set ttyscroll=3                                 " Maximum number of lines to scr
 set nofoldenable                                " When off, all folds are open.
 set foldcolumn=0                                " The amount of space to show fold markers
 set foldmethod=manual                           " Effectively disable folding
-set regexpengine=1                              " Use the older (but faster) regex engine
 set redrawtime=5000                             " The time in milliseconds for redrawing the display
 set nocursorline                                " Do not highlight the text line of the cursor
 set synmaxcol=300                               " Maximum column in which to search for syntax items.
