@@ -156,7 +156,6 @@ nnoremap <esc> :nohlsearch<return><esc>
 " ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: vim netrw
 " ------------------------------------------------------------------------------------------------------------------------------
-let loaded_netrwPlugin = 1                      " disable netrw plugin completely
 let g:netrw_banner = 0                          " suppress the banner
 let g:netrw_fastbrowse = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
