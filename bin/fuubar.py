@@ -76,16 +76,16 @@ def lint_yaml(file):
 
 def lint_eslint(file):
     try:
-        result = subprocess.run(['eslint', file], capture_output=True, text=True)
+        result = subprocess.run(['eslint', '--format=compact', file], capture_output=True, text=True)
     except FileNotFoundError:
         return []
     for line in result.stdout.splitlines():
-        match = re.match(r"^ERROR: (\d+):\d+ +([a-z-]*) + (.*)$", line)
+        match = re.match(r"^[^:]+: line (\d+), col \d+, (.*)$", line)
         if match:
             yield {
                 'file': file,
                 'line': match.group(1),
-                'message': "{} ({})".format(match.group(3), match.group(2)),
+                'message': match.group(2),
             }
 
 
