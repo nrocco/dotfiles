@@ -1,8 +1,11 @@
 #!/bin/sh
-cat "${1}" | docker container run -i --rm nrocco/imagemagick:latest png:- -auto-orient -units PixelsPerInch -density 75 -quality 75 -resize '1280>' -interlace Plane -strip -verbose png:- > "${1}-temp"
-if [ $? -eq 0 ]
-then
-    mv "${1}-temp" "${1}"
-else
-    rm -f "${1}-temp"
-fi
+for file in "${@}"
+do
+    cat "${file}" | docker container run -i --rm nrocco/imagemagick:latest png:- -auto-orient -units PixelsPerInch -density 75 -quality 75 -resize '1280>' -interlace Plane -strip -verbose png:- > "${file}-temp"
+    if [ $? -eq 0 ]
+    then
+        mv "${file}-temp" "${file}"
+    else
+        rm -f "${file}-temp"
+    fi
+done
