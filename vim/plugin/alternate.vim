@@ -13,14 +13,15 @@ function! Alternate() abort
         let file = expand('%:r') . ".ts"
     elseif expand('%:t') =~ ".component.ts"
         let file = expand('%:r') . ".html"
-    elseif expand('%:e') == "php"
-        if expand('%:r')[-4:] == "Test"
+    elseif expand('%:e') ==# "php"
+        if expand('%:r')[-4:] ==# "Test"
             let file = "src" . expand('%:r')[5:-5] . ".php"
         else
             let file = "tests" . expand('%:r')[3:] . "Test.php"
         endif
     else
-        let file = "error"
+        echo "Could not find alternate file"
+        return
     endif
 
     execute "edit" file
