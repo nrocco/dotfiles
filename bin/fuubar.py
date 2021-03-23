@@ -276,6 +276,7 @@ def fix(args):
 MAPPING = {
     'linter': {
         '.go':   [[lint_whitespace, dict(tabs=False)], lint_govet, lint_golint, lint_gobuild],
+        '.html': [lint_whitespace],
         '.json': [lint_whitespace, lint_jq],
         '.php':  [lint_whitespace, lint_php, lint_phpstan],
         '.py':   [lint_whitespace, lint_flake8],
@@ -287,6 +288,7 @@ MAPPING = {
     },
     'fixer': {
         '.go':   [fix_clrf, fix_whitespace, fix_gofmt, fix_goimports],
+        '.html': [fix_clrf, fix_whitespace],
         '.json': [fix_clrf, fix_whitespace, fix_json],
         '.php':  [fix_clrf, fix_whitespace, fix_php_cs_fixer],
         '.py':   [fix_clrf, fix_whitespace],
