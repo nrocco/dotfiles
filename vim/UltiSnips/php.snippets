@@ -188,3 +188,15 @@ endsnippet
 snippet testmocks "show all api calls made to guzzle mock plugin"
 print_r(array_keys($this->getContainer()->get("$1.mocks")->getReceivedRequests()));$0
 endsnippet
+
+snippet setmap "set a mapping for a given client"
+$this->getContainer()->get('$1.mocks')->setMap([$0]);
+endsnippet
+
+snippet asapi "assert that api calls have been nade"
+$this->assertApiCalls('$1', [$0]);
+endsnippet
+
+snippet aslog "assert a log has been written"
+$this->assertHasLog('${2:info}', '$1');$0
+endsnippet
