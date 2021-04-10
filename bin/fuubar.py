@@ -49,7 +49,7 @@ def lint_golint(file):
         result = subprocess.run(['golint', '-set_exit_status', './...'], capture_output=True, text=True)
     except FileNotFoundError:
         return []
-    for line in result.stderr.splitlines():
+    for line in result.stdout.splitlines():
         match = re.match(r"^([^:]+):(\d+):\d+: (.*)$", line)
         if match:
             yield {
