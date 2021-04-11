@@ -7,6 +7,8 @@ export DOCKER_BUILDKIT=1
 
 alias virt-install='docker container run --rm --interactive --tty --env "LIBVIRT_DEFAULT_URI=$LIBVIRT_DEFAULT_URI" nrocco/virt-install:latest'
 
+alias dc='docker compose'
+
 function mac_to_vendor() {
     curl "https://api.macvendors.com/${1}"; echo
 }
