@@ -19,6 +19,12 @@ function! Alternate() abort
         else
             let file = "tests" . expand('%:r')[3:] . "Test.php"
         endif
+    elseif expand('%:e') ==# "go"
+        if expand('%:r')[-5:] ==# "_test"
+            let file = expand('%:r')[:-6] . ".go"
+        else
+            let file = expand('%:r') . "_test.go"
+        endif
     else
         echo "Could not find alternate file"
         return
