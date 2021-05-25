@@ -6,7 +6,6 @@ call plug#begin()
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'morhetz/gruvbox'
-  Plug 'preservim/tagbar'
   Plug 'sheerun/vim-polyglot'
   Plug 'sirver/ultisnips'
   Plug 'tpope/vim-commentary'
@@ -160,13 +159,6 @@ let g:buftabline_indicators = 1
 
 
 " ------------------------------------------------------------------------------------------------------------------------------
-" PLUGIN: preservim/tagbar - Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file
-" ------------------------------------------------------------------------------------------------------------------------------
-nnoremap <leader>b :TagbarToggle<CR>
-" ------------------------------------------------------------------------------------------------------------------------------
-
-
-" ------------------------------------------------------------------------------------------------------------------------------
 " PLUGIN: junegunn/fzf.vim - A command-line fuzzy finder written in Go
 " ------------------------------------------------------------------------------------------------------------------------------
 let g:fzf_buffers_jump = 1
@@ -174,9 +166,9 @@ let g:fzf_preview_window = ''
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.cache/fzf-history'
 
-" TODO disabled in favor for tagbar: nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :Helptags<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg<space>
 nnoremap <leader>G :Rg<space><C-R><C-W><CR>
 
