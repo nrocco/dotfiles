@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [ ! -S ~/.ssh/auth_sock ] && [ -S "${SSH_AUTH_SOCK}" ]
+then
+    ln -sf "${SSH_AUTH_SOCK}" ~/.ssh/auth_sock
+fi
