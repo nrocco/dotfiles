@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Make sure to export SSH_AUTH_SOCK=~/.ssh/auth_sock in .zprofile
 if [ ! -S ~/.ssh/auth_sock ] && [ -S "${SSH_AUTH_SOCK}" ]
 then
     ln -sf "${SSH_AUTH_SOCK}" ~/.ssh/auth_sock
