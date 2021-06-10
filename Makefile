@@ -7,7 +7,6 @@ update:
 	git submodule foreach --recursive git checkout master
 	git submodule foreach --recursive git pull origin master
 	wget -O zsh/custom-completions/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
-	wget -O zsh/custom-completions/_docker-compose https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
 	vim +PlugClean +PlugUpdate +qall
 	git gc
 	git add \
@@ -16,7 +15,6 @@ update:
 		zsh/zsh-completions \
 		zsh/zsh-syntax-highlighting \
 		zsh/custom-completions/_docker \
-		zsh/custom-completions/_docker-compose \
 		&& git commit -m 'Updated 3rd party dependencies'
 	git status
 
