@@ -147,8 +147,8 @@ compdef _scp scpc=scp
 # Complete them as git
 compdef _git rgit=git
 
-alias dc='docker-compose'
-compdef dc=docker-compose
+alias dc='docker compose'
+# compdef dc=docker-compose
 
 # Compile the completion dump, to increase startup speed.
 if [[ "${ZSH_CACHE}/zcompdump" -nt "${ZSH_CACHE}/zcompdump.zwc" || ! -f "${ZSH_CACHE}/zcompdump.zwc" ]]
