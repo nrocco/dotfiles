@@ -1,5 +1,8 @@
 autoload -Uz compinit
 
+# With hidden files
+_comp_options+=(globdots)
+
 # General completion technique
 # complete as much u can ..
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
@@ -14,7 +17,7 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # If there are more than 5 options allow selecting from a menu
-zstyle ':completion:*' menu select=5
+zstyle ':completion:*' menu select
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:options' auto-description '%d'
 
@@ -36,8 +39,15 @@ zstyle ':completion:*' verbose yes
 # Completion of .. directories
 zstyle ':completion:*' special-dirs true
 
-# Case insensitivity
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
+# Fuzzy match mistyped completions
+zstyle ':completion:*:match:*' original only
+
+# Fault tolerance (1 error on 3 characters)
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Attempt to complete many parts at once
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+unsetopt case_glob
 
 # Insert all expansions for expand completer
 zstyle ':completion:*:expand:*' keep-prefix true tag-order all-expansions
