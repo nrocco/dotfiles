@@ -1,19 +1,10 @@
 source "/usr/share/fzf/key-bindings.zsh"
 
-# Enable buildkit
-export COMPOSE_DOCKER_CLI_BUILD=1
-export DOCKER_BUILDKIT=1
-
 # compdef baremetal=docker-compose
 
 if [ -d "${HOME}/nro/bin" ]
 then
     path=("${HOME}/nro/bin" $path)
-fi
-
-if [ -d "${HOME}/bin" ]
-then
-    path=("${HOME}/bin" $path)
 fi
 
 function lswrg {

@@ -24,3 +24,21 @@ alias vihosts="sudo vim /etc/hosts"
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias scpc='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+# easy access to docker compose
+alias dc='docker compose'
+
+# Find the vendor of a given mac address
+function mac_to_vendor() {
+    curl "https://api.macvendors.com/${1}"; echo
+}
+
+# Convert a date to a UTC timestamp
+function to_timestamp() {
+    date -d "$1" -u +"%s"
+}
+
+# Convert a timestamp to a UTC date
+function to_date() {
+    date -d "@$1" -u
+}
