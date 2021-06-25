@@ -12,6 +12,7 @@ update:
 	git add \
 		zsh/LS_COLORS \
 		zsh/git-prompt.zsh \
+		zsh/fzf-tab \
 		zsh/zsh-completions \
 		zsh/zsh-syntax-highlighting \
 		zsh/custom-completions/_docker \

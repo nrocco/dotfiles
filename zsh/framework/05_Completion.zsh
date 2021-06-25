@@ -4,7 +4,7 @@ autoload -Uz compinit
 LISTMAX=10000
 
 # Complete as much u can: https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Control-Functions
-zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
+zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' completions on
 zstyle ':completion:*' glob on
 
@@ -24,12 +24,6 @@ zstyle ':completion:*' squeeze-slashes true
 # Prefer completing for an option
 zstyle ':completion:*' complete-options true
 
-# Start menu completion only if it could find no unambiguous initial string
-zstyle ':completion:*:correct:*' insert-unambiguous true
-
-# Format on correction
-zstyle ':completion:*:correct:*' original true
-
 # Describe options in full
 zstyle ':completion:*:options' description yes
 
@@ -43,11 +37,12 @@ zstyle ':completion:*' special-dirs true
 zstyle ':completion:*:match:*' original only
 
 # Fault tolerance (1 error on 3 characters)
-zstyle ':completion:*:correct:::' max-errors 2 numeric
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 
 # Attempt to complete many parts at once
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 
 # Insert all expansions for expand completer
 zstyle ':completion:*:expand:*' keep-prefix true tag-order all-expansions
