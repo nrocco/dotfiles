@@ -1,5 +1,8 @@
 autoload -Uz compinit
 
+# Effectively disable the `do you wish to see all possibilities` prompt
+LISTMAX=10000
+
 # Complete as much u can: https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Control-Functions
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
 zstyle ':completion:*' completions on

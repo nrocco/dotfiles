@@ -1,3 +1,6 @@
+# Declare the variable
+typeset -A ZSH_HIGHLIGHT_STYLES
+
 if [ ! -f "${0:h}/../zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]
 then
     return
