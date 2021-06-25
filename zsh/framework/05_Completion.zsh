@@ -1,10 +1,7 @@
 autoload -Uz compinit
 
 # # Complete as much u can: https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Control-Functions
-zstyle ':completion:*' completer _complete _match
-
-# Auto rehash commands: http://www.zsh.org/mla/users/2011/msg00531.html
-zstyle ':completion:*' rehash true
+zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _prefix
 
 # Activate color-completion(!)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
