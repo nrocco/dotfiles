@@ -1,10 +1,6 @@
 autoload -Uz compinit
 
-# With hidden files
-_comp_options+=(globdots)
-
-# General completion technique
-# complete as much u can ..
+# Complete as much u can: https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Control-Functions
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
 zstyle ':completion:*' completions on
 zstyle ':completion:*' glob on
@@ -17,9 +13,13 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # If there are more than 5 options allow selecting from a menu
-zstyle ':completion:*' menu select
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*' menu select=2
+
+# Usually, on Unix systems, // is expanded to /. Prefer this behavior
+zstyle ':completion:*' squeeze-slashes true
+
+# Prefer completing for an option
+zstyle ':completion:*' complete-options true
 
 # Start menu completion only if it could find no unambiguous initial string
 zstyle ':completion:*:correct:*' insert-unambiguous true
@@ -27,11 +27,8 @@ zstyle ':completion:*:correct:*' insert-unambiguous true
 # Format on correction
 zstyle ':completion:*:correct:*' original true
 
-# Highlight parameters with uncommon names
-zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
-
 # Describe options in full
-zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' description yes
 
 # For all completions: show comments when present
 zstyle ':completion:*' verbose yes
@@ -43,20 +40,14 @@ zstyle ':completion:*' special-dirs true
 zstyle ':completion:*:match:*' original only
 
 # Fault tolerance (1 error on 3 characters)
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*:correct:::' max-errors 2 numeric
+zstyle ':completion:*:approximate:*' max-errors 2 numeric
 
 # Attempt to complete many parts at once
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-unsetopt case_glob
 
 # Insert all expansions for expand completer
 zstyle ':completion:*:expand:*' keep-prefix true tag-order all-expansions
-
-# ~dirs: reorder output sorting: named dirs over userdirs
-zstyle ':completion::*:-tilde-:*:*' group-order named-directories users
-
-# ssh: reorder output sorting: user over hosts
-zstyle ':completion::*:ssh:*:*' tag-order "users hosts"
 
 # kill: advanced kill completion
 zstyle ':completion::*:kill:*:*' command 'ps xf -U $USER -o pid,%cpu,cmd'
@@ -83,6 +74,7 @@ zstyle ':completion:*:man:*' menu yes select
 # SSH/SCP/RSYNC
 zstyle ':completion:*:(scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
 zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion::*:ssh:*:*' tag-order "hosts"
 zstyle ':completion:*:ssh:*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
 zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hosts-ipaddr
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
