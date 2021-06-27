@@ -14,5 +14,3 @@ alias nmap='sudo /usr/local/bin/nmap'
 alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
-
-compdef wireshark-remote=ssh

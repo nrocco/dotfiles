@@ -31,7 +31,6 @@ fpath+="${0:h}/../custom-completions"
 compinit -d "${ZSH_CACHE}/zcompdump"
 
 # Complete programs as other programs
-compdef _ssh wireshark-remote=ssh
 compdef _ssh sshc=ssh
 compdef _scp scpc=scp
 compdef _git rgit=git

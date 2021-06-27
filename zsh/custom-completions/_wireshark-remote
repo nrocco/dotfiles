@@ -1,0 +1,38 @@
+#compdef wireshark-remote
+_wireshark-remote() {
+    integer ret=1
+    local -a args
+    local state
+    args+=(
+        '(- *)--help[Display help and exit]'
+        '--wireshark[Location to the wireshark binary]:string:'
+        '--verbose[Be verbose]'
+        '--sudo[Use sudo on the remote]'
+        '(--interface --list-interfaces --container)--list-containers[List all remote containers]'
+        '(--interface --list-containers --container)--list-interfaces[List all remote interfaces]'
+        '(--interface --list-interfaces --list-containers)--container[Run tcpdump in this container]:string:->containers'
+        '(--container --list-containers --list-interfaces)--interface[Run tcpdump on this interface]:string:->interfaces'
+        '1: :_ssh_hosts'
+    )
+    _arguments -S $args[@] && ret=0
+    case "${state}" in
+        interfaces)
+            if [ ! -z "${line[1]}" ]
+            then
+                _values 'interfaces' $(wireshark-remote "${line[1]}" --list-interfaces | awk '{print $1}' | xargs) && ret=0
+            else
+                ret=1
+            fi
+            ;;
+        containers)
+            if [ ! -z "${line[1]}" ]
+            then
+                _values 'containers' $(wireshark-remote "${line[1]}" --list-containers | awk '!/NAMES/{print $1}' | xargs) && ret=0
+            else
+                ret=1
+            fi
+            ;;
+    esac
+    return ret
+}
+_wireshark-remote
