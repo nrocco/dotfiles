@@ -14,3 +14,7 @@ alias nmap='sudo /usr/local/bin/nmap'
 alias mtr='sudo /usr/local/sbin/mtr'
 alias ping='sudo /sbin/ping'
 alias traceroute='sudo /usr/sbin/traceroute'
+
+# Fix Home/End keys on macos in iterm2
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
