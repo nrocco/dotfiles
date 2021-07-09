@@ -5,6 +5,7 @@ import subprocess
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("host", help="the remote host to connect to")
     parser.add_argument("--wireshark", default='/Applications/Wireshark.app/Contents/MacOS/Wireshark', help="location to the wireshark binary")
     parser.add_argument("--verbose", default=False, action="store_true", help="be verbose")
     parser.add_argument("--sudo", default=False, action="store_true", help="use sudo on the remote")
@@ -14,8 +15,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--list-containers", default=False, action="store_true", help="list all remote containers")
     group.add_argument("--list-interfaces", default=False, action="store_true", help="list all remote interfaces")
-    parser.add_argument("host", help="the remote host to connect to")
-    parser.add_argument("filter", nargs='*', default=['not', 'port', '22'], help="the filter to pass to tcpdump")
+    parser.add_argument("--filter", nargs='*', default=['not', 'port', '22'], help="the filter to pass to tcpdump")
     args = parser.parse_args()
 
     ssh_args = ["ssh", "-T", "-q", args.host]

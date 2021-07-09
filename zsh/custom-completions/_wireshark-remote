@@ -8,6 +8,7 @@ _wireshark-remote() {
         '--wireshark[Location to the wireshark binary]:string:'
         '--verbose[Be verbose]'
         '--sudo[Use sudo on the remote]'
+        '--filter[A valid tcpdump filter]:string:'
         '(--interface --list-interfaces --container)--list-containers[List all remote containers]'
         '(--interface --list-containers --container)--list-interfaces[List all remote interfaces]'
         '(--interface --list-interfaces --list-containers)--container[Run tcpdump in this container]:string:->containers'
